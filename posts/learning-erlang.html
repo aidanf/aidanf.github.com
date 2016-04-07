@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Learning Erlang</title>
+  <meta name="description" content="I&#8217;ve been looking into erlang, on and off, over the last few months and I like it a lot. For building high-availability, scalable, network servers it a...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://www.aidanf.net/posts/learning-erlang">
+  <link rel="alternate" type="application/rss+xml" title="/aidanf/" href="http://www.aidanf.net/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">/aidanf/</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/contact/">Contact</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/publications/">Publications</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Learning Erlang</h1>
+    <p class="post-meta"><time datetime="2007-05-01T12:45:40+01:00" itemprop="datePublished">May 1, 2007</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I&#8217;ve been looking into <a href="http://www.erlang.org/">erlang</a>, on and off, over the last few months and I like it a lot. For building high-availability, scalable, network servers it appears there&#8217;s no substitute.</p>
+
+<h3>A quick overview of Erlang</h3>
+
+<p>Erlang is a concurrent, functional programming language created by Ericsson. Some of the nice features are:</p>
+
+<ul>
+<li>It&#8217;s designed to be fast, scalable and fault-tolerant.</li>
+<li>Concurrent programming: It&#8217;s easy to create processes and easy to communicate between processes. In fact processes are the main unit of erlang programs. </li>
+<li>Processes are lightweight so there is low cost to creating them.</li>
+<li>It supports hot swapping, so you can deploy new code without restarting your system, hence high reliability.</li>
+<li>It&#8217;s dynamically typed and functional so you get advantages associated with each of those.</li>
+</ul>
+
+<p>To get an idea of what erlang code looks like, here&#8217;s an example of quicksort in Erlang taken from the <a href="http://en.wikipedia.org/wiki/Erlang_programming_language">erlang wikipedia page</a> (This example shows functional aspects of erlang but not the concurrent aspects):</p>
+
+<pre>
+-module(quicksort).
+-export([qsort/1]).
+
+qsort([]) -> [];
+qsort([Pivot|Rest]) ->
+    qsort([ X || X <- Rest, X < Pivot]) ++ [Pivot] 
+                    ++ qsort([ Y || Y <- Rest, Y >= Pivot]).
+</pre>
+
+<p>The first line declares the module name and the second declares that this module exports a function called qsort with one argument. The last 2 lines define the qsort. This is an example of <a href="http://en.wikipedia.org/wiki/Pattern_matching">pattern matching</a> and <a href="http://en.wikipedia.org/wiki/Recursion">recursion</a>. You can define multiple version of a function and the one that is called is the one where the arguments match. The first one declares that the if the qsort function is called on an empty list, an empty list is returned. The second definition of qsort matches any non-empty list and returns a list consisting of the first element of that list preceded by the qsort of all elements that are less than that element and succeeded by the qsort of all elements that are greater than that element. This function recursively calls itself the list is fully sorted.</p>
+
+<p>A few years ago, I worked on a project doing parallel programming with <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a>. It was a painful experience and in the end the parallel version turned out to be slower than the sequential version because of the high cost of communicating between processes. Erlang would have made that project a lot nicer to work on.</p>
+
+<p>I first came across erlang through openpoker: a poker server written in erlang. The author <a href="http://wagerlabs.com/">Joel Raymond</a> wrote versions of his poker server in lisp and haskell before finally settling on erlang as the most relaible, scalable solution. Openpoker was originally open source but the author <a href="http://wagerlabs.com/2007/1/4/looking-for-openpoker/">closed</a> it and has now <a href="http://wagerlabs.com/2007/3/5/openpoker-is-finally-v1-0">licenced</a> it to an online poker site. The last GPL version of openpoker is available <a href="http://www.xach.com/misc/openpoker/">here</a>. The openpoker code is a great way to learn about erlang and it&#8217;s how I initally started to learn it. </p>
+
+<h3>Scalability</h3>
+
+<p>Check out Joels excellent article: <a href="http://www.devmaster.net/articles/mmo-scalable-server/">Writing Low-Pain Massively Scalable Multiplayer Servers</a>. Vendetta Online have <a href="http://lambda-the-ultimate.org/node/2102">reimplemented some of their backend in erlang</a>. </p>
+
+<p>According to Joe Armstrong (creator of erlang), Ericsson have a product written in erlang that has over 2 million lines of code and 99.9999999% reliability. See his <a href="http://www.pragmaticprogrammer.com/articles/erlang.html">overview of erlang</a> for more details.</p>
+
+<p>Other examples of erlang applications include <a href="http://yaws.hyber.org/">yaws</a>, an extremely fast erlang-based web server, and <a href="http://ejabberd.jabber.ru/">ejabberd</a>, a jabber server. Check out this parallel-load <a href="http://www.sics.se/~joe/apachevsyaws.html">comparasion of apache and yaws</a>.</p>
+
+<h3>Learning Erlang</h3>
+
+<p>Learning erlang is now a lot easier than it was a few months ago. The Pragmatic Programmers have a book in the works: <a href="http://www.pragmaticprogrammer.com/titles/jaerlang/index.html">Programming Erlang</a>. I bought the beta pdf and it&#8217;s excellent. </p>
+
+<p>The original Erlang book is now out of print. However the first half of it is available for download as a <a href="http://www.erlang.org/download/erlang-book-part1.pdf">pdf</a>. Erlang is also described in <a href="http://www.sics.se/~joe/thesis/spikblad.html">Joe Armstrong&#8217;s Phd thesis</a>.</p>
+
+<p>There&#8217;s also the <a href="http://erlang.org/doc.html">documentation</a> available at the <a href="http://erlang.org/">erlang website</a>. </p>
+
+<p>Also check out <a href="http://yarivsblog.com/">Yariv&#8217;s Blog</a>. He has written a lot of articles on erlang and has also created several open-source erlang applications including <a href="http://erlyweb.org/">ErlyWeb</a>, an erlang web framework.</p>
+
+<h3>PS</h3>
+
+<p>This post came out of a discussion I had on the Ruby Ireland irc channel with <a href="http://octopod.info/">Octopod</a>, <a href="http://ozonesoft.net/">Olivier</a> and Tonyb when I decided to turn some of the links I posted into a blog post.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">/aidanf/</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>/aidanf/</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/aidanf"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/aidanf"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Aidan Finn's homepage. Musings on Swift, iOS, Ruby, Python, Clojure, Machine Learning etc
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>

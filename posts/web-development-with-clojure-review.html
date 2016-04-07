@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Web Development with Clojure - a short review</title>
+  <meta name="description" content="I’ve just finished working through “Web Development with Clojure” by Dmitry Sotnikov (Note: I read the beta version (b5, b6) but I believe it’s pretty close ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://www.aidanf.net/posts/web-development-with-clojure-review">
+  <link rel="alternate" type="application/rss+xml" title="/aidanf/" href="http://www.aidanf.net/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">/aidanf/</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/contact/">Contact</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/publications/">Publications</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Web Development with Clojure - a short review</h1>
+    <p class="post-meta"><time datetime="2014-02-12T14:00:00+00:00" itemprop="datePublished">Feb 12, 2014</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I’ve just finished working through “<a href="http://pragprog.com/book/dswdcloj/web-development-with-clojure">Web Development with Clojure</a>” by Dmitry Sotnikov (Note: I read the beta version (b5, b6) but I believe it’s pretty close to the final version apart from formatting and corrections).</p>
+
+<p><img src="/images/web-dev-clojure-book.jpg" alt="Web Development with Clojure Cover" title="Web Development with Clojure Cover" /></p>
+
+<p>The author is one of the creators of the <a href="http://www.luminusweb.net/">luminus framework</a> and it shows in this book. The style of code and how he organizes his code is more or less identical to that espoused by luminus.</p>
+
+<p>When I initially perused the table-of-contents for this book online, I wasn’t impressed. It seemed like a short tutorial on building a basic picture gallery. Several of the libraries that I like to use for clojure web development were almost entirely absent. But after reading it I realize that it provides a good base for building clojure web-apps - and while it focuses on different libraries that those I’ve used up to now, and it organizes code differently to how I have been organizing mine - it does a good job of showing you how to drop in libraries for particular parts of your app.</p>
+
+<p>And that’s the thing with web development in clojure. There are lots of libraries and very few frameworks. This can be offputting for someone who has spent the last few years working in a monolithic framework such as rails or django. In contrast, clojure espouses the use of small reusable libraries. “Libraries, not frameworks” is the mantra.</p>
+
+<p>One of the most common questions I hear from rails devs who are interested in clojure is “Which web framework should I use? What’s the rails equivalent in clojure-land?” Once you’ve gotten comfortable with clojure you’ll realize that the code you write in clojure is usually simpler and more reusable than what you would write in rails. In that context, a monolithic framework such as rails no longer makes as much sense. Why impose the restrictions of a monolithic framework on yourself when you can easily compose a set of libraries to behave exactly how you want. Basically you create your own custom framework that behaves exactly how you want.</p>
+
+<p>If you’re a rails dev, this probably sounds like a lot of work, but by the time you work through this book you’ll easily be able to do that. The luminus framework is at it’s core a set of decisions on which libraries to use and how to organize your code. Once you’ve decided which libraries you want to use and how you want to organize your code, you can create yourself a lein template and you’ve got yourself a framework.</p>
+
+<p>So who is this book for? It’s probably too dense and moves too fast to be suitable for someone who hasn’t build web apps in some other language (I could be wrong). But for someone who is fairly experienced at building web apps in some other language (cough ruby/rails), knows a bit of clojure and is interested in how you do web-development in clojure, I’d say this book is a good primer. It covers the basics, chooses a few libraries and shows you how to use them, outlines some alternative libraries and gives you the tools/knowledge to continue exploring the clojuer web-development universe.</p>
+
+<p>One thing I think would add to this book is an appendix outlining or at least listing all the alternative libraries for various parts of your web-stack. There is one chapter that outlines alternatives for some of the library choices and shows you how to adapt the sample app. This chapter is tremendously useful for showing how you can easily add switch libraries to your web app but I feel an appendix outlining all the options would be useful.</p>
+
+<p>So in summary, this book exceeded my expectations (which were probably influenced by by my biases/preferences for particular libraries). It’s an example of my favourite type of programming book: short, no fluff and provides lots of value.</p>
+
+<p>For the curious, the library stack used in this book is:</p>
+
+<ul>
+  <li>ring, obviously.</li>
+  <li>lib-noir for sessions and validation.</li>
+  <li>compojure for routing.</li>
+  <li>hiccup for templating, later replaced with selmer.</li>
+  <li>database access using jdbc, later replaced with korma.</li>
+  <li>Initially plain javascript, later switched to clojurescript.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">/aidanf/</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>/aidanf/</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/aidanf"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/aidanf"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Aidan Finn's homepage. Musings on Swift, iOS, Ruby, Python, Clojure, Machine Learning etc
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>An introduction to Swift for Ruby Developers</title>
+  <meta name="description" content="If you want to learn to develop apps for iOS and OS X there are a number of bottlenecks that you need to overcome.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://www.aidanf.net/posts/an-introduction-to-swift-for-ruby-developers">
+  <link rel="alternate" type="application/rss+xml" title="/aidanf/" href="http://www.aidanf.net/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">/aidanf/</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/contact/">Contact</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/publications/">Publications</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An introduction to Swift for Ruby Developers</h1>
+    <p class="post-meta"><time datetime="2015-05-27T00:00:00+01:00" itemprop="datePublished">May 27, 2015</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>If you want to learn to develop apps for iOS and OS X there are a number of bottlenecks that you need to overcome.</p>
+
+<ol>
+  <li>Learn how to program.</li>
+  <li>Learn a language for developing on the Apple ecosystem, generally Swift or Objective-C.</li>
+  <li>Learn the development tools:  Xcode etc.</li>
+  <li>Learn the Cocoa APIs.</li>
+</ol>
+
+<p>If you already know how to program in Ruby, then you’ve already overcome the first bottleneck.</p>
+
+<p>But if Ruby is your main programming language, then bottleneck number 2 has up to now been a significant hurdle.</p>
+
+<p>Thus in recent years there have been several tools that allow you to develop iOS applications without having to learn Objective-C (e.g. <a href="http://www.appcelerator.com/product/">Titanium</a>, <a href="http://phonegap.com/">PhoneGap</a>, <a href="http://www.rubymotion.com/">rubymotion</a>, <a href="http://xamarin.com/platform">Xamarin</a>)</p>
+
+<p>For Rubyists who are accustomed to the benefits and comforts that come with programming in Ruby, Objective-C is not a particularly pleasant language to program in and the learning-curve can be quite steep. But that has changed significantly with the recent release of Swift.</p>
+
+<p>The jump from Ruby to Swift is much smaller than the jump from ruby to Objective-C. If you like Ruby, you’ll probably find that a lot to like about Swift.</p>
+
+<p>In this article I’ll outline a number of interesting features from Swift and compare them with the equivalent features in Ruby.</p>
+
+<h1 id="some-basics">Some basics</h1>
+
+<h3 id="constants-and-variables">Constants and variables</h3>
+
+<p>Everything in mungable in Ruby. Even constants are constant only by convention - you’ll get a warning if you try to change them but you can still go ahead and change them.</p>
+
+<p>Swift is much stricter (in general, this is a theme. Swift is generally more strict about things than Ruby.)</p>
+
+<p>In Ruby constants are conventionally defined using capital letters. If we really want to change a constant, we can. Ruby will generate a warning if we do this, but not an error.</p>
+
+<script src="https://gist.github.com/aidanf/005b9ede917718d08bea.js"></script>
+
+<p>We can create a new variable at any time simply by assigning it. And we can change the type of that variable at any time by assigning a new value. In this example, <code class="highlighter-rouge">x</code> is consecutively an <code class="highlighter-rouge">Integer</code>, a custom <code class="highlighter-rouge">Object</code> and a <code class="highlighter-rouge">String</code> all in the space of a few lines. This dynamism is a core part of Ruby’s philosophy - in Ruby anything can change at any time. This is what gives rise to a lot of Ruby’s meta-programming power. But it can also lead to some frustrating bugs and bad habits when comes to programming in the large.</p>
+
+<script src="https://gist.github.com/aidanf/fdf3e290cf4f88c637ed.js"></script>
+
+<p>Swift takes a much stricter approach to constants and variables. In Swift all values are strictly typed. This has two implications that are a significant change to what you are accustomed to with Ruby.</p>
+
+<ol>
+  <li>You must declare the type of all of your variables and constants, or else assign them an initial value which Swift will use to infer their type.</li>
+  <li>You can’t change the type of a variable once you’ve declared it. It’s type is fixed and cannot be changed. For constants, their value is also fixed and can’t be changed once they’ve been initialised.</li>
+</ol>
+
+<script src="https://gist.github.com/aidanf/ec59e4765e1106d0804d.js"></script>
+
+<p>In Swift you declare a variable using the <code class="highlighter-rouge">var</code> keyword and constants using the <code class="highlighter-rouge">let</code> keyword.</p>
+
+<p>Constants are immutable. Once you’ve declared them, they cannot be changed again. Attempting to modify a constant in any way will result in an error.</p>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>In Ruby, you can declare an array and add multiple different types to it.</p>
+
+<script src="https://gist.github.com/aidanf/bb1d15a81da6fb538073.js"></script>
+
+<p>Arrays is Swift are similar to arrays in Ruby with one notable difference. In Swift, arrays are typed. You declare the type of the array (or Swift infers it) and you can only add items that are of the same type to the array. You can’t generally store multiple different types in an array. There are ways to include objects of different types in an array (using protocols or inheritance), but for the most part you’ll stick to only having one type of thing in your array.</p>
+
+<script src="https://gist.github.com/aidanf/e02bf7c721a32b982e4a.js"></script>
+
+<h3 id="dictionaries">Dictionaries</h3>
+
+<p>Similar to Arrays, Dictionaries in Swift are typed. You need to specify the type of both the keys and the values when you declare the dictionary. Once initialised, your dictionary can only contain key-value pairs that match that type signature.</p>
+
+<p>Also, similar to arrays, you can declare the type signature for the dictionary explicitly or Swift can infer it from the initial values.</p>
+
+<p>Apart from being typed, dictionaries in Swift are similar to dictionaries in Ruby. Here’s an example of declaring a dictionary and accessing it’s elements.</p>
+
+<script src="https://gist.github.com/aidanf/ce52d0288ef693ff10a1.js"></script>
+
+<h3 id="tuples">Tuples</h3>
+
+<p>A tuple is an ordered list of elements. Tuples provide a way to group multiple values together. Many languages provide tuples as a native data type. Commonly there are two ways of accessing the data in a tuple: by position or by name. Swift provides tuples as a native data type along with the ability to access the tuples data both by name and by position.</p>
+
+<p>Ruby doesn’t formally have tuples, although you can approximate their behaviour using a couple of techniques.</p>
+
+<p>For example, you can use a convention where you treat a short list as a tuple. This is a common pattern in Ruby, where you return a short list of 2 or 3 elements from a method and these are decomposed into individual variables using the assignment operator.</p>
+
+<script src="https://gist.github.com/aidanf/ddcb0819ee6e12c4d5fb.js"></script>
+
+<p>Or, if you want to be able to use dot notation to access elements in a tuple, you could use an object or struct.</p>
+
+<script src="https://gist.github.com/aidanf/665f03dbb93a4fa00238.js"></script>
+
+<p>So while Ruby doesn’t provide tuples as a native type, we can approximate much of the behaviour of tuples using Ruby arrays or structs.</p>
+
+<p>In Swift tuples are one of the native types. A tuple can consist of multiple different types. Tuples are ordered and elements of tuples can also be named. So we can access elements of a tuple both by position and name, and we can deconstruct data into a tuple using the assignment operator. Lets go through some examples of how we use tuples in swift.</p>
+
+<p>Tuples are defined using <code class="highlighter-rouge">()</code>. We can decompose a tuple into it’s parts using the assignment operator.</p>
+
+<script src="https://gist.github.com/aidanf/98e179ce60e35804a9ba.js"></script>
+
+<p>Here we create a tuple consisting of 2 floats. We can assign the contents to <code class="highlighter-rouge">lat</code> and <code class="highlighter-rouge">lon</code> using assignment. If we don’t care about all of the contents of the tuple we can use <code class="highlighter-rouge">_</code> to indicate fields that we don’t care about. In line 5 we just extract the value of the first element of the tuple into a constant - the <code class="highlighter-rouge">_</code> indicates that we don’t care about the second.</p>
+
+<script src="https://gist.github.com/aidanf/bcaede19230a9ea2a644.js"></script>
+
+<p>We can also access the elements of a tuple by position or by name. Here we define a tuple with named fields. We do this by providing the names as keys when we create the tuple (line 1). In this example we’ve named the first field <code class="highlighter-rouge">code</code>, and the second field <code class="highlighter-rouge">message</code>.</p>
+
+<h3 id="naming-things">Naming things</h3>
+
+<p>One immediately noticeable difference is code style, especially with regard to how we name things. Ruby generally uses snake-case for methods and variables and camel-case for classes and capitalised names for constants.</p>
+
+<p>Swift programs use camel case for all these. Essentially:</p>
+
+<ul>
+  <li>CamelCase for everything</li>
+  <li>class names and top-level constants should be capitalized</li>
+  <li>method names, function names and variable names should start with a lower-case letter</li>
+</ul>
+
+<h3 id="truthiness">Truthiness</h3>
+
+<p>In Ruby <code class="highlighter-rouge">nil</code> and <code class="highlighter-rouge">false</code> are falsey and everything else is truthy. Thus you can use the presence of something as a logical condition. In Ruby we can use any type or expression in a boolean operator or an if condition.</p>
+
+<script src="https://gist.github.com/aidanf/6cf01dd24bd5ebaaad69.js"></script>
+
+<p>Swift is much stricter in it’s treatment of boolean values. Booleans in Swift are of type <code class="highlighter-rouge">Bool</code> and can be either <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>. Anything in Swift that takes a boolean, must use a real boolean type. Any operator or function that expects a boolean must be given a boolean or the type system will complain.</p>
+
+<script src="https://gist.github.com/aidanf/a1e393e81b95345569ea.js"></script>
+
+<p>So we can’t do things like what’s shown below in Swift. In both cases we’ll get an error along the lines of “Type ‘String’ does not conform to protocol ‘BooleanType’”.</p>
+
+<script src="https://gist.github.com/aidanf/bf5bc415cf0aa309c779.js"></script>
+
+<p>Booleans in Swift are declared using the keyword <code class="highlighter-rouge">Bool</code> or by initializing them with <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>.</p>
+
+<h1 id="running-code">Running Code</h1>
+
+<p>One of the major differences between writing Ruby code and writing Swift code is the tooling involved.</p>
+
+<p>Although some Rubyists use an IDE such as RubyMine, most generally use a text editor such as Sublime, Emacs or Vi in combination with the command line and interactive console.</p>
+
+<p>For Swift development you’ll generally need to get to know Apple’s development tools. While it’s possible to setup your development workflow using other tools, I wouldn’t recommend it, especially if you are new to mac development.</p>
+
+<p>As a Ruby developer you’ll probably use interactive console a lot when doing development. The repl (e.g. irb, pry) provides a quick way of testing out code and inspecting how a piece of code behaves.</p>
+
+<p>Previously with Objective-C you’d have to compile and run a program to test out new code. The compile-run cycle was a pain for developers used to developing with an interactive repl.</p>
+
+<p>Luckily, the tools for interactive code development have improved significantly with the release of Swift. Xcode now has an interactive repl for running Swift code. It also has a new feature called <a href="http://books.aidanf.net/learn-swift/running_code#sec-playgrounds">playgrounds</a> that allow you to try out and run code interactively.</p>
+
+<h1 id="static-typing-and-type-inference">Static typing and type inference</h1>
+
+<p>Swift is statically, strongly typed and uses type inference to determine the initial type of all your variables and constants.</p>
+
+<p>We’ve already touched on swift’s type system a couple of times - it’s one of the most immediately noticeable differences between ruby and swift. It such an important part of the language that it’s time to dive in deeper before we go any further.</p>
+
+<h2 id="typing-in-ruby">Typing in Ruby</h2>
+
+<p>First lets review typing in Ruby. Ruby is strongly, dynamically typed.</p>
+
+<p>Let’s break down those two dimensions. Being strongly typed means that an operation that expects a certain type is checked for that type before the operation is performed. With a weakly typed language, no such checking is done. Lets take a short detour to look at a weakly typed example to help us better understand strong typing.</p>
+
+<p>JavaScript is a weakly typed language. If we fire up our JavaScript console and try the following:</p>
+
+<script src="https://gist.github.com/aidanf/6d79e07d9336dad3a987.js"></script>
+
+<p>we can see that JavaScript will happily take a string and an integer and use them as arguments to the <code class="highlighter-rouge">+</code> function. In this example it coerces the integer to a string and appends it to the string.</p>
+
+<p>If we try the same in ruby we get an error since ruby is strongly typed.</p>
+
+<script src="https://gist.github.com/aidanf/22f494712d011fa030b3.js"></script>
+
+<p>The <code class="highlighter-rouge">+</code> method in ruby expects two arguments to be of the same type. The <code class="highlighter-rouge">+</code> method called on a string expects to be passed a string, and the <code class="highlighter-rouge">+</code> method passed to a number expects to be passed a number. So in Ruby we need to be more specific about the behaviour we want here and do the correct type coercion ourselves.</p>
+
+<script src="https://gist.github.com/aidanf/fac3a699f3e19e03be39.js"></script>
+
+<p>Ruby is also dynamically typed. Dynamic typing means that the type of something can change through the course of a program, and the type is determined at the time at which it is used.</p>
+
+<script src="https://gist.github.com/aidanf/548c005109e6e22bf2d8.js"></script>
+
+<p>In this example, x starts out as a string, and we can pass it to <code class="highlighter-rouge">+</code> to concatenate it to another string. Then we can change it’s type to an Float, just by assigning a Float value to it. Now when we call <code class="highlighter-rouge">+</code> with x as an argument we get different behaviour because it’s now a number.</p>
+
+<p>In fact Ruby doesn’t really have a strong notion of types at all. Everything is an object and the “type” of an object is determined by it’s behaviour rather than the class of the object. This approach is often referred to as “duck typing”. If it looks like a duck and it quacks like a duck, then for all we care it’s a duck. <em>The type of something doesn’t matter - what matters is how it behaves</em>. So you can usually pass any object as an argument to a method if it implements the behaviour that the method expects. In the following example we see an array of pets, where each pet is a different class, and each pet makes some kind of noise. We iterate through each object calling it’s <code class="highlighter-rouge">make_noise</code> method.</p>
+
+<script src="https://gist.github.com/aidanf/5826caeb61b6c3f179e0.js"></script>
+
+<p>The output from running this program is</p>
+
+<p>``` ruby code/duck_typing.rb
+Quack!</p>
+
+<p>Woof!
+```</p>
+
+<p>In this example, Ruby doesn’t care about the type of each object, (i.e. which class it is), only that it responds to the <code class="highlighter-rouge">make_noise</code> method. If it looks like something that can <code class="highlighter-rouge">make_noise</code>, then that’s good enough. Ruby doesn’t do any type-checking other than checking that the object responds to the method that we’re trying to call on it.</p>
+
+<p>That’s a quick tour of typing in Ruby. If you’ve been mainly programming in Ruby for a while, then you’re probably not used to thinking about the types of your objects in any great detail, especially during the design phase of your program, since it’s easy to change them as you go along. Swift’s type system will be one of the most immediately noticeable and profound differences in philosophy between the two languages. Lets look at Swift’s type system.</p>
+
+<h2 id="typing-and-type-inference-in-swift">Typing and type inference in Swift</h2>
+
+<p>Swift is strongly, statically typed.</p>
+
+<h3 id="statically-typed">Statically typed</h3>
+<p>Being statically typed means that all your variables, constants, functions must have their types declared in advance. Then the compiler uses these type declarations to check that there are no type errors when it compiles the program. If there is a type error, your program won’t compile.</p>
+
+<p>Unlike Ruby, all your variables must have a declared type, and <em>once declared (or inferred) that type cannot change</em>. Trying to change the type of something will result in an error.</p>
+
+<p>In this example, we declare an integer variable (Swift infers that it’s an integer from our initial assignment). Trying to assign a string value to our variable will cause swifts to raise a type error.</p>
+
+<script src="https://gist.github.com/aidanf/77a65d7026db0178ba69.js"></script>
+
+<h3 id="type-inference">Type inference</h3>
+
+<p>As we’ve mentioned already Swift uses type inference to infer what types your various variables have. Alternatively you can  explicitly declare the type of your variables but in practice you often don’t need to. Swift will infer the type of a var if you assign it an initial value. So when you declare a variable, you need to either  give it an initial type, or explicitly declare it’s type. Here’s an example of how we can declare a type explicitly.</p>
+
+<script src="https://gist.github.com/aidanf/5bb16f21595a3c6f6d0c.js"></script>
+
+<p>In line 1 we declare a string variable and give it in initial value. Because we gave it an initial value, we don’t need to explicitly declare the type of the variable - Swift infers that this is a string.</p>
+
+<p>In line 2 we see how to initialize a variable without giving it an initial value. In this case, because we didn’t give the variable an initial value, swift can’t infer it’s type, so we need to explicitly define it’s type as a <code class="highlighter-rouge">String</code>. At line 3 then we can assign a string value to that variable. If we tried to assign a value of a different type we would get an error.</p>
+
+<h3 id="strongly-typed">Strongly typed</h3>
+
+<p>Like Ruby, Swift is strongly typed. Whenever you use a variable or pass something as a function argument, Swift checks that it is of the correct type. You can’t pass a String to a function that expects an Integer etc. Unlike ruby, swift does this check at compile time (since it’s statically typed) whereas ruby does this check at runtime (and then only at the point where the method being checked is called).</p>
+
+<p>Here’s an example where we declare a function. A function has a type signature and anytime you call the function, your function call must correspond to that type signature.</p>
+
+<script src="https://gist.github.com/aidanf/1a0504347c1dc793ae7e.js"></script>
+
+<p>The type signature for this function indicates that it takes 2 arguments, both of which are integers and it returns an integer ( <code class="highlighter-rouge">-&gt; Int</code> indicates the return type of the function)</p>
+
+<p>If we try to call this function with 2 integers as arguments (line 5) it returns an integer. But if we try to call it with arguments that aren’t 2 integers we’ll get an error (line 6).</p>
+
+<h2 id="type-safety">Type Safety</h2>
+
+<p>Ruby is not type-safe. In Ruby you can pass an object of any type to a function - Ruby will happily use that object if it implements the expected methods (duck-typing). If it doesn’t, then you’ll end up with a runtime error.</p>
+
+<p>Swift is a type-safe language. All variables have a declared type. All functions/methods have a type signature which declares the types of it’s arguments and the type of what it returns. The Swift compiler checks at compile time that all your types match up and your program won’t compile if they don’t.</p>
+
+<p>Swift uses the type signature of your functions and methods to make sure they are being called correctly (i.e. with the correct types). It also uses type signature for function dispatch. So you can define multiple versions of a function with different types signatures, and the one that gets called is the one where the arguments type signatures match. Here’s an example where we defining two functions with the same name, but different type signatures. If we call call the function with floats as arguments, the first one gets called, and if we call it with integer arguments, the second one gets called.</p>
+
+<script src="https://gist.github.com/aidanf/81bff8ba5b3772990463.js"></script>
+
+<h2 id="the-benefits-of-static-typing">The benefits of static typing</h2>
+
+<p>One of the things I liked when I started programming in Python and Ruby was that I didn’t need to declare the type of everything. Just being able to assign and use a variable when I needed it felt freeing, and the lack of a compilation step really seemed to speed up development. Later I learned that you don’t really gain much in the long term. That initial boost in development speed gets eaten up later in the project, when you’re debugging runtime errors, writing extensive test suites etc.</p>
+
+<p>Having to declare your types and satisfy the compiler’s type system is not as onerous as it may appear. Since I started using languages with good, strong type systems, it’s become something that I miss when I’m programming in dynamic languages such as Ruby. A few points on the benefits/costs of static typing:</p>
+
+<ul>
+  <li>In Ruby, you still need to be aware of the types of the objects (along with how they behave) that your are passing around your program. Often passing the wrong type of object to a method that expects something else will result in an error (which you won’t notice until your program is running). In fact by not explicitly declaring and designing your types, you increase the cognitive workload associated with keeping track of all the objects you’re passing around your program.</li>
+  <li>You don’t actually save that much. In the grander scheme of things, declaring the types of things in your program is a tiny portion of the overall amount of work involved in building a working program. And whatever time and typing you end up saving by not having to declare your types, you’ll end up using it to write unit tests and writing documentation for your function arguments anyway.</li>
+  <li>With static typing you end up with less meta-programming power. For some problems this means that you’ll end up with a solution that is more explicit and less “magicy”. Ruby has powerful meta-programming facilities which can facilitate elegant solutions for come kinds of problems (e.g implemening a DSL). For larger systems and long-term maintenance and readability the absense of magic can actually a benefit.</li>
+  <li>You may have been put off static-typing from experiences in other languages such as java or c++. They’re type systems suck, and get in your way as much as they help you.  However the type system in Swift is better. If you embrace it you’ll find it extremely useful in writing more correct programs.</li>
+  <li>You can often deduce what a function does from it’s type signature. This is very useful for making code more readable and understandable</li>
+  <li>Refactoring becomes easier, and you have a bunch of compiler errors to tell you where you broke things.</li>
+  <li>In Swift you don’t give up on the advantages of being able to develop without a compile step. The fact that you have a repl and playgrounds give you many of the benefits that come with dynamic languages by removing the historically slow and annoying step of having to constantly compile your code to see if works.</li>
+</ul>
+
+<h1 id="duck-typing-generics-and-protocols">Duck Typing, Generics and Protocols</h1>
+
+<p>We already discussed how Ruby implements duck typing, and how you can pass any type of objects to a function so long as they implement the expected behaviour.</p>
+
+<p>There are 2 concepts in Swift that support similar behaviour.</p>
+
+<p>Generics allow you to define code that works with multiple types. Protocols allow you to declare that something must implement particular functionality.</p>
+
+<p>Let’s consider a simple function that does nothing except return it’s argument.</p>
+
+<p>In Ruby we could write:</p>
+
+<script src="https://gist.github.com/aidanf/d38e2957205e3206e2b5.js"></script>
+
+<p>Ruby will happily return the argument here without worrying about it’s type.</p>
+
+<p>Now in Swift, we have to define  the type signature of this function when we define it. And based on what we know so far, we would need to define a function that takes and integer as an argument, and another function that takes a string as an argument, and another function for whatever other types we want to support.</p>
+
+<p>That’s where generics come in. We can define this as a generic function, which indicates it can work with multiple types. Here’s how we define our generic doNothing function in swift.</p>
+
+<script src="https://gist.github.com/aidanf/b6239b3fa393b516fc46.js"></script>
+
+<p>Putting <code class="highlighter-rouge">&lt;T&gt;</code> here after the function name indicates that we are defining a generic function, with <code class="highlighter-rouge">T</code> as the placeholder for the type of whatever get’s passed as an argument. Specifically, the type signature for this function says that it’s a generic function that takes a single argument of type <code class="highlighter-rouge">T</code> and returns something of type <code class="highlighter-rouge">T</code>.</p>
+
+<p>We previously had an example of duck typing in ruby.</p>
+
+<script src="https://gist.github.com/aidanf/bca6272743902f6b4a48.js"></script>
+
+<p>But in Swift an array must be typed - we have to specify the type of an array and then we can only put objects of that type into it.</p>
+
+<p>Protocols allow us to specify that something must implement specific behaviour. But Protocols are also first class types in Swift. So we can use a protocol as the type for an array, and then we can put any object that adopts that protocol into that array.</p>
+
+<script src="https://gist.github.com/aidanf/71511b704c6fbdea9f3a.js"></script>
+
+<p>Here we declare an array for holding our animals and give it a type of <code class="highlighter-rouge">Noisy</code>. That array can store any object that implements the <code class="highlighter-rouge">Noisy</code> protocol. This lets us implement duck typing in Swift, while still getting the benefits of Swift’s type system.</p>
+
+<h1 id="in-summary">In Summary</h1>
+
+<p>Swift is a very nice language and for anyone fluent in Ruby is should be relatively easy to learn. Like Ruby, functions and blocks are first-class objects and many of the patterns that are familiar to Ruby programmers translate directly to Swift. <a href="http://books.aidanf.net/learn-swift/classes">Classes in Swift</a> are more or less the same as in Ruby. <a href="http://books.aidanf.net/learn-swift/optionals">Optionals in Swift</a> are an interesting analog to how we often use <code class="highlighter-rouge">nil</code> in Ruby.</p>
+
+<p>The major difference in Swift that is noticeable when coming from Ruby is the type system. Once you get used to that, the rest is plain sailing. Swift is easy enough to learn that you don’t lose anything by choosing to develop in Swift over choosing to use something like RubyMotion. The learning curve in learning Swift will be relatively gentle compared to the learning curve of the various Cocoa APIs.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">/aidanf/</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>/aidanf/</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/aidanf"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/aidanf"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">aidanf</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Aidan Finn's homepage. Musings on Swift, iOS, Ruby, Python, Clojure, Machine Learning etc
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>
