@@ -1,0 +1,437 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Arrays</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cid30" data-tralics-id="cid30" class="chapter" data-number="6" data-chapter="arrays"><h1><a href="arrays#cid30" class="heading hyperref"><span class="number">Chapter 6 </span>Arrays</a></h1>
+<p>An array is a list of values.<span class="intersentencespace"></span> In Swift, arrays are typed.<span class="intersentencespace"></span> You declare the type of the array (or Swift infers it) and you can only add items that are of the same type to the array.<span class="intersentencespace"></span> You can’t generally store multiple different types in an array.<span class="intersentencespace"></span> There are ways to include objects of different types in an array which we’ll touch on later, but for the most part you’ll stick to only having one type of thing in your array.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="nl">arrayOfInts</span><span class="p">:[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="k">var</span> <span class="n">arrayOfInts2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div></div>
+<p>We declare an array in Swift by using a list of values surrounded by square brackets.<span class="intersentencespace"></span> Line 1 shows how to explicitly declare an array of integers.<span class="intersentencespace"></span> Line 2 accomplishes the same thing as we initialize the array with value <code>[1, 2]</code> and Swift infers from that that it’s an array of integers.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nl">arrayOfInts</span><span class="p">:[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">arrayOfInts</span><span class="p">.</span><span class="n">isEmpty</span> <span class="c1">// false</span>
+</pre></div></div>
+<p>We can use <code>isEmpty</code> to check if an array is empty.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">arrayOfInts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">arrayOfInts</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="lineno">4</span> <span class="n">arrayOfInts</span>  <span class="c1">// [1, 2, 3, 4, 5]</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"A string"</span><span class="p">)</span> <span class="c1">// Error</span>
+</pre></div></div>
+<p>We can add an element to the end of the array using <code>append</code>.<span class="intersentencespace"></span> Here we append the value 3 to the array at line 2.</p>
+<p>We can also use the addition assignment operator, <code>+=</code>, to add one or more elements into the array.<span class="intersentencespace"></span> Line 3 shows how to add add multiple values to the array at once.</p>
+<p>Line 6 shows that the array is typed.<span class="intersentencespace"></span> It was initialized as an array of integers, so we can only add integers to it.<span class="intersentencespace"></span> Here we get an error if we try to add a string to the Integer array.</p>
+<p>We can access the elements of the array using an index or a range.<span class="intersentencespace"></span> Arrays in Swift are zero indexed i.e.<span class="intersentencespace"></span> use index 0 to access the first element in the array.<span class="intersentencespace"></span> Lines 2 and 3 below show how we can get the element at index 0 and 2 respectively.<span class="intersentencespace"></span> We can also use a range to get a sub-array from an array.<span class="intersentencespace"></span> Line 4 shows how we get a sub-array back with the elements from index 2 to 4.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">arrayOfInts</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">arrayOfInts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// 1</span>
+<span class="lineno">3</span> <span class="n">arrayOfInts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">// 3</span>
+<span class="lineno">4</span> <span class="n">arrayOfInts</span><span class="p">[</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.4</span><span class="p">]</span> <span class="c1">// [3, 4, 5]</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nl">atIndex</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nl">atIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div></div>
+<p>We insert elements into the array using <code>insert</code> method, with key <code>atIndex</code>.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> At lines 6 and 7 we insert value 6 at index 5, and value 0 at index 0.</p>
+<p>We can remove elements from the array using <code>removeAtIndex</code> or <code>removeLast</code>.<span class="intersentencespace"></span> <code>removeAtIndex</code> removes the element at a specified index.<span class="intersentencespace"></span> Here we remove the last element from the array - i.e.<span class="intersentencespace"></span> the element at index 6 - by specifying the index that we want to remove (line 2).<span class="intersentencespace"></span> We can also remove the last element of the array with <code>removeLast</code> (line 4).</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">arrayOfInts</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">removeAtIndex</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">arrayOfInts</span> <span class="c1">// [0, 1, 2, 3, 4, 5]</span>
+<span class="lineno">4</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>
+<span class="lineno">5</span> <span class="n">arrayOfInts</span> <span class="c1">// [0, 1, 2, 3, 4]</span>
+</pre></div></div>
+<p>To iterate over an array we use a for-in loop.<span class="intersentencespace"></span> The example below loops through the array and prints out the square of each value in the array.<span class="intersentencespace"></span> This yields the element of the array into the variable <code>i</code> at each iteration of the loop.<span class="intersentencespace"></span> If we look at the console output we can see the square of each value in the array being printed.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">arrayOfInts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">arrayOfInts</span><span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>If we want to iterate over an array with both the index and the value at each iteration, we can use the <code>enumerate</code> method of the array.<span class="intersentencespace"></span> This will yield both the index and the value for each element of the array.<span class="intersentencespace"></span> If we look at the console here we see the index and the square of each value of each element of the array being printed.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">arrayOfInts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">arrayOfInts</span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"\(index) -&gt; \(value * value)"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>You can create an empty array using the syntax shown at line 2 below.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">arrayOfInts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="k">var</span> <span class="n">emptyInts</span> <span class="o">=</span> <span class="p">[</span><span class="n">Int</span><span class="p">]()</span>
+<span class="lineno">3</span> <span class="n">emptyInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">var</span> <span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">](</span><span class="nl">count</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="n">cells</span><span class="p">.</span><span class="n">count</span> <span class="c1">// 64</span>
+<span class="lineno">7</span> <span class="n">cells</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>   <span class="c1">// false</span>
+<span class="lineno">8</span> 
+<span class="lineno">9</span> <span class="k">var</span> <span class="n">allInts</span> <span class="o">=</span> <span class="n">arrayOfInts</span> <span class="o">+</span> <span class="n">emptyInts</span>
+</pre></div></div>
+<p>We declare the type of the array in square brackets, followed by empty round brackets.<span class="intersentencespace"></span> This will create an empty array of integers (the round brackets here may seem unusual but the reason they’re there is that we’re calling a function.<span class="intersentencespace"></span> We see at line 4 how we can pass arguments to that function to get different initialization behaviour).<span class="intersentencespace"></span> Once we’ve created the empty array we can add values to it as usual.</p>
+<p>You can also create an array of a predefined size filled with a default value.<span class="intersentencespace"></span> Line 5 shows how to create a fixed size array of booleans and initialize them all to false.<span class="intersentencespace"></span> We do this by passing the <code>count</code> and <code>repeatedValue</code> keys to the function to create the array.</p>
+<p>You can also create a new array by merging two existing arrays of the same type using the <code>+</code> operator.<span class="intersentencespace"></span> At line 9 we create a new array of integers by merging both of our existing arrays.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">firstFiveInts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">firstFiveInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1">// Error</span>
+</pre></div></div>
+<p>All our examples so far have used <code>var</code> to declare arrays.<span class="intersentencespace"></span> Thus they are all mutable.<span class="intersentencespace"></span> You can declare an immutable array by using the <code>let</code> keyword.<span class="intersentencespace"></span> For an immutable array, any method that would modify the array will generate an error.<span class="intersentencespace"></span> For example, the above example creates an immutable array of integers.<span class="intersentencespace"></span> If we try to append a new value to that array we get an error.</p>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-12-12T20:59:03+00:00">Dec 12, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/types_and_type_inference" rel="prev"><span class="meta-nav">←</span> Static Typing and Type Inference</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/dictionaries" rel="next">Dictionaries <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Error handling</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cid79" data-tralics-id="cid79" class="chapter" data-number="18" data-chapter="error_handling"><h1><a href="error_handling#cid79" class="heading hyperref"><span class="number">Chapter 18 </span>Error handling</a></h1>
+</div><div id="cid80" data-tralics-id="cid80" class="section" data-number="18.1"><h2><a href="error_handling#cid80" class="heading hyperref"><span class="number">18.1 </span>try, catch and throws</a></h2>
+<p>Swift 2 introduced an error handling mechanism based around <code>ErrorType</code> that is somewhat similar to exceptions in languages like java or ruby.</p>
+<p>In Swift an exception is an enumeration that extends <code>ErrorType</code>.<span class="intersentencespace"></span> We can raise an exception using <code>throw</code>.<span class="intersentencespace"></span> We can catch an exception using <code>do..catch</code>.<span class="intersentencespace"></span> We use <code>try</code> to call methods that can throw an exception.<span class="intersentencespace"></span> An example will make this clearer.</p>
+<p>Similar to the older approach we describe at the end of this chapter, an error is an enum which extends type <code>ErrorType</code>.<span class="intersentencespace"></span> We define fields on the enum to represent the different error states.</p>
+<div class="code"><div class="highlight"><pre><span class="k">enum</span> <span class="nl">InvalidNumberError</span> <span class="p">:</span> <span class="n">ErrorType</span><span class="p">{</span>
+    <span class="k">case</span> <span class="n">TooBig</span>
+    <span class="k">case</span> <span class="n">Even</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>The <code>throws</code> keyword indicates that a function can throw an exception.<span class="intersentencespace"></span> Any function that can throw an exception must be declared using <code>throws</code>.</p>
+<p>We use the <code>throw</code> keyword to actually raise an exception.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">printSmallNumbers</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="n">throws</span> <span class="p">{</span>
+    <span class="n">guard</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">throw</span> <span class="n">InvalidNumberError</span><span class="p">.</span><span class="n">Even</span>
+    <span class="p">}</span>
+    <span class="n">guard</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">throw</span> <span class="n">InvalidNumberError</span><span class="p">.</span><span class="n">TooBig</span>
+    <span class="p">}</span>
+    
+    <span class="n">print</span><span class="p">(</span><span class="s">"Numer is \(x)"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>This method can throw an error since it is declared using <code>throws</code>.<span class="intersentencespace"></span> Within the method we use the <code>throw</code> keyword when we want to throw an error.<span class="intersentencespace"></span> This function raises <code>InvalidNumberError.Even</code> for numbers that are even and <code>InvalidNumberError.TooBig</code> for numbers that are bigger than 100.</p>
+<p>To call a function that can throw an exception we need to use the <code>try</code> keyword.</p>
+<div class="code"><div class="highlight"><pre>try printSmallNumbers(7)
+</pre></div></div>
+<p>For example, this code will print the number 7.</p>
+<p>To catch the exception that are raised and handle them we can use a <code>do..catch</code> block.</p>
+<div class="code"><div class="highlight"><pre><span class="k">do</span> <span class="p">{</span>
+    <span class="n">try</span> <span class="n">printSmallNumbers</span><span class="p">(</span><span class="mi">445</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="n">InvalidNumberError</span><span class="p">.</span><span class="n">Even</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Error: number is even"</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="n">InvalidNumberError</span><span class="p">.</span><span class="n">TooBig</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Error: number is too big"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>We can use try?<span class="intersentencespace"></span> to call a function that can raise an exception and turn store the result in an optional.</p>
+</div><div id="cid81" data-tralics-id="cid81" class="section" data-number="18.2"><h2><a href="error_handling#cid81" class="heading hyperref"><span class="number">18.2 </span>Assertions</a></h2>
+<p>Assertions let us do runtime checks for debugging.<span class="intersentencespace"></span> We can assert something is true, and if it isn’t then the program halts with an error.</p>
+<p>In this example we have a function that takes a <code>String</code> as an argument and we want to assert that the string isn’t empty.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="nf">printWord</span><span class="p">(</span><span class="nl">word</span><span class="p">:</span> <span class="n">String</span><span class="p">){</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">word</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">printWord</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span>
+<span class="n">printWord</span><span class="p">(</span><span class="s">""</span><span class="p">)</span> <span class="c1">// Error</span>
+</pre></div></div>
+<p>Our assertion is something that evaluates to true or false.<span class="intersentencespace"></span> We can also pass a message to our assertion as a second argument - that message will be printed out if the assertion fails.</p>
+<div class="code"><div class="highlight"><pre>assert(true, "True is true!")
+assert(false, "False can't be true!") // Error with message
+</pre></div></div>
+<p>It’s important to note that assertions are for development and debugging.<span class="intersentencespace"></span> They provide a way to check the value of variables during development in cases where it’s possible for a variable to have invalid values.<span class="intersentencespace"></span> Assertions are disabled when your code is compiled with optimisations enabled - i.e.<span class="intersentencespace"></span> your assertions will be ignored in your production code.<span class="intersentencespace"></span> (footnote: If you want to do these kind of checks in your production code, a guard statement would be more appropriate).</p>
+</div><div id="cid82" data-tralics-id="cid82" class="section" data-number="18.3"><h2><a href="error_handling#cid82" class="heading hyperref"><span class="number">18.3 </span>Enums (The old way)</a></h2>
+<p>When Swift was first released there was no exception handling mechanism.<span class="intersentencespace"></span> Back then a common way to handle errors was to pattern match the return value of a function against an enum.<span class="intersentencespace"></span> It’s worth outlining it here as you may still see this technique in older code and blog posts.</p>
+<div class="code"><div class="highlight"><pre><span class="k">enum</span> <span class="n">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Success</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Failure</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="n">divider</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nl">by</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="k">let</span> <span class="n">r</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Result is \(r)"</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="k">let</span> <span class="n">msg</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Error: \(msg)"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2016-02-01T06:38:13+00:00">Feb 1, 2016
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/memory_management" rel="prev"><span class="meta-nav">←</span> Memory Management</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/generics" rel="next">Generics <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

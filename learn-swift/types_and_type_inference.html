@@ -1,0 +1,440 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Static Typing and Type Inference</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-types_and_type_inference" data-tralics-id="cid22" class="chapter" data-number="5" data-chapter="types_and_type_inference"><h1><a href="types_and_type_inference#cha-types_and_type_inference" class="heading hyperref"><span class="number">Chapter 5 </span>Static Typing and Type Inference</a></h1>
+<p>We’ve already touched on Swift’s type system a couple of times - if you’re coming from a dynamically typed language it’s one of the most immediately noticeable differences with Swift.<span class="intersentencespace"></span> It’s such an important part of the language that it’s time to dive in deeper before we go any further.</p>
+<p>Swift is statically, strongly typed and uses type inference to determine the initial type of all your variables and constants.</p>
+</div><div id="cid23" data-tralics-id="cid23" class="section" data-number="5.1"><h2><a href="types_and_type_inference#cid23" class="heading hyperref"><span class="number">5.1 </span>Statically typed</a></h2>
+<p>Being statically typed means that all your variables, constants, functions must have their types declared in advance.<span class="intersentencespace"></span> Then the compiler uses these type declarations to check that there are no type errors when it compiles the program.<span class="intersentencespace"></span> If there is a type error, your program won’t compile.</p>
+<p>All your variables must have a type, and <em>once declared (or inferred) that type cannot change</em>.<span class="intersentencespace"></span> Trying to change the type of something will result in an error.</p>
+<p>In this example, we declare an integer variable (Swift infers that it’s an integer from our initial assignment).<span class="intersentencespace"></span> Trying to assign a string value to our variable will cause Swift’s to raise a type error.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="s">"One"</span> <span class="c1">// Error</span>
+</pre></div></div>
+</div><div id="cid24" data-tralics-id="cid24" class="section" data-number="5.2"><h2><a href="types_and_type_inference#cid24" class="heading hyperref"><span class="number">5.2 </span>Type inference</a></h2>
+<p>As we’ve mentioned already Swift uses type inference to infer what types your variables have.<span class="intersentencespace"></span> Alternatively you can explicitly declare the type of your variables but in practice you often don’t need to.<span class="intersentencespace"></span> Swift will infer the type of a var if you assign it an initial value.<span class="intersentencespace"></span> So when you declare a variable, you need to either</p>
+<ol>
+<li>give it an initial value (which Swift will use to infer its type ), <strong>or</strong>
+</li>
+<li>explicitly declare its type.<span class="intersentencespace"></span>
+</li></ol>
+<p>Here’s an example of how we can declare a type explicitly.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"A string"</span>
+<span class="lineno">2</span> <span class="k">var</span> <span class="nl">s2</span><span class="p">:</span><span class="n">String</span>
+<span class="lineno">3</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"Another string"</span>
+</pre></div></div>
+<p>In line 1 we declare a string variable and give it in initial value.<span class="intersentencespace"></span> Because we gave it an initial value, we don’t need to explicitly declare the type of the variable - Swift infers that this is a string.<span class="intersentencespace"></span> In line 2 we see how to initialize a variable without giving it an initial value.<span class="intersentencespace"></span> In this case, because we didn’t give the variable an initial value, Swift can’t infer its type, so we need to explicitly define its type as a <code>String</code>.<span class="intersentencespace"></span> At line 3 then we can assign a string value to that variable.<span class="intersentencespace"></span> If we tried to assign a value of a different type we would get an error.</p>
+</div><div id="cid25" data-tralics-id="cid25" class="section" data-number="5.3"><h2><a href="types_and_type_inference#cid25" class="heading hyperref"><span class="number">5.3 </span>Strongly typed</a></h2>
+<p>Swift is strongly typed.<span class="intersentencespace"></span> Whenever you use a variable or pass something as a function argument, Swift checks that it is of the correct type.<span class="intersentencespace"></span> You can’t pass a string to a function that expects an integer etc.<span class="intersentencespace"></span> Swift does this check at compile time (since it’s statically typed).</p>
+<p>Here’s an example where we declare a function (we’ll go into functions more detail in <a href="functions#cha-functions" class="hyperref">chapter <span class="ref">11</span></a>).<span class="intersentencespace"></span> A function has a type-signature and anytime you call the function, your function call must correspond to that type-signature.<span class="intersentencespace"></span> The type-signature for a function is the type of its individual parameters along with its return type.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">func</span> <span class="n">adder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1">// 4</span>
+<span class="lineno">6</span> <span class="n">adder</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1">// Error</span>
+</pre></div></div>
+<p>The type-signature for this function indicates that it takes 2 arguments, both of which are integers and it returns an integer ( <code>-&gt; Int</code> indicates the return type of the function)</p>
+<p>If we try to call this function with 2 integers as arguments (line 5) it returns an integer.<span class="intersentencespace"></span> But if we try to call it with arguments that aren’t both integers we’ll get an error (line 6).<span class="intersentencespace"></span> And if we tried to return a value from within the function that isn’t an integer we would also get a compiler error as the type signature for the function specifies that it returns an integer.</p>
+</div><div id="cid26" data-tralics-id="cid26" class="section" data-number="5.4"><h2><a href="types_and_type_inference#cid26" class="heading hyperref"><span class="number">5.4 </span>Type Safety</a></h2>
+<p>Swift is a type-safe language.<span class="intersentencespace"></span> All variables have a declared type.<span class="intersentencespace"></span> All functions/methods have a type-signature which declares the types of its arguments and the type of what it returns.<span class="intersentencespace"></span> The Swift compiler checks at compile time that all your types match up and your program won’t compile if they don’t.</p>
+<p>Swift uses the type-signature of your functions and methods to make sure they are being called correctly (i.e.<span class="intersentencespace"></span> with the correct types).<span class="intersentencespace"></span> It also uses type-signature for function dispatch.<span class="intersentencespace"></span> So you can define multiple versions of a function with different types-signatures, and the one that gets called is the one where the arguments type-signatures match.<span class="intersentencespace"></span> Here’s an example where we defining two functions with the same name, but different type-signatures.<span class="intersentencespace"></span> If we call call the function with floats as arguments, the first one gets called, and if we call it with integer arguments, the second one gets called.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">adder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Float</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Float</span><span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Adding Floats"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">adder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Adding Ints"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+<span class="n">adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1">// 4</span>
+<span class="n">adder</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>  <span class="c1">// 4.0</span>
+</pre></div></div>
+</div><div id="cid27" data-tralics-id="cid27" class="section" data-number="5.5"><h2><a href="types_and_type_inference#cid27" class="heading hyperref"><span class="number">5.5 </span>Type Aliases</a></h2>
+<p>Type aliases let you declare a name for a compound type.<span class="intersentencespace"></span> In <a href="tuples#cha-tuples" class="hyperref">chapter <span class="ref">8</span></a> we will see how to use the <code>typealias</code> keyword to declare an alias for a type that is a tuple.</p>
+</div><div id="cid28" data-tralics-id="cid28" class="section" data-number="5.6"><h2><a href="types_and_type_inference#cid28" class="heading hyperref"><span class="number">5.6 </span>Generics</a></h2>
+<p>Having functions or methods that can act on different types is tremendously useful.<span class="intersentencespace"></span> So we don’t want to give that up entirely.<span class="intersentencespace"></span> We don’t want to have to implement multiple versions of a function for multiple different types.<span class="intersentencespace"></span> For that swift provides generics, which support the concept of generic programming.<span class="intersentencespace"></span> This lets you write functions that work with any type that conforms to a specific interface/protocol.<span class="intersentencespace"></span> We’ll cover both protocols and generics in later chapters.</p>
+</div><div id="cid29" data-tralics-id="cid29" class="section" data-number="5.7"><h2><a href="types_and_type_inference#cid29" class="heading hyperref"><span class="number">5.7 </span>The benefits of static typing</a></h2>
+<p>One of the things I liked when I started programming in Python and Ruby was that I didn’t need to declare the type of everything.<span class="intersentencespace"></span> Just being able to assign and use a variable when I needed it felt freeing, and the lack of a compilation step really seemed to speed up development.<span class="intersentencespace"></span> Later I learned that you don’t really gain much in the long term.<span class="intersentencespace"></span> That initial boost in development speed gets eaten up later in the project, when you’re debugging runtime errors, writing extensive test suites, or trying to understand the shape of the data-structure that a function uses.</p>
+<p>Having to declare your types and satisfy the compiler’s type system is not as onerous as it may appear.<span class="intersentencespace"></span> Since I started using languages with good, strong type systems, it’s become something that I miss when I’m programming in dynamic languages.<span class="intersentencespace"></span> A few points on the benefits/costs of static typing:</p>
+<ul>
+<li>In dynamically typed languages, you still need to be aware of the types of the objects (along with how they behave) that your are passing around your program.<span class="intersentencespace"></span> Often passing the wrong type of object to a method that expects something else will result in an error (which you won’t notice until your program is running).<span class="intersentencespace"></span> In fact by not explicitly declaring and designing your types, you increase the cognitive workload associated with keeping track of all the objects you’re passing around your program.<span class="intersentencespace"></span>
+</li>
+<li>You don’t actually save that much.<span class="intersentencespace"></span> In the grander scheme of things, declaring the types of things in your program is a tiny portion of the overall amount of work involved in building a working program.<span class="intersentencespace"></span> And whatever time and typing you end up saving by not having to declare your types, you’ll end up using it to write unit tests and writing documentation for your function arguments anyway.<span class="intersentencespace"></span>
+</li>
+<li>With static typing you end up with less meta-programming power.<span class="intersentencespace"></span> For some problems this means that you’ll end up with a solution that is more explicit and less “magicy”.<span class="intersentencespace"></span> For larger systems and long-term maintenance and readability the absence of magic can actually be a benefit.<span class="intersentencespace"></span>
+</li>
+<li>You can often deduce what a function does from its type-signature.<span class="intersentencespace"></span> This is very useful for making code more readable and understandable.<span class="intersentencespace"></span>
+</li>
+<li>Refactoring becomes easier, as you have a bunch of compiler errors to tell you where you broke things, and you have the type-signatures of each function to help you understand what it does.<span class="intersentencespace"></span>
+</li>
+<li>In Swift you don’t give up on all the advantages of being able to develop without a compile step.<span class="intersentencespace"></span> The fact that you have a repl and playgrounds give you many of the benefits that come with dynamic languages by removing the historically slow and annoying step of having to constantly compile your code to see if works.<span class="intersentencespace"></span>
+</li></ul>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-12-17T11:16:31+00:00">Dec 17, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/constants_and_variables" rel="prev"><span class="meta-nav">←</span> Constants and Variables</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/arrays" rel="next">Arrays <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

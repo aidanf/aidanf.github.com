@@ -1,0 +1,417 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Tuples</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-tuples" data-tralics-id="cid32" class="chapter" data-number="8" data-chapter="tuples"><h1><a href="tuples#cha-tuples" class="heading hyperref"><span class="number">Chapter 8 </span>Tuples</a></h1>
+<p>A tuple is an ordered list of elements.<span class="intersentencespace"></span> Tuples provide a way to group multiple values together.<span class="intersentencespace"></span> Many languages provide tuples as a native data type.<span class="intersentencespace"></span> Commonly there are two ways of accessing the data in a tuple: by position or by name.<span class="intersentencespace"></span> Swift provides tuples as a native data type along with the ability to access the tuples data both by name and by position.</p>
+<p>In Swift a tuple can consist of multiple different types.<span class="intersentencespace"></span> Tuples are ordered and elements of tuples can also be named.<span class="intersentencespace"></span> So we can access elements of a tuple both by position and name, and we can deconstruct data into a tuple using the assignment operator.<span class="intersentencespace"></span> Lets go through some examples of how we use tuples in Swift.</p>
+<p>Tuples are defined using <code>()</code>.<span class="intersentencespace"></span> We can decompose a tuple into its parts using the assignment operator.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="p">(</span><span class="mf">54.2667</span><span class="p">,</span> <span class="mf">8.4833</span><span class="p">)</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="k">let</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="o">=</span> <span class="n">coordinates</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">let</span><span class="p">(</span><span class="n">latt</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">coordinates</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="n">print</span><span class="p">(</span><span class="s">"Lattitude is \(lat)"</span><span class="p">)</span>
+<span class="lineno">8</span> <span class="n">print</span><span class="p">(</span><span class="s">"Lattitude is \(latt)"</span><span class="p">)</span>
+</pre></div></div>
+<p>Here we create a tuple consisting of 2 floats.<span class="intersentencespace"></span> We can assign the contents to <code>lat</code> and <code>lon</code> using assignment (line 3).<span class="intersentencespace"></span> If we don’t care about all of the contents of the tuple we can use <code>_</code> to indicate fields that we don’t care about.<span class="intersentencespace"></span> In line 5 we just extract the value of the first element of the tuple into a constant - the <code>_</code> indicates that we don’t care about the second.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="nl">code</span><span class="p">:</span> <span class="mi">502</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="s">"Bad Gateway"</span><span class="p">)</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="n">response</span><span class="mf">.0</span> <span class="c1">// 502</span>
+<span class="lineno">4</span> <span class="n">response</span><span class="mf">.1</span> <span class="c1">// "Bad Gateway"</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">response</span><span class="p">.</span><span class="n">code</span>    <span class="c1">// 502</span>
+<span class="lineno">7</span> <span class="n">response</span><span class="p">.</span><span class="n">message</span> <span class="c1">// "Bad Gateway"</span>
+<span class="lineno">8</span> 
+<span class="lineno">9</span> <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="mi">502</span><span class="p">,</span> <span class="mi">502</span><span class="p">)</span> <span class="c1">// Type Error</span>
+</pre></div></div>
+<p>We can also access the elements of a tuple by position or by name.<span class="intersentencespace"></span> Here we define a tuple with named fields.<span class="intersentencespace"></span> We do this by providing the names as keys when we create the tuple (line 1).<span class="intersentencespace"></span> In this example we’ve named the first field <code>code</code>, and the second field <code>message</code>.</p>
+<p>We can access the elements by position using <code>.0</code>, <code>.1</code> etc (lines 3-4).<span class="intersentencespace"></span> But since we named these fields when we created the tuple, we can also access these fields using their names.<span class="intersentencespace"></span> (lines 6 and 7)</p>
+<p>Tuples in Swift are typed.<span class="intersentencespace"></span> When we created our tuple at line 1 here, Swift inferred its type as <code>(Int, String)</code>.<span class="intersentencespace"></span> This means that whenever we try to create or update a tuple, our assignment must match the type signature.<span class="intersentencespace"></span> So if we try to assign 2 integers to response (line 9) we get an error because the second element of the tuple must be a string.</p>
+<p>In fact, tuples in Swift are not just typed, they can also be types in their own right.<span class="intersentencespace"></span> The type signature of a tuple is the composite of the types of its individual elements.<span class="intersentencespace"></span> So in the example above, the type of the response tuple is <code>(Int, String)</code>.</p>
+<p>We can use a tuple anywhere in Swift that it expects a type.<span class="intersentencespace"></span> So for example, function argument types or function return types can be tuples.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">func</span> <span class="nf">getNewMail</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nl">code</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">return</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="k">typealias</span> <span class="n">Response</span> <span class="o">=</span> <span class="p">(</span><span class="nl">code</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">var</span> <span class="nl">result</span><span class="p">:</span><span class="n">Response</span>
+<span class="lineno"> 8</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s">"Internal Server Error"</span><span class="p">)</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">func</span> <span class="n">getNewMail2</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Response</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="k">return</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="p">}</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="n">getNewMail</span><span class="p">()</span>
+<span class="lineno">15</span> <span class="n">getNewMail2</span><span class="p">()</span>
+</pre></div></div>
+<p>One common use-case for tuples is to return multiple values from a function.<span class="intersentencespace"></span> For example, a function to retrieve a URL might return a tuple with both the response code and a message.<span class="intersentencespace"></span> In this example we create a function that returns a tuple, which consists of an <code>Int</code> and a <code>String</code> (line 1).<span class="intersentencespace"></span> Thus the tuple type becomes the return type for the function.<span class="intersentencespace"></span> We can use <code>typealias</code> to name this type.<span class="intersentencespace"></span> At line 5 above we create a named tuple type called <code>Response</code>, which consists of 2 fields named <code>code</code>, an integer, and <code>message</code>, a string.<span class="intersentencespace"></span> Now we can use <code>Response</code> in our type declarations instead of describing the tuple type in full each time.<span class="intersentencespace"></span> This lets us declare and reuse our own composite types by combining existing types and improve the readability of our code.</p>
+<p>Lines 7 and 8 above show an example where we declare a variable called result, which has a type of our new <code>Response</code> type, and assign it a new value.<span class="intersentencespace"></span> Line 10 shows how we can now use our <code>Response</code> type as the return for the function we wrote at line 1.</p>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-12-11T21:23:57+00:00">Dec 11, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/dictionaries" rel="prev"><span class="meta-nav">←</span> Dictionaries</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/control_flow" rel="next">Control Flow <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

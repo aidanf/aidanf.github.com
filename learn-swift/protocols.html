@@ -1,0 +1,598 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Protocols</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cid68" data-tralics-id="cid68" class="chapter" data-number="15" data-chapter="protocols"><h1><a href="protocols#cid68" class="heading hyperref"><span class="number">Chapter 15 </span>Protocols</a></h1>
+</div><div id="cid69" data-tralics-id="cid69" class="section" data-number="15.1"><h2><a href="protocols#cid69" class="heading hyperref"><span class="number">15.1 </span>Defining and conforming to a protocol</a></h2>
+<p>Protocols are similar to interfaces in other languages.<span class="intersentencespace"></span> A protocol specifies a set of behaviours that something should implement, without providing the implementation for those behaviours.</p>
+<p>Any class, structure or enumeration can conform to a protocol by implementing the methods and variables defined in the protocol definition.</p>
+<p>Protocols are declared using the <code>protocol</code> keyword.<span class="intersentencespace"></span> When defining a protocol, we provide the type signatures for any methods that the protocol should implement and we specify the types of any properties that should be implemented along with whether they are should implement both <code>get</code> and <code>set</code> methods or only <code>get</code>.<span class="intersentencespace"></span> Any type that implements the functionality specified in a protocol is said to conform to the protocol.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">protocol</span> <span class="n">Animal</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="nl">lives</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+<span class="lineno"> 3</span>     <span class="k">var</span> <span class="nl">limbs</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="lineno"> 4</span>     <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="lineno"> 5</span> <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">class</span> <span class="nl">Cat</span><span class="p">:</span> <span class="n">Animal</span><span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="k">var</span> <span class="n">lives</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="lineno"> 9</span>     <span class="k">var</span> <span class="n">limbs</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>     <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno">12</span>         <span class="k">return</span> <span class="s">"meow"</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">let</span> <span class="n">cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">()</span> <span class="c1">// {lives 9 limbs 4}</span>
+<span class="lineno">17</span> <span class="n">cat</span><span class="p">.</span><span class="n">makeNoise</span><span class="p">()</span> <span class="c1">// "meow"</span>
+<span class="lineno">18</span> <span class="n">cat</span><span class="p">.</span><span class="n">lives</span>       <span class="c1">// 9</span>
+<span class="lineno">19</span> <span class="n">cat</span><span class="p">.</span><span class="n">lives</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c1">// {lives 8 limbs 4}</span>
+<span class="lineno">20</span> <span class="n">cat</span><span class="p">.</span><span class="n">lives</span>       <span class="c1">// 8</span>
+</pre></div></div>
+<p>This example declares a protocol called <code>Animal</code> and specifies that all types that conform to the protocol must implement a method <code>makeNoise</code> that returns a string, along with two integer properties <code>lives</code> and <code>limbs</code>.<span class="intersentencespace"></span> For <code>lives</code> we have declared that it must provide both <code>get</code> and <code>set</code> whereas <code>limbs</code> can be read only (only <code>get</code> is required).</p>
+<p>The syntax for adopting a protocol is similar to that for inheriting from another class i.e.<span class="intersentencespace"></span> a <code>:</code> after the type name followed by the protocol name.<span class="intersentencespace"></span> In our example above we define a <code>Cat</code> class which conforms to the <code>Animal</code> protocol (line 7).<span class="intersentencespace"></span> To do this, the <code>Cat</code> class provides an implementation for the <code>makeNoise</code> method and implements integer properties <code>lives</code> and <code>limbs</code>.</p>
+<p>It doesn’t matter how you implement a property when conforming to a protocol so long as you satisfy the <code>get</code>/<code>set</code> requirements for the protocol.<span class="intersentencespace"></span> i.e.<span class="intersentencespace"></span> your properties can be either stored or computed so long as the required <code>get</code> and <code>set</code> are available.<span class="intersentencespace"></span> So in the example above I can just implement both properties as stored properties to conform to the protocol.</p>
+<p>When specifying a type method in a protocol we always prefix it with the keyword <code>class</code>, even if the type method is for a structure or enumeration (remember that we use <code>class</code> when defining type methods on classes, but <code>static</code> when defining type methods on structures and enumerations).</p>
+<p>You can specify initializers using syntax similar to how you would define an intitializer, just without providing the implementation.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> using <code>init</code> along with listing its arguments and their types.</p>
+</div><div id="cid70" data-tralics-id="cid70" class="section" data-number="15.2"><h2><a href="protocols#cid70" class="heading hyperref"><span class="number">15.2 </span>Optional methods and properties</a></h2>
+<p>When conforming to a protocol, by default you are expected to implement all the required methods and properties.<span class="intersentencespace"></span> However you can mark some as optional but there are some limitations.</p>
+<p>Optional properties and methods can be declared using the <code>optional</code> keyword, but it can only be used on protocols that are tagged with the <code>@objc</code> keyword<sup id="cha-15_footnote-ref-1" class="footnote"><a href="#cha-15_footnote-1">1</a></sup> (even if you are not planning on interacting with Objective-C code).</p>
+<p>Using <code>@objc</code> also imposes additional limitations.</p>
+<ul>
+<li><code>@objc</code> protocols can only be used by classes, not by structures or enumeratios.<span class="intersentencespace"></span>
+</li>
+<li>Your class must inherit from an Objective-C class (e.g.<span class="intersentencespace"></span> NSObject)
+</li>
+<li>If your protocol inherits from another protocol, it can only be from one that is also declared using <code>@objc</code>.<span class="intersentencespace"></span>
+</li>
+<li>Your protocol can only use data types that map to Objective-C data types.<span class="intersentencespace"></span> So arrays and dictionaries are allowed, tuples are not.<span class="intersentencespace"></span>
+</li></ul>
+<p>Here’s an example that includes an optional property in our protocol definition.</p>
+<div class="code"><div class="highlight"><pre><span class="p">@</span><span class="n">objc</span> <span class="k">protocol</span> <span class="n">RunningAnimal</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">limbs</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span><span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="n">optional</span> <span class="k">var</span> <span class="nl">lives</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Cheetah</span><span class="p">:</span><span class="bp">NSObject</span><span class="p">,</span> <span class="n">RunningAnimal</span><span class="p">{</span>
+    <span class="k">var</span> <span class="n">limbs</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="k">var</span> <span class="n">topSpeed</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>Even though our <code>Cheetah</code> class here doesn’t provide a <code>lives</code> property, it still conforms to the <code>RunningAnimal</code> protocol.<span class="intersentencespace"></span> We’ve indicated that that property is an optional property of the protocol so types that adopt the protocol aren’t required to implement that property.</p>
+</div><div id="cid71" data-tralics-id="cid71" class="section" data-number="15.3"><h2><a href="protocols#cid71" class="heading hyperref"><span class="number">15.3 </span>Inheritance</a></h2>
+<p>A class can inherit from 1 superclass but it can conform to multiple protocols.<span class="intersentencespace"></span> If it is inheriting from another class, then that class name is placed first in the list, before any protocols.</p>
+<div class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nl">MyClass</span><span class="p">:</span> <span class="n">MySuperClass</span><span class="p">,</span> <span class="n">MyProtocol1</span><span class="p">,</span> <span class="n">MyProtocol2</span>
+    <span class="c1">// ...</span>
+<span class="n">end</span>
+</pre></div></div>
+<p>A protocol itself can inherit from multiple other protocols.<span class="intersentencespace"></span> It will inherit the requirements of all those protocols and can then specify additional requirements of its own.</p>
+<div class="code"><div class="highlight"><pre><span class="k">protocol</span> <span class="nl">MyProtocol</span><span class="p">:</span> <span class="n">MySuperProtocol</span><span class="p">,</span> <span class="n">Comparable</span><span class="p">,</span> <span class="n">Equatable</span><span class="p">,</span> <span class="n">Printable</span><span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div></div>
+</div><div id="cid72" data-tralics-id="cid72" class="section" data-number="15.4"><h2><a href="protocols#cid72" class="heading hyperref"><span class="number">15.4 </span>Protocols are types</a></h2>
+<p>Even though protocols don’t have an implementation, they are a type and can be used in places where a type is expected.<span class="intersentencespace"></span> E.g.</p>
+<ul>
+<li>As the return type for a function
+</li>
+<li>As the parameter type for a function argument
+</li>
+<li>As the type of a variable or constant
+</li>
+<li>As the type of a collection
+</li></ul>
+<p>So if you declare that a variable has a type of <code>MyProtocol</code>, you can only assign objects that adopt <code>MyProtocol</code> to that variable.</p>
+<p>We can also use a protocol as the type for a collection.<span class="intersentencespace"></span> Thus we can store objects of different types in an array so long as they all adopt a particular protocol.<span class="intersentencespace"></span> This allows us to implement duck-typing.</p>
+<p>In this example we have objects of two different types (<code>Duck</code> and <code>Dog</code>), but since they both conform to the <code>Noisy</code> protocol we can store them in an array that has type <code>Noisy</code> and iterate through them with a for loop.</p>
+<div class="code"><div class="highlight"><pre><span class="k">protocol</span> <span class="n">Noisy</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Dog</span><span class="p">:</span><span class="n">Noisy</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Woof"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Duck</span><span class="p">:</span><span class="n">Noisy</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">(</span><span class="s">"Quack"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nl">animals</span><span class="p">:[</span><span class="n">Noisy</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dog</span><span class="p">(),</span> <span class="n">Duck</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">a</span> <span class="k">in</span> <span class="n">animals</span><span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">makeNoise</span><span class="p">())</span>
+<span class="p">}</span>                              <span class="c1">// prints "Woof" and "Quack"</span>
+</pre></div></div>
+<p>You can also require conformance to multiple protocols in places where types are expected.<span class="intersentencespace"></span> For example, lets say we have a function that accepts as an argument anything that adopts both the <code>Noisy</code> protocol and the <code>Printable</code> protocol.<span class="intersentencespace"></span> We do this by using the <code>protocol</code> keyword as the parameter type followed by a list of all the protocols that the item passed must conform to in angle brackets.</p>
+<div class="code"><div class="highlight"><pre><span class="k">protocol</span> <span class="n">Noisy</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="p">}</span>
+<span class="k">protocol</span> <span class="n">Describable</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">desc</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Dog</span><span class="p">:</span><span class="n">Noisy</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Woof"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">DescribableDog</span><span class="p">:</span><span class="n">Noisy</span><span class="p">,</span><span class="n">Describable</span><span class="p">{</span>
+    <span class="k">func</span> <span class="n">makeNoise</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Woof"</span>
+    <span class="p">}</span>
+    <span class="k">func</span> <span class="n">desc</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Dog"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">describe</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="k">protocol</span><span class="o">&lt;</span><span class="n">Noisy</span><span class="p">,</span> <span class="n">Describable</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="s">"\(item.desc()) says \(item.makeNoise())"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">describe</span><span class="p">(</span><span class="n">Dog</span><span class="p">())</span> <span class="c1">// error: Dog() doesn't conform to Describable</span>
+<span class="n">describe</span><span class="p">(</span><span class="n">DescribableDog</span><span class="p">())</span> <span class="c1">// "Dog says Woof"</span>
+</pre></div></div>
+<p>In this example we declare a function (<code>describe</code>) that takes as its argument anything that conforms to <em>both</em> the <code>Noisy</code> and <code>Describable</code> protocols.<span class="intersentencespace"></span> If we pass it anything that doesn’t conform to both of those protocols we’ll get an error.</p>
+</div><div id="cid73" data-tralics-id="cid73" class="section" data-number="15.5"><h2><a href="protocols#cid73" class="heading hyperref"><span class="number">15.5 </span>Example: Implementing Comparable</a></h2>
+<p><code>Comparable</code> is a built-in protocol that is used to allow items to be compared using comparison operators.</p>
+<p>Open a playground, type <code>Comparable</code> and then <span style="color: cornflowerblue">⌥ -⌘–click</span> (i.e.<span class="intersentencespace"></span> <span style="color: cornflowerblue">CMD-OPT-click</span>) on on <code>Comparable</code>.<span class="intersentencespace"></span> This opens up a header file of Swift definitions at the point where the <code>Comparable</code> protocol is defined.<span class="intersentencespace"></span> You’ll see some comments about the protocol and the methods that the protocol must implement.</p>
+<div class="code"><div class="highlight"><pre><span class="c1">/// Instances of conforming types can be compared using relational</span>
+<span class="c1">/// operators, which define a `strict total order</span>
+<span class="c1">/// &lt;http://en.wikipedia.org/wiki/Total_order#Strict_total_order&gt;`_.</span>
+<span class="c1">///</span>
+<span class="c1">/// A type conforming to `Comparable` need only supply the `&lt;` and</span>
+<span class="c1">/// `==` operators; default implementations of `&lt;=`, `&gt;`, `&gt;=`, and</span>
+<span class="c1">/// `!=` are supplied by the standard library::</span>
+<span class="c1">///</span>
+<span class="c1">///   struct Singular : Comparable {}</span>
+<span class="c1">///   func ==(x: Singular, y: Singular) -&gt; Bool { return true }</span>
+<span class="c1">///   func &lt;(x: Singular, y: Singular) -&gt; Bool { return false }</span>
+<span class="c1">///</span>
+<span class="c1">/// **Axioms**, in addition to those of `Equatable`:</span>
+<span class="c1">///</span>
+<span class="c1">/// - `x == y` implies `x &lt;= y`, `x &gt;= y`, `!(x &lt; y)`, and `!(x &gt; y)`</span>
+<span class="c1">/// - `x &lt; y` implies `x &lt;= y` and `y &gt; x`</span>
+<span class="c1">/// - `x &gt; y` implies `x &gt;= y` and `y &lt; x`</span>
+<span class="c1">/// - `x &lt;= y` implies `y &gt;= x`</span>
+<span class="c1">/// - `x &gt;= y` implies `y &lt;= x`</span>
+<span class="k">protocol</span> <span class="nl">Comparable</span> <span class="p">:</span> <span class="n">_Comparable</span><span class="p">,</span> <span class="n">Equatable</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="o">&lt;=</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+    <span class="k">func</span> <span class="o">&gt;=</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+    <span class="k">func</span> <span class="o">&gt;</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>We can see here that to make something comparable we need to implement 3 methods: <code>&lt;=</code>, <code>&gt;=</code> and <code>&gt;</code>.</p>
+<p>Here’s an example where we define a protocol called <code>FastCar</code>.<span class="intersentencespace"></span> Any class that conforms to this speed must implement a property called <code>topSpeed</code>.<span class="intersentencespace"></span> Lets write a <code>Car</code> class that we can initialize with a top speed.</p>
+<div class="code"><div class="highlight"><pre><span class="k">protocol</span> <span class="n">FastCar</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Car</span><span class="p">:</span> <span class="n">FastCar</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">topSpeed</span> <span class="o">=</span> <span class="n">topSpeed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="n">subaruImpreza</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">130</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">mitsubishiColt</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">131</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">hondaCivic</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">139</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">cars</span> <span class="o">=</span> <span class="p">[</span><span class="n">subaruImpreza</span><span class="p">,</span> <span class="n">mitsubishiColt</span><span class="p">,</span> <span class="n">hondaCivic</span><span class="p">]</span>
+</pre></div></div>
+<p>We’d like to be able to sort our cars by their top speed, and compare them by speed.<span class="intersentencespace"></span> We can add support for directly comparing cars using standard comparison operators by implementing the <code>Comparable</code> protocol as defined above.<span class="intersentencespace"></span> The comparable protocol specifies the following functions:</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="o">&lt;=</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+<span class="k">func</span> <span class="o">&gt;=</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+<span class="k">func</span> <span class="o">&gt;</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+</pre></div></div>
+<p>However if we read the comments above the <code>Comparable</code> protocol definition we see that <code>Comparable</code> inherits from <code>Equatable</code> and that:
+</p><div class="code"><div class="highlight"><pre>/// A type conforming to `Comparable` need only supply the `&lt;` and
+/// `==` operators; default implementations of `&lt;=`, `&gt;`, `&gt;=`, and
+/// `!=` are supplied by the standard library::
+</pre></div></div>
+<p>So to conform to this protocol we need to implement 2 functions:
+</p><div class="code"><div class="highlight"><pre>func &lt;(lhs: Car, rhs: Car) -&gt; Bool
+func ==(lhs: Car, rhs: Car) -&gt; Bool
+</pre></div></div>
+<p>Once these two functions are implemented the Swift standard library provides default implementations of <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code> and <code>!=</code> which are implemented in terms of the 2 functions above (<code>&lt;</code> and <code>==</code>).<span class="intersentencespace"></span> So once we’ve implemented the 2 functions above for our <code>Car</code> type, we will have conformed to the protocol and we can use any of the build-in comparison operators with our <code>Car</code> type.</p>
+<p>Note that we define these as global functions, not as methods on our <code>Car</code> class.<span class="intersentencespace"></span> Remember that function dispatch is based on the type-signature of the function arguments, so when <code>&lt;=</code> gets called with 2 parameters of type <code>Car</code>, our custom function will get invoked.<span class="intersentencespace"></span> Here’s our <code>Car</code> implementation that conforms to the <code>Comparable</code> (and <code>Equatable</code>) protocol.</p>
+<div class="code"><div class="highlight"><pre><span class="k">protocol</span> <span class="n">FastCar</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="o">==</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">topSpeed</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">topSpeed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="o">&lt;</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">topSpeed</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">topSpeed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nl">Car</span><span class="p">:</span> <span class="n">FastCar</span><span class="p">,</span> <span class="n">Comparable</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">topSpeed</span> <span class="o">=</span> <span class="n">topSpeed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="n">subaruImpreza</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">130</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">mitsubishiColt</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">131</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">hondaCivic</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">topSpeed</span><span class="p">:</span> <span class="mi">139</span><span class="p">)</span>
+
+<span class="n">hondaCivic</span> <span class="o">&gt;</span> <span class="n">subaruImpreza</span>    <span class="c1">// true</span>
+<span class="n">hondaCivic</span> <span class="o">&lt;=</span> <span class="n">mitsubishiColt</span>  <span class="c1">// false</span>
+</pre></div></div>
+</div><div id="cha-15_footnotes">
+  <ol class="footnotes">
+    <li id="cha-15_footnote-1">The <code>@objc</code> keyword is for Objective-C interoperability and it indicates that your class or protocol should be accessible to Objective-C code. <a class="arrow" href="#cha-15_footnote-ref-1">↑</a></li>
+  </ol>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2016-02-08T07:55:37+00:00">Feb 8, 2016
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/enumerations" rel="prev"><span class="meta-nav">←</span> Enumerations</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/extensions" rel="next">Extensions <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

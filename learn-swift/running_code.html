@@ -1,0 +1,527 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Running Code</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cid8" data-tralics-id="cid8" class="chapter" data-number="2" data-chapter="running_code"><h1><a href="running_code#cid8" class="heading hyperref"><span class="number">Chapter 2 </span>Running Code</a></h1>
+<p>The first thing you need to do with any new language is figure out how to get some code running.<span class="intersentencespace"></span> In this chapter we’ll create a simple hello world program and run it in Swift.<span class="intersentencespace"></span> We’ll go through multiple ways of running a program: interactively at the REPL, interactively using playgrounds, and as a standalone executable program (using both Xcode and the <code>swiftc</code> command).</p>
+</div><div id="cid9" data-tralics-id="cid9" class="section" data-number="2.1"><h2><a href="running_code#cid9" class="heading hyperref"><span class="number">2.1 </span>Prerequisites</a></h2>
+<div class="center figure" id="fig-install_xcode" data-tralics-id="uid18" data-number="2.1">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/install_xcode.png" alt="/images/learn-swift/screenshots/install_xcode" /></div><div class="caption"><span class="header">Figure 2.1: </span><span class="description">Installing Xcode using the App Store.<span class="intersentencespace"></span> 
+</span></div></div>
+<p>To get started you’ll need to have the latest version of Xcode installed (At the time of writing the latest version is 6.1).<span class="intersentencespace"></span> You can install Xcode through the Mac App Store (See <a href="running_code#fig-install_xcode" class="hyperref">Figure <span class="ref">2.1</span></a>).<span class="intersentencespace"></span> To install it open up the app store, search for Xcode, and then install it.<span class="intersentencespace"></span> It’s quite a large download so you may want to start the install now and go get a cup of tea.</p>
+</div><div id="cid10" data-tralics-id="cid10" class="section" data-number="2.2"><h2><a href="running_code#cid10" class="heading hyperref"><span class="number">2.2 </span>The REPL</a></h2>
+<p>A REPL is a read-eval-print-loop, and is a way of interactively running and inspecting code.<span class="intersentencespace"></span> If you’ve come from a dynamic language such as Ruby, Python or Clojure the REPL probably forms an important part of your development workflow.<span class="intersentencespace"></span> You’ll often use it to try out libraries, debug existing code and inspect what’s going on in your program.</p>
+<p>Swift also has a REPL, although you’ll find it quite a bit different to the REPL you’re used to (For playing around with Swift code, playgrounds - covered in <a href="running_code#sec-playgrounds" class="hyperref">section <span class="ref">2.4</span></a>- are more analogous to the interactive REPL that you get with other languages and are probably a better way to experiment with Swift code).<span class="intersentencespace"></span> If you’ve installed the latest version of Xcode you should have a <code>swift</code> command available in your terminal, which launches a Swift REPL<sup id="cha-2_footnote-ref-1" class="footnote"><a href="#cha-2_footnote-1">1</a></sup>.</p>
+<p>You can run the Swift REPL from the command line and enter Swift code directly into it.</p>
+<div class="code"><div class="highlight"><pre><span class="nv">$ </span>swift
+Welcome to Swift!  Type :help <span class="k">for</span> assistance.
+  1&gt; println<span class="o">(</span><span class="s2">"Hello world"</span><span class="o">)</span>
+Hello world
+  2&gt; :quit
+</pre></div></div>
+<p>Whenever you enter valid Swift code in the REPL, it will immediately compile and run it.</p>
+<p>Lets play around with the Swift REPL a bit.</p>
+<div class="code"><div class="highlight"><pre><span class="nv">$ </span>swift
+Welcome to Swift!  Type :help <span class="k">for</span> assistance.
+  1&gt; 3.14 * 2.5 * 2.5
+<span class="nv">$R0</span>: <span class="nv">Double</span> <span class="o">=</span> 19.625
+  2&gt; println<span class="o">(</span><span class="s2">"The area of the circle is \($R0)"</span><span class="o">)</span>
+The area of the circle is 19.625
+  3&gt;
+  4&gt; <span class="nv">$R0</span> * 2
+<span class="nv">$R1</span>: <span class="nv">Double</span> <span class="o">=</span> 39.25
+  5&gt; println<span class="o">(</span><span class="s2">"And double that is \($R1)"</span><span class="o">)</span>
+And double that is 39.25
+  6&gt;
+</pre></div></div>
+<p>You can access previous lines that you’ve entered using <code>$R0</code> etc.<span class="intersentencespace"></span> Each result in the REPL gets assigned to a <code>$RN</code> variable so you can later refer back to that result.</p>
+<p>You can enter multi-line code and the REPL won’t evaluate it until the code block is finished.</p>
+<div class="code"><div class="highlight"><pre><span class="nv">$ </span>swift
+Welcome to Swift!  Type :help <span class="k">for</span> assistance.
+  1&gt; 3.14 * 2.5 *
+  2. 2.5
+<span class="nv">$R0</span>: <span class="nv">Double</span> <span class="o">=</span> 19.625
+  3&gt;
+</pre></div></div>
+<p>If we make a mistake when we enter our multi-line code, then we can edit the multiple lines as a single block.<span class="intersentencespace"></span> Here we enter a function to double an integer that’s given as an argument, but we incorrectly declare the return type (we’ll get to functions later, but for now just focus on the ability to correct multiple lines at once.)</p>
+<div class="code"><div class="highlight"><pre><span class="nv">$ </span>swift
+Welcome to Swift!  Type :help <span class="k">for</span> assistance.
+  1&gt; func doubler<span class="o">(</span>num:int<span class="o">)</span> -&gt; int <span class="o">{</span>
+  2.     <span class="k">return</span><span class="o">(</span>num * 2<span class="o">)</span>
+  3. <span class="o">}</span>
+repl.swift:1:26: error: use of undeclared <span class="nb">type</span> <span class="s1">'int'</span>
+func doubler<span class="o">(</span>num:int<span class="o">)</span> -&gt; int <span class="o">{</span>
+                         ^~~
+
+  1&gt;
+</pre></div></div>
+<p>This function raises an error because we typed <code>int</code> instead of <code>Int</code>.<span class="intersentencespace"></span> So the REPL drops us back to line 1, and when we press the up arrow, we can edit all 3 lines at once and fix our error.</p>
+<p>So if we press the up arrow, we can correct our code, then move to the end of line 3 and press return to have the code evaluated again.</p>
+<div class="code"><div class="highlight"><pre>  1&gt; func doubler<span class="o">(</span>num:Int<span class="o">)</span> -&gt; Int <span class="o">{</span>
+  2.     <span class="k">return</span><span class="o">(</span>num * 2<span class="o">)</span>
+  3. <span class="o">}</span>
+  4&gt;
+  5&gt; doubler<span class="o">(</span>4<span class="o">)</span>
+<span class="nv">$R0</span>: <span class="o">(</span>Int<span class="o">)</span> <span class="o">=</span> 8
+  6&gt;
+</pre></div></div>
+</div><div id="cid11" data-tralics-id="cid11" class="section" data-number="2.3"><h2><a href="running_code#cid11" class="heading hyperref"><span class="number">2.3 </span>Creating an Executable</a></h2>
+<p>Swift code is compiled into machine code.<span class="intersentencespace"></span> Thus your compiled Swift program can be run as a standalone program - A user doesn’t need to have Swift or Xcode installed to run your compiled Swift program.<sup id="cha-2_footnote-ref-2" class="footnote"><a href="#cha-2_footnote-2">2</a></sup></p>
+<p>We can compile our Swift code into an executable binary using the <code>swiftc</code> command (but for larger projects you’re probably better off creating a project in Xcode and using that to compile a binary).</p>
+<p>Lets put our hello world program into a file called hello.swift</p>
+<div class="codelisting" id="code-hello_swiftc" data-tralics-id="uid21" data-number="2.1"><div class="heading"><span class="number">Listing 2.1:</span> 
+
+<span class="description">Contents of file <span class="tt">hello.swift</span>.</span>
+</div>
+
+<div class="code"><div class="highlight"><pre><span class="n">println</span><span class="p">(</span><span class="s">"Hello world"</span><span class="p">)</span>
+</pre></div></div></div><p>Now we can use the <code>swiftc</code> command to compile this file into an executable.<span class="intersentencespace"></span> Running <code>swiftc hello.swift</code> creates an executable called <code>hello</code> which we can directly run from the command line.</p>
+<div class="code"><div class="highlight"><pre><span class="nv">$ </span>swiftc hello.swift
+<span class="nv">$ </span>./hello
+Hello world
+</pre></div></div>
+<div id="uid22" data-tralics-id="uid22" class="subsection" data-number="2.3.1"><h3><a href="running_code#uid22" class="heading hyperref"><span class="number">2.3.1 </span>Creating an Xcode project</a></h3>
+<p>Next we’ll use Xcode to create a simple hello world program.</p>
+<p>For more complex apps we can create an Xcode project and use that to manage all the project dependencies and compile our resulting application.<span class="intersentencespace"></span> For example, Xcode has project templates for command-line applications, OS X Cocoa applications, iOS applications etc.</p>
+<p>To create a new project, launch Xcode and select ‘Create a new Xcode project’.<span class="intersentencespace"></span> Or, if you already have Xcode open go to File -&gt; New -&gt; Project.<span class="intersentencespace"></span> For this example we’ll create a new Command Line Tool (<a href="running_code#fig-new_command_line_project" class="hyperref">Figure <span class="ref">2.2</span></a>).</p>
+<div class="center figure" id="fig-new_command_line_project" data-tralics-id="uid23" data-number="2.2">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/new_command_line_project.png" alt="/images/learn-swift/screenshots/new_command_line_project" /></div><div class="caption"><span class="header">Figure 2.2: </span><span class="description">Creating a new Comand Line Tool project in Xcode.<span class="intersentencespace"></span> 
+</span></div></div>
+<p>Next we fill out some details for our new project (<a href="running_code#fig-new_command_line_project2" class="hyperref">figure <span class="ref">2.3</span></a>):</p>
+<ul>
+<li>Product Name: The name of our project (this is the name that will show up in the App Store if you end up submitting it).<span class="intersentencespace"></span>
+</li>
+<li>Organization Name: Usually your name or the name of your company.<span class="intersentencespace"></span>
+</li>
+<li>Organization Identifier: A unique identifier for your company.<span class="intersentencespace"></span> The convention here is to use your domain name with the parts reversed.<span class="intersentencespace"></span>
+</li>
+<li>Bundle Identifier: This is auto-generated here from your product name and organization name.<span class="intersentencespace"></span> It’s a unique id that will identify your app in the apple ecosystem.<span class="intersentencespace"></span>
+</li>
+<li>Language: Make sure you select Swift here!<span class="intersentencespace"></span>
+</li></ul>
+<div class="center figure" id="fig-new_command_line_project2" data-tralics-id="uid29" data-number="2.3">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/new_command_line_project_2.png" alt="/images/learn-swift/screenshots/new_command_line_project_2" /></div><div class="caption"><span class="header">Figure 2.3: </span><span class="description">Creating a new Comand Line Tool project in Xcode: project details 
+</span></div></div>
+<p>Next choose a location to save your new project.<span class="intersentencespace"></span> Once you’ve done that your new project will be created and you’ll be looking at it in Xcode (<a href="running_code#fig-new_command_line_project3" class="hyperref">figure <span class="ref">2.4</span></a>).</p>
+<div class="center figure" id="fig-new_command_line_project3" data-tralics-id="uid30" data-number="2.4">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/new_command_line_project_3.png" alt="/images/learn-swift/screenshots/new_command_line_project_3" /></div><div class="caption"><span class="header">Figure 2.4: </span><span class="description">Here’s what your new project looks like in Xcode 
+</span></div></div>
+<p>The default new project has a single Swift file called main.swift, which by default is already a program that prints “Hello, World!”</p>
+<div class="code"><div class="highlight"><pre><span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span>
+</pre></div></div>
+<p>There’s a lot of stuff going on in the Xcode interface here (<a href="running_code#fig-new_command_line_project3" class="hyperref">Figure <span class="ref">2.4</span></a>).<span class="intersentencespace"></span> It can be a lot to take in and it can be tricky to figure out what all the different parts of the UI are for.<span class="intersentencespace"></span> For now just focus on the parts that we need to execute our hello world program.<span class="intersentencespace"></span> Ignore everything else for now.</p>
+<p>In the left hand pane (called the navigator - you can show and hide this using <span style="color: cornflowerblue">⌘-0</span>.<span class="intersentencespace"></span> You can also use <span style="color: cornflowerblue">⌘-1</span> to <span style="color: cornflowerblue">⌘-8</span> to navigate through various navigator views) we see our project details.<span class="intersentencespace"></span> If we expand the Hello World folder we see that it contains a single file main.swift.</p>
+<p>Next we’ll compile and run our project.<span class="intersentencespace"></span> We can do this by clicking the build and run button (See <a href="running_code#fig-new_command_line_project3" class="hyperref">figure <span class="ref">2.4</span></a>).<span class="intersentencespace"></span> When we run this we see a notification that the build succeeded.</p>
+<div class="center figure" id="fig-new_command_line_project4" data-tralics-id="uid31" data-number="2.5">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/new_command_line_project_4.png" alt="/images/learn-swift/screenshots/new_command_line_project_4" /></div><div class="caption"><span class="header">Figure 2.5: </span><span class="description">Inspecting the output from our Hello World program.<span class="intersentencespace"></span> 
+</span></div></div>
+<p>If you click <span style="color: cornflowerblue">⌘-8</span> you’ll see the report navigator and you can click on the most recent debug item to view its output (<a href="running_code#fig-new_command_line_project4" class="hyperref">Figure <span class="ref">2.5</span></a>).</p>
+<p>Click <span style="color: cornflowerblue">⌘-1</span> to get back to our original view.<span class="intersentencespace"></span> If you expand the products folder, you’ll see the Hello World executable that was generated.<span class="intersentencespace"></span> If you right click on this and select ‘Show in finder’ we can see the generated executable (<a href="running_code#fig-new_command_line_project5" class="hyperref">Figure <span class="ref">2.6</span></a>).</p>
+<div class="center figure" id="fig-new_command_line_project5" data-tralics-id="uid32" data-number="2.6">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/new_command_line_project_5.png" alt="/images/learn-swift/screenshots/new_command_line_project_5" /></div><div class="caption"><span class="header">Figure 2.6: </span><span class="description">The executable generated from compiling our Hello World program.<span class="intersentencespace"></span> 
+</span></div></div>
+<p>We can see the output of our program in the console window.<span class="intersentencespace"></span> Or once we know the full path to it we can call it directly using the command line.</p>
+</div></div><div id="sec-playgrounds" data-tralics-id="cid12" class="section" data-number="2.4"><h2><a href="running_code#sec-playgrounds" class="heading hyperref"><span class="number">2.4 </span>Playgrounds</a></h2>
+<p>The easiest way to run Swift code is using playgrounds.<span class="intersentencespace"></span> Playgrounds let you interactively explore Swift code, and see it being evaluated as you enter it.<span class="intersentencespace"></span> They are a great way to explore Swift and for most of this tutorial we’ll use playgrounds to run our Swift code.</p>
+<p>To create a new playground, launch Xcode and click “Get started with a playground”.<span class="intersentencespace"></span> Enter a name for your playground and then save it.</p>
+<div class="center figure" id="fig-create_playground" data-tralics-id="uid33" data-number="2.7">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/get_started_with_playgrounds.png" alt="/images/learn-swift/screenshots/get_started_with_playgrounds" /></div><div class="caption"><span class="header">Figure 2.7: </span><span class="description">Creating a new playground.<span class="intersentencespace"></span> 
+</span></div></div>
+<table class="tabular"><tr class="top_border"><td class="left_border align_left right_border"><strong>Video: Running Swift with playgrounds</strong></td>
+</tr><tr><td class="left_border align_left right_border">This video show how to run some code in a playground and use the timeline view to inspect the value of a variable over time.</td>
+</tr><tr class="bottom_border"><td class="left_border align_left right_border"><a href="http://www.aidanf.net/posts/running-swift-with-playgrounds" target="_blank">Video: Running Swift with playgrounds</a></td>
+</tr></table>
+<div class="center figure" id="fig-playground_view" data-tralics-id="uid34" data-number="2.8">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/playground_view.png" alt="/images/learn-swift/screenshots/playground_view" /></div><div class="caption"><span class="header">Figure 2.8: </span><span class="description">What a playground looks like.<span class="intersentencespace"></span> 
+</span></div></div>
+<p><a href="running_code#fig-playground_view" class="hyperref">Figure <span class="ref">2.8</span></a> shows what a playground looks like.<span class="intersentencespace"></span> One the left pane you enter your Swift code.<span class="intersentencespace"></span> The right pane shows the result of evaluating each line of code.<span class="intersentencespace"></span> Whenever you enter a line in the playground, Xcode will evaluate every line in the playground, and print the result of each of these lines in the corresponding line in the right hand pane.<span class="intersentencespace"></span> This makes playgrounds an excellent way of getting immediate feedback on how various bits of code work.<span class="intersentencespace"></span> You can just put your code in a playground and get immediate feedback on the results.</p>
+<div class="center figure" id="fig-playground_timeline_view" data-tralics-id="uid35" data-number="2.9">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/playground_timeline_view.png" alt="/images/learn-swift/screenshots/playground_timeline_view" /></div><div class="caption"><span class="header">Figure 2.9: </span><span class="description">Timeline view in a playground.<span class="intersentencespace"></span> 
+</span></div></div>
+<p>The timeline view lets you examine the value of a variable over time.<span class="intersentencespace"></span> <a href="running_code#fig-playground_timeline_view" class="hyperref">Figure <span class="ref">2.9</span></a> shows the timeline for a loop that modifies the value of i.</p>
+<p><strong>As you go through the following chapters, I strongly encourage you to create a playground for each chapter and enter each line of code in it and check the results</strong>.<span class="intersentencespace"></span> You can then play around with the various features of Swift to get comfortable and explores methods that I haven’t mentioned here using Xcode’s auto-complete.</p>
+</div><div id="cid13" data-tralics-id="cid13" class="section" data-number="2.5"><h2><a href="running_code#cid13" class="heading hyperref"><span class="number">2.5 </span>Summary</a></h2>
+<p>In this chapter we introduce you to various ways to run Swift code.<span class="intersentencespace"></span> The different ways we covered were:</p>
+<ul>
+<li>Running code interactively using the REPL
+</li>
+<li>Compiling an executable using the <code>swiftc</code> command
+</li>
+<li>Creating an Xcode project and using it to create a command line program.<span class="intersentencespace"></span>
+</li>
+<li>Running code interactively using playgrounds
+</li></ul>
+<p>For the most part we’ll use playgrounds for executing Swift code.<span class="intersentencespace"></span> We’re interested in learning the language and not getting bogged down in the details of learning to use Xcode along with the overhead of managing a project in Xcode.<span class="intersentencespace"></span> So for most of the chapters looking at Swift language features, we’ll use playgrounds to play around with whatever language feature we’re discussing.</p>
+</div><div id="cha-2_footnotes">
+  <ol class="footnotes">
+    <li id="cha-2_footnote-1">If the swift command isn’t available (e.g.<span class="intersentencespace"></span> you are running an older version of Xcode or the swift command wasn’t setup correctly for some reason) you may need to run it using <code>xcrun swift</code>. <a class="arrow" href="#cha-2_footnote-ref-1">↑</a></li>
+    <li id="cha-2_footnote-2">This is significantly different from languages like Ruby and Python.<span class="intersentencespace"></span> Those languages compile into byte-code which is executed by an interpreter.<span class="intersentencespace"></span> For example, for a user to run a Ruby program, they must have a Ruby interpreter installed on their machine.<span class="intersentencespace"></span> There are options available that allow you to bundle a Ruby program into a single executable, but they work by bundling your code with a Ruby interpreter and packaging them together into an executable.<span class="intersentencespace"></span> Swift on the other hand is compiled into a native binary that can be run as a standalone executable. <a class="arrow" href="#cha-2_footnote-ref-2">↑</a></li>
+  </ol>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2016-02-02T07:53:03+00:00">Feb 2, 2016
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/introduction" rel="prev"><span class="meta-nav">←</span> Introduction</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/basics" rel="next">Basics <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

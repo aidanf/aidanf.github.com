@@ -1,0 +1,513 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Optionals</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-optionals" data-tralics-id="cid38" class="chapter" data-number="10" data-chapter="optionals"><h1><a href="optionals#cha-optionals" class="heading hyperref"><span class="number">Chapter 10 </span>Optionals</a></h1>
+<p>You can’t go very far with Swift without running into optionals.<span class="intersentencespace"></span> Whenever you declare a variable, the Swift compiler assumes a value must be present, unless you tell it otherwise by using an optional.</p>
+<p>Optionals in Swift don’t have a direct analogy in many languages.<span class="intersentencespace"></span> But they are similar to the pattern of sometimes using <code>nil</code> or <code>null</code> to indicate when something is absent or has no value.</p>
+<p>Swift formalizes this notion of something having an optional <code>nil</code> value using <em>optionals</em>.<span class="intersentencespace"></span> Optionals allow for the possibility of a variable having a <code>nil</code> value - they are a way to indicate to the compiler that a value may possibly be <code>nil</code> or blank.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> it indicates a situation where you’re not sure that a value will be present - the value might be present or it might be <code>nil</code>.<span class="intersentencespace"></span> If a variable is not optional, then it must always have a value.<span class="intersentencespace"></span> The result is that the Swift compiler does a lot more work at ensuring that you don’t use a <code>nil</code> value somewhere that it isn’t expected, and you only use <code>nil</code> values in places where you’ve explicitly told the compiler that they’re allowed.</p>
+</div><div id="cid39" data-tralics-id="cid39" class="section" data-number="10.1"><h2><a href="optionals#cid39" class="heading hyperref"><span class="number">10.1 </span>Declaring optionals</a></h2>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">name1</span> <span class="o">=</span> <span class="s">"Jill"</span>
+<span class="k">var</span> <span class="nl">name2</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"Jack"</span>
+<span class="n">name1</span> <span class="c1">// "Jill"</span>
+<span class="n">name2</span> <span class="c1">// {Some "Jack"}</span>
+</pre></div></div>
+<p>We can declare an value as optional by adding a <code>?</code><span class="intersentencespace"></span> to the type declaration.<span class="intersentencespace"></span> In the above example, setting the type to <code>String?</code><span class="intersentencespace"></span> indicates that <code>name2</code> is an <em>optional</em> string which we’ve initialized to the value “Jack” (if we didn’t initialize its value, its initial value is <code>nil</code>).<span class="intersentencespace"></span> <code>name1</code> is a string which is not optional.<span class="intersentencespace"></span> Note that when <code>name1</code> is evaluated in the playground we get its value back (“Jill”).<span class="intersentencespace"></span> But when <code>name2</code> is evaluated, instead of getting the value we get an optional containing the value (<code>{Some "Jack"}</code>).</p>
+<p>There are a couple of ways for us to get the value from the optional.<span class="intersentencespace"></span> We can unwrap it or we can use <code>if let</code>.</p>
+</div><div id="cid40" data-tralics-id="cid40" class="section" data-number="10.2"><h2><a href="optionals#cid40" class="heading hyperref"><span class="number">10.2 </span>Forced unwrapping</a></h2>
+<p>When we access an optional value, we get an optional back.<span class="intersentencespace"></span> We can force Swift to retrieve an optional value by adding a <code>!</code><span class="intersentencespace"></span> to the variable name.<span class="intersentencespace"></span> This is known as <em>forced unwrapping</em> and you shouldn’t do this unless you know there is a value present.<span class="intersentencespace"></span> But when you do this you get the value back instead of the optional.<span class="intersentencespace"></span> In the above example we can unwrap the value of name2 like this:</p>
+<div class="code"><div class="highlight"><pre>name2! // "Jack"
+</pre></div></div>
+<p>When we do this we get the value of the optional back instead of the optional itself.</p>
+<p>If we try to unwrap an optional that has no value we’ll get a runtime error.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> we can remove a value from an optional by setting it to <code>nil</code>.<span class="intersentencespace"></span> Once we’ve done that we’ll get an error if we try to unwrap it.</p>
+<div class="code"><div class="highlight"><pre><span class="n">name2</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="n">name2</span> <span class="c1">// nil</span>
+<span class="n">name2</span><span class="o">!</span> <span class="c1">// Error (Runtime)</span>
+</pre></div></div>
+</div><div id="sec-conditional_unwrapping" data-tralics-id="cid41" class="section" data-number="10.3"><h2><a href="optionals#sec-conditional_unwrapping" class="heading hyperref"><span class="number">10.3 </span>Conditional unwrapping</a></h2>
+<p>We can also use <code>if</code> or <code>if let</code> to conditionally do something with an optional value.</p>
+<div id="uid74" data-tralics-id="uid74" class="subsection" data-number="10.3.1"><h3><a href="optionals#uid74" class="heading hyperref"><span class="number">10.3.1 </span>with if</a></h3>
+<p>We can use an optional value in an <code>if</code> statement to check if the value is equal to some specific value.<span class="intersentencespace"></span> E.g.</p>
+<div class="code"><div class="highlight"><pre><span class="k">if</span> <span class="n">name2</span> <span class="o">==</span> <span class="s">"Jack"</span><span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Hello Jack"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Hello there"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>This checks <code>both</code> that <code>name2</code> is present <em>and</em> that the value of the <code>name2</code> optional is equal to <code>"Jack"</code> and performs different operations depending on the value.</p>
+<p>You can use an <code>if</code> statement with any operator that takes a pair of values and returns a boolean to perform a check against the value of an optional.<span class="intersentencespace"></span> These operators will generally return <code>false</code> if the optional is not present and if it is present will evaluate it against the condition.<span class="intersentencespace"></span> Here’s an example of how optionals are evaluated in boolean operators:</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">var</span> <span class="nl">i</span><span class="p">:</span><span class="n">Int</span><span class="o">?</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="lineno"> 2</span> <span class="k">var</span> <span class="nl">j</span><span class="p">:</span><span class="n">Int</span><span class="o">?</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="n">i</span> <span class="c1">// {Some 10}</span>
+<span class="lineno"> 5</span> <span class="n">j</span> <span class="c1">// nil</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">10</span>  <span class="c1">// true</span>
+<span class="lineno"> 8</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">8</span>   <span class="c1">// false</span>
+<span class="lineno"> 9</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span>    <span class="c1">// true</span>
+<span class="lineno">10</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">nil</span> <span class="c1">// false</span>
+<span class="lineno">11</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">nil</span> <span class="c1">// true</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">10</span>  <span class="c1">// false</span>
+<span class="lineno">14</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span>    <span class="c1">// false</span>
+<span class="lineno">15</span> <span class="n">j</span> <span class="o">==</span> <span class="nb">nil</span> <span class="c1">// true</span>
+</pre></div></div>
+<p>Here we declare two optionals.<span class="intersentencespace"></span> <code>i</code> gets initialized to 10 and <code>j</code> is not initialized so it has initial value of <code>nil</code>.<span class="intersentencespace"></span> We can use any of our comparison operators with both optionals.<span class="intersentencespace"></span> For optional <code>i</code>, which has a value, they return the result of comparing the value of the optional (lines 7-11.<span class="intersentencespace"></span> For optional <code>j</code>, which has no value, the comparisons generally return false (lines 13-15), except for the specific case where we check that it’s <code>nil</code> (line 15).<span class="intersentencespace"></span> Also note here that we can use <code>==</code> and <code>!=</code> to check whether or not a variable has a value (lines 10, 11, 15).<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> <code>i != nil</code> evaluates to <code>true</code> when <code>i</code> has a value and <code>j == nil</code> evaluates to true when <code>j</code> has no value.</p>
+</div>
+<div id="uid75" data-tralics-id="uid75" class="subsection" data-number="10.3.2"><h3><a href="optionals#uid75" class="heading hyperref"><span class="number">10.3.2 </span>with if let</a></h3>
+<p>We can use <code>if let</code> to unwrap the value of an optional into a temporary variable and then do something only if the variable has a value.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">if</span> <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="n">name2</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">"Hello \(n)"</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">"Hello person with no name"</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="p">}</span>
+</pre></div></div>
+<p>In this example, if the <code>name2</code> optional has a value, the temporary variable <code>n</code> is assigned its value and the first branch of the statement runs (line 2).<span class="intersentencespace"></span> If <code>name2</code> has no value then the second branch of the <code>if let</code> statement runs (line 4).<span class="intersentencespace"></span> Note that <code>if let</code> only checks if the optional has a value - it doesn’t check if that value is truthy.<span class="intersentencespace"></span> See <a href="optionals#sec-optionals_dictionaries" class="hyperref">section <span class="ref">10.5</span></a> for discussion of this.</p>
+</div></div><div id="cid42" data-tralics-id="cid42" class="section" data-number="10.4"><h2><a href="optionals#cid42" class="heading hyperref"><span class="number">10.4 </span>Using optionals</a></h2>
+<p>Here are a few things to think about when using optionals:</p>
+<ul>
+<li>We’ve covered how to declare optionals, unwrap their values and use their values with conditionals.<span class="intersentencespace"></span>
+</li>
+<li>You can use optionals in comparison operators.<span class="intersentencespace"></span>
+</li>
+<li>You remove a value from an optional by assigning it <code>nil</code>.<span class="intersentencespace"></span>
+</li>
+<li>You can only assign <code>nil</code> to an optional.<span class="intersentencespace"></span> If you try to assign <code>nil</code> to a variable that is not an optional you’ll get an error.<span class="intersentencespace"></span>
+</li>
+<li>you can only use an optional in places where an optional is expected.<span class="intersentencespace"></span> If you try to use an optional value where an optional isn’t expected or allowed you’ll get an error.<span class="intersentencespace"></span>
+</li></ul>
+<p>Now that we understand optionals, let’s look at using them.<span class="intersentencespace"></span> Swift assumes by default that all variables have a value.<span class="intersentencespace"></span> Unless you tell it otherwise by declaring an optional you can’t have a <code>nil</code> value in a place where your program expects there to be a value.<span class="intersentencespace"></span> In this example, our function expects its <code>name</code> parameter to have a value.<span class="intersentencespace"></span> If we pass <code>nil</code> as an argument we get an error (line 12).<span class="intersentencespace"></span> Even though our program isn’t doing anything other than printing the value of the parameter, the fact that we see <code>nil</code> in a place where we expect the parameter to have a value is enough to raise an error.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">var</span> <span class="n">name1</span> <span class="o">=</span> <span class="s">"Jill"</span>
+<span class="lineno"> 2</span> <span class="k">var</span> <span class="nl">name2</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"Jack"</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">return</span> <span class="s">"Hello \(name)"</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="n">hello</span><span class="p">(</span><span class="n">name1</span><span class="p">)</span> <span class="c1">// Hello Jill</span>
+<span class="lineno"> 9</span> <span class="n">hello</span><span class="p">(</span><span class="n">name2</span><span class="p">)</span> <span class="c1">// Error</span>
+<span class="lineno">10</span> <span class="n">hello</span><span class="p">(</span><span class="n">name2</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Hello Jack</span>
+<span class="lineno">11</span> <span class="n">name2</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">12</span> <span class="n">hello</span><span class="p">(</span><span class="n">name2</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Error (Runtime)</span>
+</pre></div></div>
+<p>Here we declare <code>name2</code> as an optional and <code>name1</code> is not optional.<span class="intersentencespace"></span> Our <code>hello</code> function takes a string as an argument.<span class="intersentencespace"></span> In this example this argument is not an optional.<span class="intersentencespace"></span> Note that if we try to pass an optional as a function argument we get an error (line 9).<span class="intersentencespace"></span> This error gets picked up by the compiler because we tried to pass an optional as an argument to a function which didn’t expect an optional.<span class="intersentencespace"></span> We can still use that optional as an argument to the function if we unwrap its value (line 10) but if we are doing this we should be sure that it has a value.<span class="intersentencespace"></span> If we try to unwrap it when it doesn’t have a value we get a runtime error (line 12).</p>
+<p>Let’s look at a similar function that takes an optional as an argument.<span class="intersentencespace"></span> </p><div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">var</span> <span class="n">name1</span> <span class="o">=</span> <span class="s">"Jill"</span>
+<span class="lineno"> 2</span> <span class="k">var</span> <span class="nl">name2</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">"Jack"</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">func</span> <span class="n">optionalHello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">if</span> <span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="n">name</span> <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="k">return</span> <span class="s">"Hello \(n)"</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="s">"Hello"</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="n">optionalHello</span><span class="p">(</span><span class="nb">nil</span><span class="p">)</span> <span class="c1">// Hello</span>
+<span class="lineno">14</span> <span class="n">optionalHello</span><span class="p">(</span><span class="n">name2</span><span class="p">)</span> <span class="c1">// Hello Jack</span>
+<span class="lineno">15</span> <span class="n">optionalHello</span><span class="p">(</span><span class="n">name1</span><span class="p">)</span> <span class="c1">// Hello Jill</span>
+</pre></div></div>
+<p>In this example the <code>optionalHello</code> function takes an optional string argument called <code>name</code>.<span class="intersentencespace"></span> It uses an <code>if let</code> statement to append the name to the greeting if <code>name</code> has a value and return a default greeting otherwise.<span class="intersentencespace"></span> Since this is an optional, we can call it with a <code>nil</code> value (line 13).<span class="intersentencespace"></span> We can also call it with our optional <code>name2</code> (line 14) and it will work whether this optional has a value or is <code>nil</code>.<span class="intersentencespace"></span> We can also call it with our non-optional <code>name1</code> (since it’s not an optional <code>name1</code> will always have a value).</p>
+</div><div id="sec-optionals_dictionaries" data-tralics-id="cid43" class="section" data-number="10.5"><h2><a href="optionals#sec-optionals_dictionaries" class="heading hyperref"><span class="number">10.5 </span>Dictionaries</a></h2>
+<p>We’ve already encountered optionals in <a href="dictionaries#cha-dictionaries" class="hyperref">chapter <span class="ref">7</span></a> when we looked at dictionaries.<span class="intersentencespace"></span> Let’s revisit that example now that we’ve discussed optionals in more detail.</p>
+<p>You may have noticed in our dictionary example from <a href="dictionaries#cha-dictionaries" class="hyperref">chapter <span class="ref">7</span></a> (when you enter it in a playground) that when we access a value using a key we get a result like <code>{Some "dog"}</code>.<span class="intersentencespace"></span> That’s because dictionaries return an optional.<span class="intersentencespace"></span> Lets take a closer look.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Polly"</span> <span class="o">:</span> <span class="s">"dog"</span><span class="p">,</span> <span class="s">"Joey"</span> <span class="o">:</span> <span class="s">"goldfish"</span><span class="p">]</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="n">pets</span><span class="p">[</span><span class="s">"Polly"</span><span class="p">]</span> <span class="c1">// {Some "dog"}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">pets</span><span class="p">[</span><span class="s">"Polly"</span><span class="p">]</span><span class="o">!</span> <span class="c1">// "dog"</span>
+</pre></div></div>
+<p>The reason for this is that we’re not certain that a dictionary key exists when we try to access it - it may be <code>nil</code>.<span class="intersentencespace"></span> Returning an optional allows us to handle the case when the key is blank.<span class="intersentencespace"></span> In the above example we see that when we access an element of the pets dictionary we get an optional back (line 3) and when we forcibly unwrap an element of the pets array we get the value for that element back (line 5).<span class="intersentencespace"></span> Dictionaries return optionals as we don’t always know if there is a value present for a certain key.<span class="intersentencespace"></span> Thus we can process dictionary keys the same way as we did the optionals in the above example.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> when we’re not certain if a key is present we can use <code>if</code> or <code>if let</code> to do something with the key and we can force unwrapping of keys that we know to be present.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">var</span> <span class="n">preferences</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno"> 2</span>     <span class="s">"receiveEmail"</span> <span class="o">:</span> <span class="nb">true</span><span class="p">,</span>
+<span class="lineno"> 3</span>     <span class="s">"showAds"</span> <span class="o">:</span> <span class="nb">true</span>
+<span class="lineno"> 4</span> <span class="p">]</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="k">if</span> <span class="k">let</span> <span class="n">subscribed</span> <span class="o">=</span> <span class="n">preferences</span><span class="p">[</span><span class="s">"receiveEmail"</span><span class="p">]{</span>
+<span class="lineno"> 7</span>     <span class="k">if</span> <span class="n">subscribed</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">"Send them an email"</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">"User has unsubscribed"</span><span class="p">)</span>
+<span class="lineno">11</span>     <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="p">}</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="k">if</span> <span class="n">preferences</span><span class="p">[</span><span class="s">"showAds"</span><span class="p">]</span><span class="o">!</span><span class="p">{</span>
+<span class="lineno">16</span>     <span class="n">println</span><span class="p">(</span><span class="s">"Show them an Ad"</span><span class="p">)</span>
+<span class="lineno">17</span> <span class="p">}</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="k">if</span> <span class="n">preferences</span><span class="p">[</span><span class="s">"showAds"</span><span class="p">]</span> <span class="o">==</span> <span class="nb">true</span> <span class="p">{</span>
+<span class="lineno">20</span>     <span class="n">println</span><span class="p">(</span><span class="s">"Show them an Ad"</span><span class="p">)</span>
+<span class="lineno">21</span> <span class="p">}</span>
+</pre></div></div>
+<p>In this example we use both <code>if</code> and <code>if let</code> to do something depending on the value of a key in the preferences dictionary.<span class="intersentencespace"></span> At line 6 we use <code>if let</code> to check if a key is present and do something if that value is present.<span class="intersentencespace"></span> Note that we have an if statement inside the <code>if let</code> to process the value.<span class="intersentencespace"></span> The <code>if let</code> statement body runs if the <code>subscribed</code> variable has a value - it doesn’t check that value to determine whether or not to run.<span class="intersentencespace"></span> It will run whether <code>subscribed</code> is true or false - all that is needed for the <code>if let</code> body to run is that <code>subscribed</code> has a value.<span class="intersentencespace"></span> Since <code>subscribed</code> is boolean we have a further <code>if</code> statement within the <code>if let</code> to check whether it is true or false.</p>
+<p>This showcases a subtle difference in Swift that can be confusing coming from other languages that don’t make the distinction between having no value and having a falsey value - <strong>there is a difference between something having no value and having a value that is false</strong>.<span class="intersentencespace"></span> In this example <code>subscribed</code> has a value but that value is true (but line would still run even if <code>subscribed</code> has value <code>false</code>).<span class="intersentencespace"></span> So the <code>if let</code> checks if there is a value present, and then the <code>if</code> within that checks if that value is true or false.</p>
+<p>We can also process the values in the array by unwrapping them - this assumes that the value is always present.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> If we know that <code>preferences["showAds"]</code> is always present we can unwrap it and use it as a condition to an if statement (line 13).<span class="intersentencespace"></span> Note that we need to unwrap it here as the if statements requires a boolean for its condition, whereas if we didn’t unwrap it we would get an optional which would result in a compiler error.</p>
+<p>Finally, we can also use if to check if the value is both present and true.<span class="intersentencespace"></span> The statement at line 17 will only run if <code>preferences["showAds"]</code> is <em>both</em> present and true.</p>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-11-20T14:54:28+00:00">Nov 20, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/control_flow" rel="prev"><span class="meta-nav">←</span> Control Flow</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/functions" rel="next">Functions and Closures <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,610 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Functions and Closures</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-functions" data-tralics-id="cid44" class="chapter" data-number="11" data-chapter="functions"><h1><a href="functions#cha-functions" class="heading hyperref"><span class="number">Chapter 11 </span>Functions and Closures</a></h1>
+</div><div id="cid45" data-tralics-id="cid45" class="section" data-number="11.1"><h2><a href="functions#cid45" class="heading hyperref"><span class="number">11.1 </span>Functions</a></h2>
+<div id="uid81" data-tralics-id="uid81" class="subsection" data-number="11.1.1"><h3><a href="functions#uid81" class="heading hyperref"><span class="number">11.1.1 </span>Defining functions</a></h3>
+<p>Functions are declared using the <code>func</code> keyword.<span class="intersentencespace"></span> When declaring a function you provide a type signature for the function along with its implementation.</p>
+<p>Functions can be declared on their own or within a class, in which case they become a method that operates on objects of that class.<span class="intersentencespace"></span> We’ll cover methods in <a href="classes#cha-classes" class="hyperref">chapter <span class="ref">12</span></a>.</p>
+<p>Here’s an example of a simple function that adds 2 integers.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">intAdder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">intAdder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// 7</span>
+</pre></div></div>
+<p>We declare a type signature for the function by indicating the type of each of its parameters (<code>x</code> and <code>y</code>) in this example and also its return type ( <code>-&gt; Int</code> indicates that this function returns an integer).<span class="intersentencespace"></span> The <code>return</code> statement indicates the value that we want our function to return.<span class="intersentencespace"></span> The above function must include a return statement, since the type signature specified that it returns an integer.<span class="intersentencespace"></span> If we wanted a function that doesn’t return anything we can specify the return type as <code>Void</code> (or leave out the return type, in which case Swift will infer that the return type is <code>Void</code>).</p>
+<p>Here’s an example that doesn’t return anything but running it has the side-effect of printing the value of adding the 2 arguments.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">sideEffectAdder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Added value is \(x + y)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">sideEffectAdder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// prints "Added value is 7"</span>
+</pre></div></div>
+<p>or alternatively you can omit the return type and return statement and swift assumes that the return type is <code>Void</code>.<span class="intersentencespace"></span> i.e.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="nf">sideEffectAdder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Added value is \(x + y)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">sideEffectAdder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// prints "Added value is 7"</span>
+</pre></div></div>
+</div>
+<div id="uid82" data-tralics-id="uid82" class="subsection" data-number="11.1.2"><h3><a href="functions#uid82" class="heading hyperref"><span class="number">11.1.2 </span>Local and external parameters</a></h3>
+<p>Swift allows us to define both local and external parameter names.<span class="intersentencespace"></span> So far our examples have used local parameter names.<span class="intersentencespace"></span> Lets revisit our <code>intAdder</code> function.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">intAdder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">intAdder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div></div>
+<p><code>x</code> and <code>y</code> here are local parameter names.<span class="intersentencespace"></span> They are only used within the function body.<span class="intersentencespace"></span> When we call the function we don’t refer to the parameter name - we just line up the arguments positionally: <code>intAdder(3,4)</code>.</p>
+<p>If we have a function with a lot of parameters or we want to improve readability on our function calls we can use external parameter names.<span class="intersentencespace"></span> We could redefine this function to use external parameter names like this:</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">intAdder2</span><span class="p">(</span><span class="n">firstNum</span> <span class="nl">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">secondNum</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Int</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">intAdder2</span><span class="p">(</span><span class="nl">firstNum</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nl">secondNum</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div></div>
+<p>You declare the external parameter name by adding it before the local parameter name as shown in the example above.<span class="intersentencespace"></span> In this example the first parameter has an internal name of <code>x</code> and an external name of <code>firstNum</code>.<span class="intersentencespace"></span> Thus within the function body we refer to it as <code>x</code>, but when calling the function we refer to it as <code>firstName</code>.</p>
+<p>Once you’ve declared the external parameter names, then you must use them when you call the function.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> we can’t call <code>intAdder2(3, 4)</code> - since we have external parameter names we have to use those to name the arguments, so we have to call it as <code>intAdder2(firstNum: 3, secondNum: 4)</code>.<span class="intersentencespace"></span> Note also that we still need to order the arguments correctly when using external parameter names.<span class="intersentencespace"></span> Calling <code>intAdder2(secondNum: 4, firstNum: 3)</code> will result in a compiler error.</p>
+<p>In cases where the internal and external parameter names are the same you can use the shorthand notation of putting a <code>#</code> in front of the name.<span class="intersentencespace"></span> So we could rewrite our intAdder function as:</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">intAdder3</span><span class="p">(</span><span class="err">#</span> <span class="nl">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">intAdder3</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div></div>
+<p>In this example the function <code>intAdder3</code> has both internal and external parameter names of <code>x</code> and <code>y</code> and since we have declared external parameter names, we must use them when calling the function.</p>
+</div>
+<div id="uid83" data-tralics-id="uid83" class="subsection" data-number="11.1.3"><h3><a href="functions#uid83" class="heading hyperref"><span class="number">11.1.3 </span>Variadic parameters</a></h3>
+<p>Functions can take a variable number of arguments.<span class="intersentencespace"></span> You do this by adding <code>...</code><span class="intersentencespace"></span> after the final parameter name in your parameter list.<span class="intersentencespace"></span> All extra arguments will be available in an array with that parameter name.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">sayHello</span><span class="p">(</span><span class="nl">names</span><span class="p">:</span><span class="n">String</span><span class="p">...)</span><span class="o">-&gt;</span> <span class="n">String</span><span class="p">{</span>
+    <span class="k">let</span> <span class="n">names</span> <span class="o">=</span> <span class="s">" and "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="s">"Hello to \(names)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">sayHello</span><span class="p">(</span><span class="s">"Jack"</span><span class="p">)</span> <span class="c1">// Hello to Jack</span>
+<span class="n">sayHello</span><span class="p">(</span><span class="s">"Jack"</span><span class="p">,</span> <span class="s">"Jill"</span><span class="p">)</span> <span class="c1">// Hello to Jack and Jill</span>
+</pre></div></div>
+<p>This example defines a function called <code>sayHello</code> which takes a variable number of string arguments in a parameter called <code>names</code>.<span class="intersentencespace"></span> Since we’ve marked that parameter with <code>...</code><span class="intersentencespace"></span> it will be an array, so we can process it using something that operates on an array, such as a <code>for</code> loop or in this case <code>join</code>.<span class="intersentencespace"></span> The <code>join</code> function here is called on a string and takes an array as an argument.<span class="intersentencespace"></span> It then returns a string made of joining all the elements of the array with the joining string.</p>
+</div>
+<div id="uid84" data-tralics-id="uid84" class="subsection" data-number="11.1.4"><h3><a href="functions#uid84" class="heading hyperref"><span class="number">11.1.4 </span>Returning optionals</a></h3>
+<p>A function can return an optional by adding a <code>?</code><span class="intersentencespace"></span> to the end of the return type.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">evenAdder</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">even</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">switch</span> <span class="n">even</span><span class="p">{</span>
+    <span class="k">case</span> <span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nb">nil</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">evenAdder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// {Some 6}</span>
+<span class="n">evenAdder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// nil</span>
+</pre></div></div>
+<p>This function returns an optional.<span class="intersentencespace"></span> It checks that both of its arguments are even and only if both are even, it returns their sum.<span class="intersentencespace"></span> Otherwise it returns <code>nil</code>.</p>
+</div>
+<div id="uid85" data-tralics-id="uid85" class="subsection" data-number="11.1.5"><h3><a href="functions#uid85" class="heading hyperref"><span class="number">11.1.5 </span>Returning multiple values</a></h3>
+<p>The idiomatic way to return multiple values from a function is by using a tuple.<span class="intersentencespace"></span> We saw an example of using a tuple to return multiple values from a function in <a href="tuples#cha-tuples" class="hyperref">chapter <span class="ref">8</span></a>.<span class="intersentencespace"></span> Here’s that example again.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">func</span> <span class="nf">getNewMail</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nl">code</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">return</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">getNewMail</span><span class="p">()</span>
+</pre></div></div>
+<p>The function in this example returns multiple values using a tuple (line 1).<span class="intersentencespace"></span> Tuples function as types in Swift, so the return type for a function can be a tuple.<span class="intersentencespace"></span> The function must then return a tuple which has the same type-signature as the tuple type used in the function declaration.</p>
+<p>We can also use <code>typealias</code> to name tuple types.<span class="intersentencespace"></span> In this next example we create a type called <code>Response</code> which is an alias for a tuple of the form <code>(code: Int, message: String)</code>.<span class="intersentencespace"></span> We can then use <code>Response</code> as a return type for our function.</p>
+<div class="code"><div class="highlight"><pre><span class="k">typealias</span> <span class="n">Response</span> <span class="o">=</span> <span class="p">(</span><span class="nl">code</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+
+<span class="k">var</span> <span class="nl">result</span><span class="p">:</span><span class="n">Response</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s">"Internal Server Error"</span><span class="p">)</span>
+
+<span class="k">func</span> <span class="n">getNewMail2</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Response</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">"OK"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></div>
+</div>
+<div id="uid86" data-tralics-id="uid86" class="subsection" data-number="11.1.6"><h3><a href="functions#uid86" class="heading hyperref"><span class="number">11.1.6 </span>Functions as parameters to functions</a></h3>
+<p>Functions in Swift are first-class objects.<span class="intersentencespace"></span> This means that we can assign functions to variables, pass them as arguments to functions and return them from other functions.<span class="intersentencespace"></span> The fact that functions are first-class objects in the language opens up a variety of functional programming techniques and allows us to program in a functional style in Swift.</p>
+<p>Functions can operate as types.<span class="intersentencespace"></span> You an use the type signature of a function in any place that Swift expects a type.<span class="intersentencespace"></span> So you can use functions as arguments to functions and you can return functions from functions.</p>
+<p>Here’s a function that takes another function as a parameter.</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">capitalize</span><span class="p">(</span><span class="nl">s</span><span class="p">:</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">.</span><span class="n">capitalizedString</span>
+<span class="p">}</span>
+<span class="n">capitalize</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span> <span class="c1">// "Hello"</span>
+
+<span class="k">func</span> <span class="n">applyToString</span><span class="p">(</span><span class="nl">s</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="nl">f</span><span class="p">:(</span><span class="n">String</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">applyToString</span><span class="p">(</span><span class="s">"hello"</span><span class="p">,</span> <span class="n">capitalize</span><span class="p">)</span> <span class="c1">// "Hello"</span>
+</pre></div></div>
+<p>In this example we our function <code>applyToString</code> takes 2 arguments.<span class="intersentencespace"></span> The first is a string <code>s</code> and the second is a function <code>f</code>.<span class="intersentencespace"></span> The function <code>f</code> must be a function that takes a single string argument and returns a string.<span class="intersentencespace"></span> <code>applyToString</code> then applies that function <code>f</code> to the string <code>s</code>.<span class="intersentencespace"></span> For example we can define a function <code>capitalize</code> that takes a string as a parameter and returns a capitalized string.<span class="intersentencespace"></span> This function can then be passed to our <code>applyToString</code> function as a parameter.</p>
+<p>This example is a bit contrived and our <code>applyToString</code> doesn’t appear to be any better than just calling our <code>capitalize</code> function directly.<span class="intersentencespace"></span> But it is a bit more general - it can take any function.<span class="intersentencespace"></span> When we combine this with the ability to define closures in place (covered in the next section) it becomes much more powerful.</p>
+<p>More useful examples where we can pass functions as arguments include builtin functions such as <code>map</code>, <code>reduce</code> and <code>sort</code>.<span class="intersentencespace"></span> Each of these take a function or closure as an argument which we can use to customize their behaviour.<span class="intersentencespace"></span> For example, <code>map</code> takes a function that takes 1 parameter and applies it to every element in an array - thus we could apply our <code>capitalize</code> function to every string in an array using <code>map</code>.</p>
+<div class="code"><div class="highlight"><pre><span class="p">[</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">].</span><span class="n">map</span><span class="p">(</span><span class="n">capitalize</span><span class="p">)</span> <span class="c1">// ["A", "B", "C"]</span>
+</pre></div></div>
+</div>
+<div id="uid87" data-tralics-id="uid87" class="subsection" data-number="11.1.7"><h3><a href="functions#uid87" class="heading hyperref"><span class="number">11.1.7 </span>Returning functions from functions</a></h3>
+<p>You can define a nested function within a function.<span class="intersentencespace"></span> This limits the scope of the nested function to the parent function.<span class="intersentencespace"></span> We can also return a function from a function.<span class="intersentencespace"></span> This (somewhat contrived) example demonstrates both:</p>
+<div class="code"><div class="highlight"><pre><span class="k">func</span> <span class="n">makeLogger</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">log</span><span class="p">(</span><span class="nl">s</span><span class="p">:</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">myCustomLog</span> <span class="o">=</span> <span class="n">makeLogger</span><span class="p">()</span>
+<span class="n">myCustomLog</span><span class="p">(</span><span class="s">"I am a message"</span><span class="p">)</span> <span class="c1">// I am a message</span>
+</pre></div></div>
+<p>Here we have a <code>log</code> function that is nested within our <code>makeLogger</code> function.<span class="intersentencespace"></span> The <code>makeLogger</code> function takes no arguments and returns a function that takes a string as a parameter and returns a string.<span class="intersentencespace"></span> So <code>makeLogger</code> just returns the nested function <code>log</code>.<span class="intersentencespace"></span> By returning a function, we can assign the results of <code>makeLogger</code> to a variable or constant and use that name to call the function.<span class="intersentencespace"></span> Here we assign the returned function to <code>myCustomLog</code> and then we can call that function with <code>myCustomLog("I am a message")</code>.</p>
+</div></div><div id="cid46" data-tralics-id="cid46" class="section" data-number="11.2"><h2><a href="functions#cid46" class="heading hyperref"><span class="number">11.2 </span>Closures</a></h2>
+<p>Closures are anonymous functions (often referred to as lambdas or blocks in other languages).<span class="intersentencespace"></span> They are blocks of code that you can pass as arguments to functions where the receiving function expects a function type.</p>
+<p>Closures have 2 common use-cases.</p>
+<p>1) As a convenient way to define and pass a small function without having to go through the hassle of naming and defining a fully fledged function.<span class="intersentencespace"></span> When defining a closure, Swift can infer the parameter types and return type from the context in which the closure is defined.<span class="intersentencespace"></span> Closures also have implicit returns and shorthand for accessing arguments passed to the closure.<span class="intersentencespace"></span> Thus the syntax for defining a closure is much less verbose than when defining a fully fledged function.</p>
+<p>2) As a way of enclosing (closing over) some state from when the closure was defined.<span class="intersentencespace"></span> You can use a closure to capture and store the state of some variable at a particular point in time (the point when the closure is defined) and store those values to be used later.</p>
+<p>There are two ways to define a closure:</p>
+<ol>
+<li><em>closure expressions</em> provide a shorthand syntax for defining inline functions at the place where you are using them.<span class="intersentencespace"></span>
+</li>
+<li><em>trailing closures</em>.<span class="intersentencespace"></span> If you are passing a closure as the final argument of another function and the closure is long, you can optionally define it as a trailing closure.<span class="intersentencespace"></span>
+</li></ol>
+<div id="uid90" data-tralics-id="uid90" class="subsection" data-number="11.2.1"><h3><a href="functions#uid90" class="heading hyperref"><span class="number">11.2.1 </span>Closure expressions</a></h3>
+<p>Closures are defined using curly brackets and the <code>in</code> keyword.<span class="intersentencespace"></span> The syntax for a closure is</p>
+<p><code>{ (params) -&gt; return_type in statements }</code></p>
+<p>Lets take a look at an example.<span class="intersentencespace"></span> One common idiom in functional programming is to transform a sequence by applying a closure to each element using <code>map</code>.<span class="intersentencespace"></span> Swift’s <code>Array</code> type has such a map function which takes a closure and applies it to each element in the sequence.</p>
+<p>We’ll start by just using a standard functions (remember closures are anonymous functions, often used for convenience where there’s no need to define a fully fledged function.).</p>
+<p>Let’s say we have an array of numbers and we want to double each number in the array.<span class="intersentencespace"></span> We can use <code>map</code> and pass it a function that will double the number that is passed as an argument.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="k">func</span> <span class="n">doubler</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="k">let</span> <span class="n">fnDoubledNums</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">doubler</span><span class="p">)</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+<p>Here we have an array of integers.<span class="intersentencespace"></span> We’ve defined a function called <code>doubler</code> that takes an integer as an argument and returns another integer that is the result of multiplying its argument by 2.<span class="intersentencespace"></span> We then pass that function as an argument to <code>map</code>, which applies that function to each element in the array.</p>
+<p>However, it’s hardly worthwhile defining a function specifically for the purpose of passing it to the map function.<span class="intersentencespace"></span> We can use a closure instead.<span class="intersentencespace"></span> Using a closure we’ll define an anonymous function just at the point where we want to use it.</p>
+<p>Using the full closure syntax, we can rewrite our example above using a closure and get the same results.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">closureDoubledNums</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">({</span> <span class="p">(</span><span class="nl">num</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span> <span class="k">return</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="p">})</span>
+<span class="n">closureDoubledNums</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+<p>Here we’ve declared a closure that has a single integer parameter called <code>num</code> and returns an integer that is double the value of <code>num</code>.</p>
+<p>Because this is such a short closure (i.e.<span class="intersentencespace"></span> a 1-liner) we can take advantage of the various shorthand notations that closures in Swift support.<span class="intersentencespace"></span> Because it’s a 1-liner, we can drop the explicit return.<span class="intersentencespace"></span> Swift assumes we are returning the result of evaluating that single line.<span class="intersentencespace"></span> We can also remove the type signature as Swift is able to induce the type signature for the closure from the context in which it is used.<span class="intersentencespace"></span> (i.e.<span class="intersentencespace"></span> it’s called on a list of integers so it takes an integer parameter, and it returns that parameter multiplied by 2, so its return type is also an integer).</p>
+<p>So we can rewrite our closure as
+</p><div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">closureDoubledNums2</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">({</span> <span class="n">num</span> <span class="k">in</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">})</span>
+<span class="n">closureDoubledNums2</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+<p>Here we just provide a name (<code>num</code>) for the argument that gets passed to the closure.</p>
+<p>We can shorten this further if we want (depends on how readable you find each form).<span class="intersentencespace"></span> Swift allows us to refer to arguments passed to closure using <code>$0</code>, <code>$1</code>, <code>$2</code> etc.<span class="intersentencespace"></span> So in this case, our closure gets passed a single parameter and that parameter can be accessed using <code>$0</code>.</p>
+<p>So we can rewrite our closure again as:
+</p><div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">closureDoubledNums3</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">({</span> <span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">})</span>
+<span class="n">closureDoubledNums3</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+<p>So in summary, the code <code>{ $0 * 2 }</code> defines an anonymous function or closure that takes a single argument and returns that argument multiplied by 2.<span class="intersentencespace"></span> This function is defined in place and passed to the <code>map</code> method that is part of the <code>Array</code> class, which applies that function to each element of the array.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> for each element of the array it calls that closure with the element as its single argument.</p>
+</div>
+<div id="uid91" data-tralics-id="uid91" class="subsection" data-number="11.2.2"><h3><a href="functions#uid91" class="heading hyperref"><span class="number">11.2.2 </span>Trailing closures</a></h3>
+<p>When the closure is being passed as the final argument to a function we can pass it as a trailing closure.<span class="intersentencespace"></span> You do this by putting the closure definition directly after the function call instead of as a function paramter.<span class="intersentencespace"></span> This is generally reserved for when the closure is long and it may be more readable to move the definition of the closure outside of the function argument list.<span class="intersentencespace"></span> Here’s how we would rewrite our previous example to use a trailing closure, instead of passing the closure as an argument to map.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">trailingClosureDoubledNums</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nl">num</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">trailingClosureDoubledNums</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+<p>Similar to our previous example we can shorten the closure here but still leave it as a trailing closure.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">trailingClosureDoubledNums2</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">()</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="n">trailingClosureDoubledNums2</span> <span class="c1">// [2, 6, 10, 14]</span>
+</pre></div></div>
+</div>
+<div id="uid92" data-tralics-id="uid92" class="subsection" data-number="11.2.3"><h3><a href="functions#uid92" class="heading hyperref"><span class="number">11.2.3 </span>Using a closure to close over a value</a></h3>
+<p>Another use of a closure is to “close over” the value of something at a particular point in time.<span class="intersentencespace"></span> A closure can store some state when it is created and save it until it is called at some future point in time.<span class="intersentencespace"></span> More specifically, a closure can save the value of any parameter that is in scope when it was declared, and can continue to use that value even after the original parameter is no longer in scope and has disappeared.</p>
+<p>Lets continue with our example where we want to double each item in an array.</p>
+<p>Lets say we have a more general function that multiplies a number by a multiplier.<span class="intersentencespace"></span> What we’d like to do here is create a function that takes a multiplier and a number and returns a function that multiplies the number by the multiplier.<span class="intersentencespace"></span> We’ll create this as a closure so that we can close over the value of the multiplier and continue to use that value even after the original scope of that parameter has disappeared.</p>
+<p>Here’s a function that will return such a multiplier function.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">let</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="k">func</span> <span class="n">makeMultiplier</span><span class="p">(</span><span class="nl">multiplier</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">return</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="p">(</span><span class="nl">num</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span>
+<span class="lineno"> 6</span>             <span class="k">return</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">let</span> <span class="n">doubler2</span> <span class="o">=</span> <span class="n">makeMultiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// (Function)</span>
+<span class="lineno">11</span> <span class="n">doubler2</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>       <span class="c1">// 10</span>
+<span class="lineno">12</span> <span class="k">let</span> <span class="n">tripler</span> <span class="o">=</span> <span class="n">makeMultiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// (Function)</span>
+<span class="lineno">13</span> <span class="n">tripler</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>        <span class="c1">// 30</span>
+<span class="lineno">14</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">doubler2</span><span class="p">)</span> <span class="c1">// [2, 6, 10, 14]</span>
+<span class="lineno">15</span> <span class="n">nums</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">tripler</span><span class="p">)</span>  <span class="c1">// [3, 9, 15, 21]</span>
+</pre></div></div>
+<p>First let’s look at the type signature for the function <code>makeMultiplier</code> above.<span class="intersentencespace"></span> The function takes a single integer argument called <code>multiplier</code>.<span class="intersentencespace"></span> It returns a function.<span class="intersentencespace"></span> Note that the return type-signature for the <code>makeMultiplier</code> function is actually a type signature for another function (<code>(Int) -&gt; Int</code>).<span class="intersentencespace"></span> So it returns a function that takes a single integer argument and returns an integer.</p>
+<p>The function that we are returning is created as a closure (line 4).<span class="intersentencespace"></span> That closure is a function that takes a single argument, <code>num</code>, and returns <code>num</code> multiplied by the value of the <code>multiplier</code> parameter that was passed to <code>makeMultiplier</code>.<span class="intersentencespace"></span> This closure “closes over” the value of <code>multiplier</code> so that we can continue to use it when it has gone out of scope.</p>
+<p>Consider an example of how we would use this function.<span class="intersentencespace"></span> Say we wanted to create a function that takes a single integer parameter and doubles it.<span class="intersentencespace"></span> We can do that as shown in line 10 above: <code>var doubler2 = makeMultiplier(2)</code>.<span class="intersentencespace"></span> This returns a function that takes a single argument and multiplies it by 2.<span class="intersentencespace"></span> In this case the <code>multiplier</code> parameter to <code>makeMultiplier</code> had value 2 when we created the function, and the closure that we create closes over that value so that that closure will always see <code>multiplier</code> as having value 2.</p>
+<p>We can also use <code>makeMultiplier</code> to make another function that triples whatever value is passed to it (line 12 above).</p>
+<p>In our above example we use <code>makeMultiplier</code> to create our closure and we save it into a variable using <code>let</code>.<span class="intersentencespace"></span> This lets us name our closure so that we can call it later.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> at line 12 we create a closure that triples the argument that is passed to it and save that function as <code>tripler</code>.<span class="intersentencespace"></span> We can then use this name to call it directly as a function (line 13) or to apply it to every element in our array using <code>map</code> (line 15).</p>
+<p>Lets take another example that uses a closure.<span class="intersentencespace"></span> Lets make a logging function that logs a message and a log level.<span class="intersentencespace"></span> We can do this using closures in a similar way to how we made a multiplier function in our previous example.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">func</span> <span class="n">makeLevelledLogger</span><span class="p">(</span><span class="nl">level</span><span class="p">:</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">return</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="p">(</span><span class="nl">message</span><span class="p">:</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+<span class="lineno"> 4</span>         <span class="k">let</span> <span class="n">logMessage</span> <span class="o">=</span> <span class="s">"\(level) :: \(message)"</span>
+<span class="lineno"> 5</span>         <span class="n">println</span><span class="p">(</span><span class="n">logMessage</span><span class="p">)</span>
+<span class="lineno"> 6</span>         <span class="k">return</span><span class="p">(</span><span class="n">logMessage</span><span class="p">)</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> <span class="k">let</span> <span class="n">debug</span> <span class="o">=</span> <span class="n">makeLevelledLogger</span><span class="p">(</span><span class="s">"DEBUG"</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="k">let</span> <span class="n">warning</span> <span class="o">=</span> <span class="n">makeLevelledLogger</span><span class="p">(</span><span class="s">"WARNING"</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="k">let</span> <span class="n">message</span> <span class="o">=</span> <span class="n">makeLevelledLogger</span><span class="p">(</span><span class="s">"MESSAGE"</span><span class="p">)</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="n">debug</span><span class="p">(</span><span class="s">"A message from our debug logger"</span><span class="p">)</span> <span class="c1">// "DEBUG :: A message from our debug</span>
+<span class="lineno">14</span>                                          <span class="c1">// logger"</span>
+<span class="lineno">15</span> <span class="n">warning</span><span class="p">(</span><span class="s">"Consider yourself warned"</span><span class="p">)</span>     <span class="c1">// "WARNING :: Consider yourself warned"</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="n">message</span><span class="p">(</span><span class="s">"Life, the universe, and everything..."</span><span class="p">)</span> <span class="c1">// "MESSAGE :: Life, the</span>
+<span class="lineno">18</span>                                         <span class="c1">//universe, and everything is..."</span>
+</pre></div></div>
+<p>Our <code>makeLevelledLogger</code> function here takes a single string argument, which is our debug level that we will use for logging, and returns a function.<span class="intersentencespace"></span> The function that is returned closes over the value of <code>level</code> and takes a single string argument <code>message</code> which it prints along with the log level.</p>
+<p>We can use <code>makeLevelledLogger</code> to create a function for each of the log levels we want in our program.<span class="intersentencespace"></span> We create 3 different functions for different log levels at lines 9-11 and save them as constants.<span class="intersentencespace"></span> Now we can call those functions with a message when we want to log a message at each level (lines 13-18).</p>
+</div></div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-11-20T14:54:28+00:00">Nov 20, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/optionals" rel="prev"><span class="meta-nav">←</span> Optionals</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/classes" rel="next">Classes <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

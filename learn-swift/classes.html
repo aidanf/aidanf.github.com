@@ -1,0 +1,692 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Classes</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-classes" data-tralics-id="cid47" class="chapter" data-number="12" data-chapter="classes"><h1><a href="classes#cha-classes" class="heading hyperref"><span class="number">Chapter 12 </span>Classes</a></h1>
+<p>If you’ve programmed in any Object Oriented language, classes in Swift should be unsurprising.</p>
+<div class="aside" id="aside-classes_structures" data-tralics-id="uid93" data-number="12.1"><div class="heading"><span class="number">Box 12.1.</span> 
+
+<span class="description">Classes and Structures</span></div>
+<p>In this chapter we introduce classes.<span class="intersentencespace"></span> However any discussion of classes could also include a discussion of structures (and enumerations).<span class="intersentencespace"></span> In many programming languages, structures are just a way of grouping bits of related data together, whereas classes are ways of grouping related functionality and data together.<span class="intersentencespace"></span> However in Swift, structures have much of the same capabilities as classes.<span class="intersentencespace"></span> Enumerations also have similar capabilities.<span class="intersentencespace"></span> Structures in Swift can have methods that act on their properties, initializers for initializing the structure, they can conform to protocols and they can be extended past their default implementation.<span class="intersentencespace"></span> Thus structures have most of the same capabilities as classes.<span class="intersentencespace"></span> The main difference between structures and classes is that classes are a <em>reference type</em> whereas structures are a <em>value type</em>.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> when you pass an object around your program you are actually passing a reference to that object, so different parts of your program can share and modify your object.<span class="intersentencespace"></span> When you pass a structure around your program, what gets passes around is a copy of the structure.<span class="intersentencespace"></span> So modifications to structures don’t get shared.</p>
+<p>Rather than get into this discussion in detail here we’ll defer it to <a href="structures#cha-structures" class="hyperref">chapter <span class="ref">13</span></a>.<span class="intersentencespace"></span> Classes in Swift behave similarly to classes in many other languages and in this chapter we’ll show how classes work.<span class="intersentencespace"></span> We’ll get into comparing them to structures later.<span class="intersentencespace"></span></p>
+
+</div></div><div id="cid48" data-tralics-id="cid48" class="section" data-number="12.1"><h2><a href="classes#cid48" class="heading hyperref"><span class="number">12.1 </span>Defining a class</a></h2>
+<p>We can define a class in Swift using the <code>class</code> keyword.<span class="intersentencespace"></span> We instantiate a new instance of a class using the class name followed by <code>()</code>.<span class="intersentencespace"></span> Classes can have properties and functions associated with them.<span class="intersentencespace"></span> A property is a value that is associated with an instance of a class and a method is a function that is associated with a class.<span class="intersentencespace"></span> A class is a way of grouping related data along with the properties that operate on them.<span class="intersentencespace"></span> I
+</p><div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">class</span> <span class="n">Animal</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">var</span> <span class="n">species</span> <span class="o">=</span> <span class="s">""</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">let</span> <span class="n">dog</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>
+<span class="lineno">6</span> <span class="n">dog</span><span class="p">.</span><span class="n">species</span>         <span class="c1">// ""</span>
+<span class="lineno">7</span> <span class="n">dog</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="s">"dog"</span>
+<span class="lineno">8</span> <span class="n">dog</span><span class="p">.</span><span class="n">species</span>         <span class="c1">// "dog"</span>
+</pre></div></div>
+<p>Here we create an <code>Animal</code> class with a property called <code>species</code>.<span class="intersentencespace"></span> We create a new <code>Animal</code> object at line 5 and change the value of the species property.</p>
+</div><div id="cid49" data-tralics-id="cid49" class="section" data-number="12.2"><h2><a href="classes#cid49" class="heading hyperref"><span class="number">12.2 </span>Methods</a></h2>
+<p>Methods are functions that are attached to classes and operate on the classes properties.<span class="intersentencespace"></span> We can define a method by defining a function within our class definition.<span class="intersentencespace"></span> That method is then available on objects of that class and has access to the properties of its object.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">MethodCircle</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="k">func</span> <span class="n">area</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span>     <span class="k">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="k">return</span><span class="p">(</span><span class="s">"I am a Circle!"</span><span class="p">)</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="k">var</span> <span class="n">m</span> <span class="o">=</span> <span class="n">MethodCircle</span><span class="p">()</span>
+<span class="lineno">13</span> <span class="n">m</span><span class="p">.</span><span class="n">area</span><span class="p">()</span>         <span class="c1">// 3.14</span>
+<span class="lineno">14</span> <span class="n">m</span><span class="p">.</span><span class="n">description</span><span class="p">()</span>  <span class="c1">// "I am a Circle!"</span>
+</pre></div></div>
+<p>Here we define a class with 2 instance methods.<span class="intersentencespace"></span> The syntax for defining methods is the same as for defining functions (and is described in more detail in <a href="functions#cha-functions" class="hyperref">chapter <span class="ref">11</span></a>) - just that those functions are defined within the class definition.<span class="intersentencespace"></span> Thus they are attached to instances of the class and they have access to the classes properties.<span class="intersentencespace"></span> In this example, our <code>MethodCircle</code> class has a property called <code>radius</code>.<span class="intersentencespace"></span> It has an instance method called <code>area</code>, which returns a <code>Double</code> and an instance method called <code>description</code> which returns a <code>String</code>.<span class="intersentencespace"></span> Once we created a new instance of our class (line 12) we can call these methods using dot syntax (lines 13-14).</p>
+</div><div id="cid50" data-tralics-id="cid50" class="section" data-number="12.3"><h2><a href="classes#cid50" class="heading hyperref"><span class="number">12.3 </span>Properties: stored and computed</a></h2>
+<p>In Swift, classes can have 2 types of properties - stored properties and computed properties.</p>
+<p>Stored properties are declared using <code>var</code> or <code>let</code>, and given an initial value.<span class="intersentencespace"></span> Computed properties are also declared with <code>var</code>, but instead of an initial value you assign a function to calculate the value.<span class="intersentencespace"></span> (By default, you just need a getter to calculate the value, but you can also create a setter to initialize the value).<span class="intersentencespace"></span> You must declare the type for computed properties.</p>
+<p>Stored properties are stored as vars on the object, whereas computed properties are computed by defining a method to calculate the value.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Circle</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="lineno"> 3</span>     <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno"> 5</span>     <span class="p">}</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="k">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<span class="lineno"> 9</span> <span class="n">c</span><span class="p">.</span><span class="n">area</span>           <span class="c1">// 3.14</span>
+<span class="lineno">10</span> <span class="n">c</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="lineno">11</span> <span class="n">c</span><span class="p">.</span><span class="n">area</span>           <span class="c1">// 19.625</span>
+</pre></div></div>
+<p>In this example we define a class <code>Circle</code> that has a stored property (<code>radius</code>) and a computed property (<code>area</code>).<span class="intersentencespace"></span> We define the computed property by providing a closure that will calculate its value.<span class="intersentencespace"></span> They are basically methods that look like properties.<span class="intersentencespace"></span> Here we can see that when we change the value of our stored property <code>radius</code>, the value returned by our <code>computed</code> property <code>area</code> also changes.</p>
+<p>Computed values and methods can look very similar.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> what’s the difference between a computed value and a method that does the same.<span class="intersentencespace"></span> In many cases it’s a matter of style or judgment.<span class="intersentencespace"></span> Use properties for things that are properties of the object and use methods for things do stuff.<span class="intersentencespace"></span> In our previous example we implemented a method to calculate the circles area, whereas in this example we implemented the area calculation as a computed property.<span class="intersentencespace"></span> For this example I prefer to use a property, as area seems more like a property of a circle and than related to functionality.<span class="intersentencespace"></span> One difference is that you can define a setter for a computed value.<span class="intersentencespace"></span> This is a method that sets up any properties that would affect the computed value.</p>
+<p>Computed values can have both getters and setters.<span class="intersentencespace"></span> Our example above used a read-only computed value, so we didn’t need to explicitly declare the getter.<span class="intersentencespace"></span> Our next example explicitly declares both <code>get</code> and <code>set</code> methods for our computed variable.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Circle2</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="lineno"> 3</span>     <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="kr">get</span> <span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno"> 6</span>         <span class="p">}</span>
+<span class="lineno"> 7</span>         <span class="kr">set</span><span class="p">(</span><span class="n">new_area</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>             <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">new_area</span> <span class="o">/</span> <span class="mf">3.14</span><span class="p">)</span>
+<span class="lineno"> 9</span>         <span class="p">}</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="k">var</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">Circle2</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="n">c2</span><span class="p">.</span><span class="n">area</span>          <span class="c1">// 19.625</span>
+<span class="lineno">15</span> <span class="n">c2</span><span class="p">.</span><span class="n">area</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="lineno">16</span> <span class="n">c2</span><span class="p">.</span><span class="n">radius</span>        <span class="c1">// 1</span>
+<span class="lineno">17</span> <span class="n">c2</span><span class="p">.</span><span class="n">area</span> <span class="o">=</span> <span class="mf">19.625</span>
+<span class="lineno">18</span> <span class="n">c2</span><span class="p">.</span><span class="n">radius</span>        <span class="c1">// 2.5</span>
+</pre></div></div>
+<p>In this example, the <code>area</code> property is calculated based on the <code>radius</code> property.<span class="intersentencespace"></span> Since we are providing both <code>get</code> and <code>set</code> in this example we define them explicitly using <code>get</code> (line 4) and <code>set</code> (line 7) in the method body.<span class="intersentencespace"></span> By also providing a <code>set</code> method (line 7) we can now set the area directly.<span class="intersentencespace"></span> Since our get for the <code>area</code> computed value depends on radius our set method calculates and sets the radius value based on the given area.</p>
+</div><div id="cid51" data-tralics-id="cid51" class="section" data-number="12.4"><h2><a href="classes#cid51" class="heading hyperref"><span class="number">12.4 </span>Lazy stored properties</a></h2>
+<p>You can declare stored properties as <code>lazy</code> if you want to defer their initialization.<span class="intersentencespace"></span> The value of an lazy property won’t be calculated until the first time it is accessed.<span class="intersentencespace"></span> For example, say you had a stored property performs a network call to get its initial value.<span class="intersentencespace"></span> Instead of having this happen when the object is initialized, you can have it happen when the property is first accessed by declaring the property as lazy.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> </p><div class="code"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">lazy</span> <span class="k">var</span> <span class="n">shippingCosts</span> <span class="o">=</span> <span class="n">downloadShippingData</span><span class="p">()</span>
+<span class="p">...</span>
+</pre></div></div>
+<p>Note that lazy properties must always be declared using <code>var</code> (as their value will changed when they are first accessed, so we can’t use <code>let</code> even if the value never changes after it’s initialized).<span class="intersentencespace"></span> Also, you can’t attach observers to lazy properties.</p>
+</div><div id="cid52" data-tralics-id="cid52" class="section" data-number="12.5"><h2><a href="classes#cid52" class="heading hyperref"><span class="number">12.5 </span>Property callbacks</a></h2>
+<p>We can also attach a function to a stored property and have it called whenever the value of that property is about to change.<span class="intersentencespace"></span> These are called property observers.</p>
+<p>There are 2 observers that you can define: <code>willSet</code> gets called before the variable changes, and <code>didSet</code> gets called after the variable has changed.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">ObservedCirlce</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="nl">radius</span><span class="p">:</span><span class="n">Double</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="kr">willSet</span><span class="p">{</span>
+<span class="lineno"> 4</span>             <span class="n">print</span><span class="p">(</span><span class="err">”</span><span class="n">Radius</span> <span class="kt">is</span> <span class="n">changing</span> <span class="n">from</span> <span class="err">\</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span> <span class="n">to</span> <span class="err">\</span><span class="p">(</span><span class="n">newValue</span><span class="p">).</span><span class="err">”</span><span class="p">)</span>
+<span class="lineno"> 5</span>         <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="k">var</span> <span class="n">oc</span> <span class="o">=</span> <span class="n">ObservedCirlce</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="n">oc</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1">// prints "Radius is changing from 1.0 to 2.5."</span>
+<span class="lineno">15</span> <span class="n">oc</span><span class="p">.</span><span class="n">area</span> <span class="c1">// 19.625</span>
+</pre></div></div>
+<p>This example defines an <code>ObservedCirlce</code> class and attaches an observer to the radius property.<span class="intersentencespace"></span> We do this by providing a function called <code>willSet</code> when we define the property.<span class="intersentencespace"></span> When you run the above code in a playground and check the console output, you’ll see that every time we change the value of radius it prints the old value and the new value.</p>
+</div><div id="cid53" data-tralics-id="cid53" class="section" data-number="12.6"><h2><a href="classes#cid53" class="heading hyperref"><span class="number">12.6 </span>Subscripts</a></h2>
+<p>Subscripts allow you do define a way of allowing your class (or structure or enumeration) to be accessed using an index or key surrounded by square brackets.<span class="intersentencespace"></span> These are usually used as a shortcut for accessing members of a collection.<span class="intersentencespace"></span> More specifically it allows you to define a way of accessing elements of your class using square brackets after the name of the instance.<span class="intersentencespace"></span> For example, arrays have a subscript that lets you access elements in the array using an index that indicates the position in the array i.e.<span class="intersentencespace"></span> <code>myArray[3]</code>.<span class="intersentencespace"></span> Similarly dictionaries have a subscript that allows you to access elements in the dictionary using a key e.g.<span class="intersentencespace"></span> <code>myDict["key"]</code>.</p>
+<p>We can define a subscript function that takes a key and uses it to find and return the appropriate value.<span class="intersentencespace"></span> Similar to computed properties subscripts can be read-write, in which case we need to provide both a <code>get</code> and a <code>set</code> method, or read-only, in which case we can just provide a single method which Swift assumes is the <code>get</code> method.</p>
+<p>Lets look at an example.<span class="intersentencespace"></span> Lets say we want to represent individual hands in a game of cards (We could better represent this using structures and enumerations but we’ll stick with the example to illustrate subscripts here).</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">class</span> <span class="n">Hand</span><span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">var</span> <span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Ah"</span><span class="p">,</span> <span class="s">"Ad"</span><span class="p">,</span> <span class="s">"Ac"</span><span class="p">,</span> <span class="s">"As"</span><span class="p">,</span> <span class="s">"7c"</span><span class="p">]</span>
+<span class="lineno">3</span>     <span class="k">subscript</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">{</span>
+<span class="lineno">4</span>         <span class="k">return</span> <span class="n">cards</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="lineno">5</span>     <span class="p">}</span>
+<span class="lineno">6</span> <span class="p">}</span>
+<span class="lineno">7</span> <span class="k">var</span> <span class="n">h</span> <span class="o">=</span> <span class="n">Hand</span><span class="p">()</span>
+<span class="lineno">8</span> <span class="n">h</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">// "As"</span>
+</pre></div></div>
+<p>A hand is a collection of cards, which we’ve represented here using strings.<span class="intersentencespace"></span> First is a read-only version.<span class="intersentencespace"></span> In this example we can access the individual cards in the hand using an index.<span class="intersentencespace"></span> Since we’re not providing a <code>set</code> method, we can just provide a subscript method that takes and Integer and returns a string (line 3)</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">UpdatableHand</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Ah"</span><span class="p">,</span> <span class="s">"Ad"</span><span class="p">,</span> <span class="s">"Ac"</span><span class="p">,</span> <span class="s">"As"</span><span class="p">,</span> <span class="s">"7c"</span><span class="p">]</span>
+<span class="lineno"> 3</span>     <span class="k">subscript</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="kr">get</span><span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="k">return</span> <span class="n">cards</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="lineno"> 6</span>         <span class="p">}</span>
+<span class="lineno"> 7</span>         <span class="kr">set</span><span class="p">(</span><span class="n">newVal</span><span class="p">){</span>
+<span class="lineno"> 8</span>             <span class="n">cards</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">newVal</span>
+<span class="lineno"> 9</span>         <span class="p">}</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="k">var</span> <span class="n">uh</span> <span class="o">=</span> <span class="n">UpdatableHand</span><span class="p">()</span>
+<span class="lineno">13</span> <span class="n">uh</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>          <span class="c1">// "7c"</span>
+<span class="lineno">14</span> <span class="n">uh</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Kc"</span>
+<span class="lineno">15</span> <span class="n">uh</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>          <span class="c1">// "Kc"</span>
+</pre></div></div>
+<p>If we want to extend this example to allow us to set values in the collection using an index, we can provide both a get and set method.<span class="intersentencespace"></span> The <code>get</code> method gets called when someone accessing a <code>Hand</code> instance using square bracket notation (line 13) and the <code>set</code> method gets called when someone assigns a value to an instance of <code>Hand</code> using square bracket notation (line 14).<span class="intersentencespace"></span> In this case the value that was assigned gets passed to the set method as a parameter <code>newVal</code>.</p>
+<p>Subscripts are not limited to a single dimension.<span class="intersentencespace"></span> You can define multi-dimensional subscripts if you want to, i.e.<span class="intersentencespace"></span> <code>myObject[0][2]["key"]</code>, by defining a subscript with the appropriate number of parameters.</p>
+</div><div id="cid54" data-tralics-id="cid54" class="section" data-number="12.7"><h2><a href="classes#cid54" class="heading hyperref"><span class="number">12.7 </span>Object Initialization</a></h2>
+<p>We can initialize properties by setting a default value when we define the class.<span class="intersentencespace"></span> In our Circle class above, we gave <code>radius</code> an initial value of <code>1.0</code>.<span class="intersentencespace"></span> Then we changed the radius property to a different value.<span class="intersentencespace"></span> When we give a property an initial value in the class definition like this, all our Circle objects will have an initial radius of <code>1.0</code> when we create them and we’ll then have to change the value of that property if we want it to have a different value.</p>
+<p>We could also initialize this value with an intializer.<span class="intersentencespace"></span> We create an initializer using the <code>init</code> keyword in the class definition.<span class="intersentencespace"></span> Initializers follow the same conventions as methods and functions for defining their parameters.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">InitializedCircle</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="nl">radius</span><span class="p">:</span><span class="n">Float</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="k">init</span><span class="p">(</span><span class="nl">initialRadius</span><span class="p">:</span><span class="n">Float</span><span class="p">){</span>
+<span class="lineno"> 5</span>         <span class="n">radius</span> <span class="o">=</span> <span class="n">initialRadius</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Float</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> <span class="k">var</span> <span class="n">ic</span> <span class="o">=</span> <span class="n">InitializedCircle</span><span class="p">(</span><span class="nl">initialRadius</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">ic</span><span class="p">.</span><span class="n">radius</span> <span class="c1">// 2.5</span>
+<span class="lineno">13</span> <span class="n">ic</span><span class="p">.</span><span class="n">area</span>   <span class="c1">// 19.625</span>
+</pre></div></div>
+<p>In this example we add an initializer to our class definition.<span class="intersentencespace"></span> We can now use that to declare the initial value for our radius.<span class="intersentencespace"></span> We pass the radius value to the initializer by using the name we defined in the initializer definition as a key - i.e.<span class="intersentencespace"></span> in this example <code>initialRadius: 2.5</code>.</p>
+<p>We can define multiple initializers for a class as long as each has a different type signature.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">InitializedCircle2</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="k">init</span><span class="p">(){}</span>
+<span class="lineno"> 5</span>     <span class="k">init</span><span class="p">(</span><span class="nl">initialRadius</span><span class="p">:</span><span class="n">Double</span><span class="p">){</span>
+<span class="lineno"> 6</span>         <span class="n">radius</span> <span class="o">=</span> <span class="n">initialRadius</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="k">init</span><span class="p">(</span><span class="nl">initialArea</span><span class="p">:</span><span class="n">Double</span><span class="p">){</span>
+<span class="lineno"> 9</span>         <span class="n">area</span> <span class="o">=</span> <span class="n">initialArea</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span>     <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Double</span> <span class="p">{</span>
+<span class="lineno">12</span>         <span class="kr">get</span> <span class="p">{</span>
+<span class="lineno">13</span>             <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+<span class="lineno">14</span>         <span class="p">}</span>
+<span class="lineno">15</span>         <span class="kr">set</span><span class="p">(</span><span class="n">new_area</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>             <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">new_area</span> <span class="o">/</span> <span class="mf">3.14</span><span class="p">)</span>
+<span class="lineno">17</span>         <span class="p">}</span>
+<span class="lineno">18</span>     <span class="p">}</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="p">}</span>
+<span class="lineno">21</span> <span class="k">var</span> <span class="n">ic2</span> <span class="o">=</span> <span class="n">InitializedCircle2</span><span class="p">()</span>
+<span class="lineno">22</span> <span class="n">ic2</span><span class="p">.</span><span class="n">radius</span> <span class="c1">// 1.0</span>
+<span class="lineno">23</span> <span class="n">ic2</span><span class="p">.</span><span class="n">area</span>   <span class="c1">// 3.14</span>
+<span class="lineno">24</span> <span class="n">ic2</span> <span class="o">=</span> <span class="n">InitializedCircle2</span><span class="p">(</span><span class="nl">initialRadius</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="lineno">25</span> <span class="n">ic2</span><span class="p">.</span><span class="n">radius</span> <span class="c1">// 2.5</span>
+<span class="lineno">26</span> <span class="n">ic2</span><span class="p">.</span><span class="n">area</span>   <span class="c1">// 19.625</span>
+<span class="lineno">27</span> <span class="n">ic2</span> <span class="o">=</span> <span class="n">InitializedCircle2</span><span class="p">(</span><span class="nl">initialArea</span><span class="p">:</span> <span class="mf">78.5</span><span class="p">)</span>
+<span class="lineno">28</span> <span class="n">ic2</span><span class="p">.</span><span class="n">area</span>   <span class="c1">// 78.5</span>
+<span class="lineno">29</span> <span class="n">ic2</span><span class="p">.</span><span class="n">radius</span> <span class="c1">// 5.0</span>
+</pre></div></div>
+<p>In this example we have defined 3 different initializers (with 3 different type-signatures).<span class="intersentencespace"></span> The first takes no arguments and does nothing (line 4).<span class="intersentencespace"></span> When we initialize an object with no arguments, this initializer gets called and <code>radius</code> ends up with the default value of <code>1.0</code> (line 21).<span class="intersentencespace"></span> The second initializer takes an argument called <code>initialRadius</code> and uses it to initialize the radius to that value (line 5).<span class="intersentencespace"></span> This initializer can be used to create a new circle with a given radius (line 24).<span class="intersentencespace"></span> In this example we have defined <code>area</code> as a computed property with a getter and setter similar to our previous example.<span class="intersentencespace"></span> Since we have a setter for <code>area</code> we can also initialize our circle using a given area.<span class="intersentencespace"></span> We define this initializer at line 8.<span class="intersentencespace"></span> This initializer gets called when we call the initializer with the <code>initialArea</code> key (line 27).</p>
+</div><div id="cid55" data-tralics-id="cid55" class="section" data-number="12.8"><h2><a href="classes#cid55" class="heading hyperref"><span class="number">12.8 </span>Deinitialization</a></h2>
+<p>If you need some code to be run before your objects are destroyed, you can define a deinitializer.<span class="intersentencespace"></span> You do this using using the <code>deinit</code> and providing a block with no arguments.<span class="intersentencespace"></span> The <code>deinit</code> function will be called just before your object is destroyed.<span class="intersentencespace"></span> Note: deinit is only available for classes, not for structures or enumerations.</p>
+<div class="code"><div class="highlight"><pre><span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="k">class</span> <span class="n">MelancholicCircle</span><span class="p">{</span>
+    <span class="k">var</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">var</span> <span class="nl">area</span><span class="p">:</span><span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">deinit</span><span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"Goodbye Cruel World"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nl">mc</span><span class="p">:</span> <span class="n">MelancholicCircle</span><span class="o">?</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">MelancholicCircle</span><span class="p">()</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"Radius is \(mc!.radius)"</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="nb">nil</span>
+</pre></div></div>
+<p>This example shows a deinitilization method.<span class="intersentencespace"></span> Unlike all our other code, we won’t be able to see this working correctly just by entering it in a playground.<span class="intersentencespace"></span> The reason is that the playground may hold on to a reference to the object longer than it’s needed.<span class="intersentencespace"></span> Whenever we want to experiment with code related to memory management, we need to create a project to run the code rather than check it in a playground.<span class="intersentencespace"></span> If you create a command-line application, put the above code in <code>main.swift</code> and then run it from Xcode, you’ll see that “Goodbye Cruel World!”<span class="intersentencespace"></span> is printed after we assign nil to the var <code>mc</code>, which causes it to be deallocated.<span class="intersentencespace"></span> We’ll cover memory-management in more detail in <a href="memory_management#cha-memory-management" class="hyperref">chapter <span class="ref">17</span></a></p>
+</div><div id="cid56" data-tralics-id="cid56" class="section" data-number="12.9"><h2><a href="classes#cid56" class="heading hyperref"><span class="number">12.9 </span>Inheritance</a></h2>
+<p>Classes can inherit functionality from other classes.<span class="intersentencespace"></span> (Note: Only classes can inherit functionality from other classes.<span class="intersentencespace"></span> Inheritance doesn’t apply to structures and enumerations.)<span class="intersentencespace"></span> Subclasses in Swift can inherit and override properties (including adding new observers), methods and subscripts from a parent class.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Coder</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">favouriteEditor</span> <span class="o">=</span> <span class="s">"vi"</span>
+<span class="lineno"> 3</span>     <span class="k">init</span><span class="p">()</span> <span class="p">{}</span>
+<span class="lineno"> 4</span>     <span class="k">func</span> <span class="n">startEditorWar</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">print</span><span class="p">(</span><span class="s">"Obviously \(favouriteEditor) is best"</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">class</span> <span class="nl">Rubyist</span><span class="p">:</span><span class="n">Coder</span> <span class="p">{</span>
+<span class="lineno">10</span>     <span class="kr">override</span> <span class="k">init</span><span class="p">(){</span>
+<span class="lineno">11</span>         <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+<span class="lineno">12</span>         <span class="n">favouriteEditor</span> <span class="o">=</span> <span class="s">"TextMate"</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">class</span> <span class="nl">Lisper</span><span class="p">:</span><span class="n">Coder</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="kr">override</span> <span class="k">init</span><span class="p">(){</span>
+<span class="lineno">18</span>         <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+<span class="lineno">19</span>         <span class="n">favouriteEditor</span> <span class="o">=</span> <span class="s">"emacs"</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span> <span class="p">}</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="k">var</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Rubyist</span><span class="p">()</span>
+<span class="lineno">24</span> <span class="k">var</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Lisper</span><span class="p">()</span>
+<span class="lineno">25</span> <span class="n">r</span><span class="p">.</span><span class="n">startEditorWar</span><span class="p">()</span> <span class="c1">// Obviously TextMate is best</span>
+<span class="lineno">26</span> <span class="n">l</span><span class="p">.</span><span class="n">startEditorWar</span><span class="p">()</span> <span class="c1">// Obviously emacs is best</span>
+</pre></div></div>
+<p>In this example we create a base class called <code>Coder</code>.<span class="intersentencespace"></span> It has a property with an initial value (line 2), an initializer that doesn’t do anything (line 3) and a method (line 4).<span class="intersentencespace"></span> We can inherit from this class when defining new classes by putting the name of the class we want to inherit from after a colon when defining new classes as shown in lines 9 and 16.<span class="intersentencespace"></span> We define 2 new classes than inherit from our base <code>Coder</code> class.<span class="intersentencespace"></span> Both of these override the empty initializer from the base class and use it to set a new value for the <code>favouriteEditor</code> variable.<span class="intersentencespace"></span> We do this by redefining the init method and using the <code>override</code> keyword (lines 10 and 17).<span class="intersentencespace"></span> You must use the <code>override</code> keyword when you want to redefine a method that you inherited.<span class="intersentencespace"></span> If you were to leave out the <code>override</code> keyword here you would get a compiler error.<span class="intersentencespace"></span> This prevents you from accidentally redefining a method in a subclass.</p>
+<p>If we want to access a method from the parent class we can use the <code>super</code> keyword.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> in the initializers of our 2 subclasses we call the parent initializer before we change the value for favouriteEditor (lines 11 and 18).</p>
+<p>We can’t override stored properties when declaring the base class.<span class="intersentencespace"></span> (Since they already exist in the base class and are inherited, there is no need to redeclare them.<span class="intersentencespace"></span> But we can change their value in an initializer as shown in the above example).<span class="intersentencespace"></span> However we can override their behaviour.<span class="intersentencespace"></span> For example, we could add observers to the property, or change the getter or setter if it’s a computed property.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">PopulistCoder</span><span class="p">:</span><span class="n">Coder</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kr">override</span> <span class="k">var</span> <span class="nl">favouriteEditor</span><span class="p">:</span><span class="n">String</span><span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="kr">didSet</span><span class="p">{</span>
+<span class="lineno"> 4</span>             <span class="n">print</span><span class="p">(</span><span class="s">"I changed my mind, \(favouriteEditor) is the new hotness"</span><span class="p">)</span>
+<span class="lineno"> 5</span>         <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="k">var</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">PopulistCoder</span><span class="p">()</span>
+<span class="lineno"> 9</span> <span class="n">pop</span><span class="p">.</span><span class="n">startEditorWar</span><span class="p">()</span>
+<span class="lineno">10</span> <span class="n">pop</span><span class="p">.</span><span class="n">favouriteEditor</span> <span class="o">=</span> <span class="s">"Sublime"</span> <span class="c1">// prints "I changed my mind, ...</span>
+<span class="lineno">11</span>                                 <span class="c1">// ... Sublime is the new hotness"</span>
+</pre></div></div>
+<p>This example inherits the <code>favouriteEditor</code> property from the <code>Coder</code> class, but it adds an observer to that property.<span class="intersentencespace"></span> We do this by overriding the property(line 2) and providing an observer function similar to how we would declare an observer on any property (line 3).</p>
+<p>We can override inherited methods in a similar way i.e.<span class="intersentencespace"></span> by redefining them in the subclass and using the <code>override</code> keyword.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">PeacefullCoder</span><span class="p">:</span><span class="n">Coder</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kr">override</span> <span class="k">init</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+<span class="lineno"> 4</span>         <span class="n">favouriteEditor</span> <span class="o">=</span> <span class="s">"all of them"</span>
+<span class="lineno"> 5</span>     <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="kr">override</span> <span class="k">func</span> <span class="n">startEditorWar</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="n">print</span><span class="p">(</span><span class="s">"They're all good"</span><span class="p">)</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">var</span> <span class="n">p</span> <span class="o">=</span> <span class="n">PeacefullCoder</span><span class="p">()</span>
+<span class="lineno">12</span> <span class="n">p</span><span class="p">.</span><span class="n">startEditorWar</span><span class="p">()</span> <span class="c1">// prints "They're all good"</span>
+</pre></div></div>
+<p>In this example we override the <code>startEditorWar</code> method in the subclass and replace it with a methods that is better suited to the subclasses behaviour.</p>
+<div id="uid94" data-tralics-id="uid94" class="subsection" data-number="12.9.1"><h3><a href="classes#uid94" class="heading hyperref"><span class="number">12.9.1 </span>Designated and convenience initializers</a></h3>
+<p>We’ve already looked at initializers, but once inheritence involved, initializers turn out to be a bit more complex than is obvious from the previous example.<span class="intersentencespace"></span> Swift has 2 kinds of initializers (for classes): <em>designated initializers</em> and <em>convenience initializers</em>.<span class="intersentencespace"></span> Designated initializers must initilize all properties in the class and also call an initializer from the superclass that will initialize properties inherited from superclass.<span class="intersentencespace"></span> Every class must have at least one designated initializer.<span class="intersentencespace"></span> Designated initializers are defined with <code>init</code> similar to how we defined our initializer previously.<span class="intersentencespace"></span> But when we are dealing with subclasses we have the added constraints that we must initialize all the properties defined in the class and call the superclass initializer.</p>
+<p>Convenience initializers are defined similarly but are tagged with the <code>convenience</code> keyword.<span class="intersentencespace"></span> The main use of convenience initializers is to call a designated initializer with some default values.<span class="intersentencespace"></span> I.e.<span class="intersentencespace"></span> they are a way to declare a common initialization pattern, either for convenience or for readability.</p>
+</div>
+<div id="uid95" data-tralics-id="uid95" class="subsection" data-number="12.9.2"><h3><a href="classes#uid95" class="heading hyperref"><span class="number">12.9.2 </span>Inheriting initializers</a></h3>
+<p>Subclasses don’t inherit initializers by default (But you can call them in your designated initializer user <code>super</code>).<span class="intersentencespace"></span> <em>But</em>, if your subclass doesn’t provide any designated initializers, then it will inherit <em>all</em> of the superclasses designated initializers.<span class="intersentencespace"></span> Following on from that, if your subclasses inherits all of its designated initializers from the superclass, it will also inherit <em>all</em> of the superclasses convenience initializers.</p>
+<p>So to clarify, here are the rules when it comes to inheritance and initializers:</p>
+<ul>
+<li>Designated initializers must call the designated initializer from the immediate superclass.<span class="intersentencespace"></span>
+</li>
+<li>Convenience initializers must call another initializer from the same class
+</li>
+<li>Convenience initializers must eventually call a designated initializer
+</li>
+<li>Designated initializer must initialize all of the properties introduced by the class before then calling the superclass initializer
+</li>
+<li>Designated initializer must call superclass initializer before it changes the value of an inherited property
+</li>
+<li>Convenience initializer must call another initializer before it changes any property
+</li>
+<li>An initializer can’t call any instance methods or read property values before all properties have been initialized
+</li></ul>
+<p>So in our previous example we overrode the designated initializer and changed the value of <code>favouriteEditor</code>.<span class="intersentencespace"></span> In that example, <code>init()</code> is the designated initializer for the class.<span class="intersentencespace"></span> Before we can change the value of that property, we have to call the designated initializer for its superclass (line 3).</p>
+</div>
+<div id="uid103" data-tralics-id="uid103" class="subsection" data-number="12.9.3"><h3><a href="classes#uid103" class="heading hyperref"><span class="number">12.9.3 </span>Failable initializers</a></h3>
+<p>Sometimes you may want to have an initializer that can fail, depending on the state of other objects in the system or the values passed it.<span class="intersentencespace"></span> You can do this by defining an initializer with a <code>?</code><span class="intersentencespace"></span> at the end i.e.<span class="intersentencespace"></span> <code>init?</code>.<span class="intersentencespace"></span> You can then return <code>nil</code> within your <code>init?</code><span class="intersentencespace"></span> method at any point where a failure occurs.</p>
+<p>Failable initializers return an optional.<span class="intersentencespace"></span> Thus when your initialization succeeds you get an object of the class back and when initialization fails you get nil back.<span class="intersentencespace"></span> You can treat objects that are created with failable initializers the same way as you would any other optional.</p>
+</div>
+<div id="uid104" data-tralics-id="uid104" class="subsection" data-number="12.9.4"><h3><a href="classes#uid104" class="heading hyperref"><span class="number">12.9.4 </span>required and final</a></h3>
+<p>You can use the <code>required</code> keyword for an initializer to indicate that all subclasses must implement an initializer with that type signature.</p>
+<p>You can prevent a property or method from being overridden by using the <code>final</code> keyword.</p>
+<div class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nl">StubbornCoder</span><span class="p">:</span><span class="n">Coder</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nl">declaration</span><span class="p">:</span><span class="n">String</span>
+
+    <span class="n">final</span> <span class="kr">override</span> <span class="k">func</span> <span class="n">startEditorWar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"\(declaration)! Emacs is obviously better"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">required</span> <span class="k">init</span><span class="p">(</span><span class="nl">d</span><span class="p">:</span><span class="n">String</span><span class="p">){</span>
+        <span class="n">declaration</span> <span class="o">=</span> <span class="n">d</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="n">st</span> <span class="o">=</span> <span class="n">StubbornCoder</span><span class="p">(</span><span class="nl">d</span><span class="p">:</span> <span class="s">"By Jove"</span><span class="p">)</span>
+<span class="n">st</span><span class="p">.</span><span class="n">startEditorWar</span><span class="p">()</span>
+</pre></div></div>
+<p>In this example, we mark the method <code>startEditorWar</code> as final.<span class="intersentencespace"></span> Any subclass that inherits from this class now cannot override that method.<span class="intersentencespace"></span> Any attempt to override it will result in a compiler error.<span class="intersentencespace"></span> We also mark declare an initializer that takes a string argument.<span class="intersentencespace"></span> By marking this as <code>required</code> we ensure that any class that inherits from <code>StubbornCoder</code> must implement an initializer like this.</p>
+</div></div><div id="cid57" data-tralics-id="cid57" class="section" data-number="12.10"><h2><a href="classes#cid57" class="heading hyperref"><span class="number">12.10 </span>Type Methods</a></h2>
+<p>In other languages these are often referred to as class variables and class methods.<span class="intersentencespace"></span> They are properties and methods that are attached to (and operate on) the class rather than on individual objects of that class.<span class="intersentencespace"></span> So they are available to all instances of the class and they usually implement functionality or store data that is shared between all elements of the class.</p>
+<p>Note: In Swift these are referred to as type properties and type methods rather than class properties and class methods because they are something that can apply to types other than classes.<span class="intersentencespace"></span> E.g.<span class="intersentencespace"></span> Similar to classes, structures and enumerations are also types.<span class="intersentencespace"></span> And you can define a “class method” on a structure or an enumeration the same way you can on a class.<span class="intersentencespace"></span> Hence the more general term “type methods” as these methods aren’t just restricted to classes.</p>
+<p>Type methods are defined by prefixing the method declaration with <code>class</code> (for structs and enumerations use the <code>static</code> keyword instead of <code>class</code> to indicate type methods).</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">class</span> <span class="n">ShippingCalculator</span><span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">class</span> <span class="k">func</span> <span class="n">countryRates</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nl">String</span> <span class="p">:</span> <span class="n">Float</span><span class="p">]{</span>
+<span class="lineno">3</span>         <span class="k">return</span> <span class="p">[</span><span class="s">"Ireland"</span> <span class="o">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s">"USA"</span> <span class="o">:</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s">"Argentina"</span><span class="o">:</span> <span class="mf">19.0</span><span class="p">]</span>
+<span class="lineno">4</span>     <span class="p">}</span>
+<span class="lineno">5</span> <span class="p">}</span>
+<span class="lineno">6</span> <span class="n">ShippingCalculator</span><span class="p">.</span><span class="n">countryRates</span><span class="p">()</span>
+</pre></div></div>
+<p>Type methods are called by using the type name with a dot followed by the function name as shown above in line 6.</p>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2016-02-08T08:08:52+00:00">Feb 8, 2016
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/functions" rel="prev"><span class="meta-nav">←</span> Functions and Closures</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/structures" rel="next">Structures <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

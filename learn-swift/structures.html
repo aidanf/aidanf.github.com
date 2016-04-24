@@ -1,0 +1,526 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Structures</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-structures" data-tralics-id="cid58" class="chapter" data-number="13" data-chapter="structures"><h1><a href="structures#cha-structures" class="heading hyperref"><span class="number">Chapter 13 </span>Structures</a></h1>
+<p>Structures are a way of grouping data together (along with methods that act on that data).<span class="intersentencespace"></span> In many ways they are similar to classes.<span class="intersentencespace"></span> One of the important differences is that structures are value types (copied when passed around your program) whereas classes are reference types (a reference rather than a copy gets passed around your program).</p>
+</div><div id="cid59" data-tralics-id="cid59" class="section" data-number="13.1"><h2><a href="structures#cid59" class="heading hyperref"><span class="number">13.1 </span>Structures are like classes</a></h2>
+<p>Classes and structures are quite similar in Swift, surprisingly so at first glance in fact.<span class="intersentencespace"></span> Structures are present in many languages but often they are a means to group related data together.<span class="intersentencespace"></span> Structures in Swift are more fully featured.<span class="intersentencespace"></span> In addition to storing data in structures you can also do most of the things you can do with classes with them.</p>
+<p>Structures share the following features with classes:</p>
+<ul>
+<li>properties (both computed and stored)
+</li>
+<li>instance methods
+</li>
+<li>type methods (using they <code>static</code> keyword instead of the <code>class</code> keyword)
+</li>
+<li>initializers
+</li>
+<li>subscripts
+</li>
+<li>extensions
+</li>
+<li>protocols
+</li></ul>
+<p>For the most part the syntax for each of these features is the same as it is for classes.<span class="intersentencespace"></span> Let’s revisit the example that we had at the start of <a href="classes#cha-classes" class="hyperref">chapter <span class="ref">12</span></a> on classes.</p>
+<div class="code"><div class="highlight"><pre><span class="k">class</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">species</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">func</span> <span class="n">description</span><span class="p">(){</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"Species is \(species)"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">dog</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="s">"dog"</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">description</span><span class="p">()</span>
+</pre></div></div>
+<p>This example showed how to declare a class with a property and a method.</p>
+<p>The syntax for declaring structs is almost identical to that as for declaring classes.<span class="intersentencespace"></span> Except that we use the <code>struct</code> keyword in stead of the <code>class</code> keyword.<span class="intersentencespace"></span> In this example we can just replace <code>class</code> with <code>struct</code> and then we have a structure instead of a class.</p>
+<div class="code"><div class="highlight"><pre><span class="k">struct</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">species</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">func</span> <span class="n">description</span><span class="p">(){</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"Species is \(species)"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></div>
+<p>This example declares a structure with a property and a method similar to the class that we declared in our previous example.<span class="intersentencespace"></span> Declaring methods, properties, initializers, subscripts, extensions and protocols for structures follows the same syntax as for classes.<span class="intersentencespace"></span> Type methods are similar to classes except that they are declared using the <code>static</code> keyword instead of the <code>class</code> keyword.<span class="intersentencespace"></span> Since the syntax is similar and since there are so many similarities between structures and classes we won’t revisit the syntax for declaring all of these here.<span class="intersentencespace"></span> You can refer back to the chapter on classes for details on each of them.<span class="intersentencespace"></span> Instead we will focus on the differences between structures and classes.</p>
+</div><div id="cid60" data-tralics-id="cid60" class="section" data-number="13.2"><h2><a href="structures#cid60" class="heading hyperref"><span class="number">13.2 </span>Differences between structures and classes</a></h2>
+<p>We’ve seen how similar structures are to classes, not lets focus on the differences.<span class="intersentencespace"></span> Continuing our example above…</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">dog</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="s">"dog"</span> <span class="c1">// Error</span>
+</pre></div></div>
+<p>When we try to change the value of the species property on <code>dog</code> we get an error: “Cannot assign to ‘species’ in dog”.<span class="intersentencespace"></span> This is because we declared <code>dog</code> as a constant using <code>let</code>.<span class="intersentencespace"></span> Previously when <code>Animal</code> was a class, we were able to declare <code>dog</code> using <code>let</code> but still modify the value of its <code>species</code> property.<span class="intersentencespace"></span> But now that <code>Animal</code> is a structure we can’t do that.<span class="intersentencespace"></span> Why is this?<span class="intersentencespace"></span> This gives us a clue as to one of the main differences between structures and classes.</p>
+<p><em>Structures are value types whereas classes are reference types</em>.</p>
+<p>We’ll discuss value types and reference types in detail in the next section.<span class="intersentencespace"></span> Lets just finish this example and cover the other differences between structures and classes before we get into that.</p>
+<p>When we declared <code>dog</code> as a constant it was marked immutable.<span class="intersentencespace"></span> Since it’s a structure (and hence a value type) the entire structure is immutable<sup id="cha-13_footnote-ref-1" class="footnote"><a href="#cha-13_footnote-1">1</a></sup>.<span class="intersentencespace"></span> So we can’t change any of its properties.<span class="intersentencespace"></span> If we use <code>var</code> instead this our example will now work as it did before.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">dog</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="s">"dog"</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">species</span>        <span class="c1">// "dog"</span>
+<span class="n">dog</span><span class="p">.</span><span class="n">description</span><span class="p">()</span>  <span class="c1">// prints "species is dog"</span>
+</pre></div></div>
+<p>We’ve outlined the main difference between structures and classes, and we’ll discuss it in greater detail in the next section.<span class="intersentencespace"></span> But there are a couple of other differences between classes and structures too.<span class="intersentencespace"></span> These are:</p>
+<ul>
+<li>No inheritance.<span class="intersentencespace"></span> You can’t inherit from other structures or types.<span class="intersentencespace"></span>
+</li>
+<li>No deinitializers.<span class="intersentencespace"></span>
+</li>
+<li>No mutation in methods by default.<span class="intersentencespace"></span> By default it is assumed that methods don’t change any properties of the structure.<span class="intersentencespace"></span> Any attempt to change the value of a property will result in a compiler error.<span class="intersentencespace"></span> Functions that change the value of a property must be declared with the <code>mutating</code> keyword (e.g.<span class="intersentencespace"></span> <code>mutating func changeDescription(newDescription: String){...}</code>).<span class="intersentencespace"></span>
+</li>
+<li>No convenience initializers, only designated initializers.<span class="intersentencespace"></span>
+</li></ul>
+</div><div id="cid61" data-tralics-id="cid61" class="section" data-number="13.3"><h2><a href="structures#cid61" class="heading hyperref"><span class="number">13.3 </span>Value types and reference types</a></h2>
+<p>We’ve already mentioned that classes are reference types and structures are value types.<span class="intersentencespace"></span> Let’s look at this in a bit more detail.</p>
+<p>Value types are always copied when they are passed around your program (e.g.<span class="intersentencespace"></span> as function parameters or by assignment).</p>
+<p>With reference types, what gets passed around is a reference to the original object.<span class="intersentencespace"></span> So with a reference type if you assign it to 2 variables, and make a change to one of them, that change is visible to the other.<span class="intersentencespace"></span> With a value type, if you assign it to 2 variables each variable gets a different copy of the type, so any changes made to one are not visible to the other.</p>
+<p>With a reference type, multiple different functions or variables can refer to something and changes made to one are visible to all the others.<span class="intersentencespace"></span> With a value type each function or variable gets a copy of the objects, and if they makes any changes, those changes aren’t propagated to other copies.</p>
+<p>Let’s look at a concrete example.</p>
+<div class="code"><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">AnimalClass</span><span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">var</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"AnimalClass"</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="k">struct</span> <span class="n">AnimalStruct</span><span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="k">var</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"AnimalStruct"</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">var</span> <span class="n">astruct</span> <span class="o">=</span> <span class="n">AnimalStruct</span><span class="p">()</span>
+<span class="lineno">10</span> <span class="k">var</span> <span class="n">aclass</span> <span class="o">=</span> <span class="n">AnimalClass</span><span class="p">()</span>
+<span class="lineno">11</span> <span class="n">astruct</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalStruct"</span>
+<span class="lineno">12</span> <span class="n">aclass</span><span class="p">.</span><span class="n">description</span>  <span class="c1">// "AnimalClass"</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="k">func</span> <span class="n">mutateDescription</span><span class="p">(</span><span class="nl">c</span><span class="p">:</span> <span class="n">AnimalClass</span><span class="p">,</span> <span class="k">var</span> <span class="nl">s</span><span class="p">:</span> <span class="n">AnimalStruct</span><span class="p">){</span>
+<span class="lineno">15</span>     <span class="n">c</span><span class="p">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">description</span> <span class="o">+</span> <span class="s">" mutated by mutateDescription"</span>
+<span class="lineno">16</span>     <span class="n">s</span><span class="p">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">description</span> <span class="o">+</span> <span class="s">" mutated by mutateDescription"</span>
+<span class="lineno">17</span>     <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">description</span><span class="p">)</span>
+<span class="lineno">18</span>     <span class="n">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">description</span><span class="p">)</span>
+<span class="lineno">19</span> <span class="p">}</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="n">mutateDescription</span><span class="p">(</span><span class="n">aclass</span><span class="p">,</span> <span class="n">astruct</span><span class="p">)</span>
+<span class="lineno">22</span> <span class="c1">// prints "AnimalClass mutated by mutateDescription"</span>
+<span class="lineno">23</span> <span class="c1">// .. and "AnimalStruct mutated by mutateDescription"</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="n">aclass</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalClass mutated by mutateDescription"</span>
+<span class="lineno">26</span> <span class="n">astruct</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalStruct"</span>
+</pre></div></div>
+<p>In this example we declare a class and a struct and instantiate an instance of each one (lines 9-10).<span class="intersentencespace"></span> Both types have a description property which is just a string.</p>
+<p>Next we define a function <code>mutateDescription</code> which takes an instance of our class and an instance of our struct and changes the value of the description property for each one (line 14).<span class="intersentencespace"></span> Note that we have to declare the structure parameter using <code>var</code> - if we don’t it will be immutable by default.</p>
+<p>At line 21 we call this function, passing it <code>aclass</code> and <code>astruct</code>.<span class="intersentencespace"></span> What happpens here is that <code>aclass</code> is a reference to our instance whereas <code>astruct</code> gets copied and the copy is passed inside the function.<span class="intersentencespace"></span> When we print out the value of the struct <code>s</code> inside the function (line 18) we see the modified copy.<span class="intersentencespace"></span> But outside that function, when we print the value of <code>astruct</code> we see that it hasn’t been modified (line 26).<span class="intersentencespace"></span> In contrast <code>aclass</code> has been modified by the function and its value has changed after the function has been called (line 25).</p>
+<p>We see a similar difference in behaviour between our class and structure when we assign them to variables.<span class="intersentencespace"></span> Continuing the previous example….</p>
+<div class="code"><div class="highlight"><pre><span class="lineno">1</span> <span class="k">var</span> <span class="n">astruct2</span> <span class="o">=</span> <span class="n">astruct</span>  <span class="c1">// astruct2 is a copy of astruct</span>
+<span class="lineno">2</span> <span class="k">var</span> <span class="n">aclass2</span> <span class="o">=</span> <span class="n">aclass</span>   <span class="c1">// aclass2 is a reference to the same object as aclass</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="n">astruct2</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalStruct"</span>
+<span class="lineno">5</span> <span class="n">aclass2</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalClass mutated by mutateDescription"</span>
+<span class="lineno">6</span> <span class="n">astruct2</span><span class="p">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">"AnimalStruct2"</span>
+<span class="lineno">7</span> <span class="n">aclass2</span><span class="p">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">"AnimalClass2"</span>
+<span class="lineno">8</span> <span class="n">astruct</span><span class="p">.</span><span class="n">description</span> <span class="c1">// "AnimalStruct"</span>
+<span class="lineno">9</span> <span class="n">aclass</span><span class="p">.</span><span class="n">description</span>  <span class="c1">// "AnimalClass2"</span>
+</pre></div></div>
+<p>When we assign <code>aclass</code> to <code>aclass2</code> here <code>aclass2</code> is a reference that points to the same object as <code>aclass</code>.<span class="intersentencespace"></span> When we change the value of <code>aclass2.description</code> at line 5 the value of <code>aclass.description</code> also changes (line 9).</p>
+<p>But when we assign <code>astruct</code> to <code>astruct2</code>, <code>astruct2</code> gets a copy of <code>astruct</code>.<span class="intersentencespace"></span> The two variables refer to different things.<span class="intersentencespace"></span> When we change the value of <code>astruct2.description</code> (line 6) the value of <code>astruct.description</code> is unaffected (line 8).</p>
+<p>Numbers, strings, arrays, dictionaries, tuples, structures and enumerations are all value types in Swift.<span class="intersentencespace"></span> Whenever you pass them around your program, they get copied.</p>
+<p>Classes and functions are reference types in Swift.<span class="intersentencespace"></span> When you pass them around your program you pass a reference that can be shared.</p>
+</div><div id="cid62" data-tralics-id="cid62" class="section" data-number="13.4"><h2><a href="structures#cid62" class="heading hyperref"><span class="number">13.4 </span>When to use structures</a></h2>
+<p>It’s important to understand the benefits of structures and how to use them.<span class="intersentencespace"></span> <em>Don’t just fall into the habit of modelling all your data using classes just because it lets you model it much the same way as you would have in other languages</em>.<span class="intersentencespace"></span> Structures allow you to keep your data structures immutable, which makes them much easier to reason about.</p>
+<p>Here are some things to consider when deciding whether to model something using a class or a structure.</p>
+<ul>
+<li>Structures are for values; Classes are for references.<span class="intersentencespace"></span> If you need to share mutable state between different parts of your program you should use a class.<span class="intersentencespace"></span>
+</li>
+<li>Structures are significantly faster, use less memory and are thread-safe.<span class="intersentencespace"></span>
+</li>
+<li>Structs are easier to reason about (You don’t run into mutable state problems that are more likely with classes).<span class="intersentencespace"></span>
+</li>
+<li>If you need inheritance or you know you want to pass references to an object around, use a class.<span class="intersentencespace"></span>
+</li>
+<li>Objects interact with the rest of the system whereas structures appear immutable to the rest of the system.<span class="intersentencespace"></span> Typically a structures methods will only interact with their own data.<span class="intersentencespace"></span>
+</li></ul>
+<p>In “The Swift Programming Language”<sup id="cha-13_footnote-ref-2" class="footnote"><a href="#cha-13_footnote-2">2</a></sup>, the authors outline some guidelines when choosing between structures and classes:</p>
+<blockquote class="quotation"><p>As a general guideline, consider creating a structure when one or more of these conditions apply:</p>
+</blockquote><blockquote class="quotation"><ul>
+<li>The structure’s primary purpose is to encapsulate a few relatively simple data values.<span class="intersentencespace"></span>
+</li>
+<li>It is reasonable to expect that the encapsulated values will be copied rather than referenced when you assign or pass around an instance of that structure.<span class="intersentencespace"></span>
+</li>
+<li>Any properties stored by the structure are themselves value types, which would also be expected to be copied rather than referenced.<span class="intersentencespace"></span>
+</li>
+<li>The structure does not need to inherit properties or behavior from another existing type.”
+</li></ul>
+</blockquote><blockquote class="quotation"><p>…</p>
+</blockquote><blockquote class="quotation"><p>In all other cases, define a class, and create instances of that class to be managed and passed by reference.<span class="intersentencespace"></span> In practice, this means that most custom data constructs should be classes, not structures.<span class="intersentencespace"></span></p>
+</blockquote><p>So their recommendation is to default to using a class and that most custom data structures should be classes.<span class="intersentencespace"></span> Structures should be used in the cases listed above.</p>
+<p>Personally, I think that your default choice should be to use a structure to model your data, unless you have a reason to model it as a class.<span class="intersentencespace"></span> Prefer a struct unless you know that you want a class.</p>
+<p>In practice, the difference is mostly one of emphasis, as the cases outlined above for choosing a structure will cover most of the cases where you wouldn’t want to use a class anyway.<span class="intersentencespace"></span> But I think the benefits of value types are compelling enough to default to using structures over classes where appropriate.</p>
+</div><div id="cha-13_footnotes">
+  <ol class="footnotes">
+    <li id="cha-13_footnote-1">When we used a class, it was a reference to the object that became immutable rather than the object itself.<span class="intersentencespace"></span> So we couldn’t change the reference, but we could change the properties of the thing that the reference pointed to. <a class="arrow" href="#cha-13_footnote-ref-1">↑</a></li>
+    <li id="cha-13_footnote-2">Excerpt From: Apple Inc.<span class="intersentencespace"></span> “The Swift Programming Language.” iBooks.<span class="intersentencespace"></span> https://itun.es/ie/jEUH0.l <a class="arrow" href="#cha-13_footnote-ref-2">↑</a></li>
+  </ol>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-11-20T14:54:28+00:00">Nov 20, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/classes" rel="prev"><span class="meta-nav">←</span> Classes</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/enumerations" rel="next">Enumerations <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,502 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Basics</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cha-basics" data-tralics-id="cid14" class="chapter" data-number="3" data-chapter="basics"><h1><a href="basics#cha-basics" class="heading hyperref"><span class="number">Chapter 3 </span>Basics</a></h1>
+<p>We’ll quickly move through some of the basics of Swift.</p>
+</div><div id="cid15" data-tralics-id="cid15" class="section" data-number="3.1"><h2><a href="basics#cid15" class="heading hyperref"><span class="number">3.1 </span>Printing and string interpolation</a></h2>
+<p>We can use <code>print</code> to print a value and <code>\()</code> for string interpolation.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="k">var</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"Meet \(name). \(name) is \(age) years old"</span><span class="p">)</span>
+</pre></div></div>
+</div><div id="cid16" data-tralics-id="cid16" class="section" data-number="3.2"><h2><a href="basics#cid16" class="heading hyperref"><span class="number">3.2 </span>Comments</a></h2>
+<div class="code"><div class="highlight"><pre><span class="c1">// This is a single line comment</span>
+<span class="k">var</span> <span class="n">notaComment</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="cm">/* This is a comment</span>
+<span class="cm">   that spans</span>
+<span class="cm">   multiple lines */</span>
+<span class="k">var</span> <span class="n">notAnotherComment</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div></div>
+<p>Single line comments are declared by putting <code>//</code> at the beginning of a line.</p>
+<p>Multi-line comments are started using <code>/*</code> and ended by <code>*/</code>.</p>
+</div><div id="cid17" data-tralics-id="cid17" class="section" data-number="3.3"><h2><a href="basics#cid17" class="heading hyperref"><span class="number">3.3 </span>Basic types</a></h2>
+<p>The basic types in Swift are:</p>
+<div id="sec-basics_booleans" data-tralics-id="uid40" class="subsection" data-number="3.3.1"><h3><a href="basics#sec-basics_booleans" class="heading hyperref"><span class="number">3.3.1 </span>Booleans</a></h3>
+<p>Booleans are of type <code>Bool</code> and can be either <code>true</code> or <code>false</code>.<span class="intersentencespace"></span> Anything in Swift that takes a boolean, must use a real boolean type.</p>
+<p>Swift is strict in its treatment of boolean values.<span class="intersentencespace"></span> Boolean is a type that can (only) be true or false.<span class="intersentencespace"></span> Any operator or function that expects a boolean must be given a boolean or the type system will complain.<span class="intersentencespace"></span> Many dynamic languages have a much looser definition of what kind of values can be truthy (for example, in Ruby anything that not nil or false is truthy.<span class="intersentencespace"></span> So an empty string can be used to represent true) - if you’re coming from one of those languages you’ll have to get used to only using booleans in places where booleans are expected.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nl">x</span><span class="p">:</span><span class="n">Bool</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="k">var</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">y</span>     <span class="c1">// false</span>
+<span class="n">x</span> <span class="o">||</span> <span class="n">y</span>     <span class="c1">// true</span>
+<span class="o">!</span><span class="n">y</span>         <span class="c1">// true</span>
+</pre></div></div>
+<p>Booleans are declared using the keyword <code>Bool</code> or by initializing them with <code>true</code> or <code>false</code>.</p>
+</div>
+<div id="uid41" data-tralics-id="uid41" class="subsection" data-number="3.3.2"><h3><a href="basics#uid41" class="heading hyperref"><span class="number">3.3.2 </span>Integers</a></h3>
+<p><code>Int</code> is the basic Integer type.<span class="intersentencespace"></span> There are also a number of Integer types of various sizes, both signed and unsigned.<span class="intersentencespace"></span> <a href="basics#code-integer_sizes" class="hyperref">Listing <span class="ref">3.1</span></a> shows each of the Integer types along with their min and max values.<span class="intersentencespace"></span> For each of these types you can see their minimum and maximum values using the <code>min</code> and <code>max</code> properties.</p>
+<div class="codelisting" id="code-integer_sizes" data-tralics-id="uid42" data-number="3.1"><div class="heading"><span class="number">Listing 3.1:</span> 
+
+<span class="description">Various Integer types and their sizes</span>
+</div>
+
+<div class="code"><div class="highlight"><pre><span class="n">Int</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 9,223,372,036,854,775,807</span>
+<span class="n">Int</span><span class="p">.</span><span class="n">min</span> <span class="c1">// -9,223,372,036,854,775,808</span>
+
+<span class="n">UInt</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 18446744073709551615</span>
+<span class="n">UInt</span><span class="p">.</span><span class="n">min</span> <span class="c1">// 0</span>
+
+<span class="n">Int8</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 127</span>
+<span class="n">Int16</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 32,767</span>
+<span class="n">Int32</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 2,147,483,647</span>
+<span class="n">Int64</span><span class="p">.</span><span class="n">max</span> <span class="c1">// 9,223,372,036,854,775,807</span>
+</pre></div></div></div><p>The full range of Integer types are Int, UInt, Int8, UInt8, Int16, UInt16, Int32, UInt32, Int64, UInt64</p>
+</div>
+<div id="uid43" data-tralics-id="uid43" class="subsection" data-number="3.3.3"><h3><a href="basics#uid43" class="heading hyperref"><span class="number">3.3.3 </span>Floats and Doubles</a></h3>
+<p>Floating point numbers are represented using <code>Float</code> and <code>Double</code>, depending on the precision that you need.<span class="intersentencespace"></span> Floats are represented using 32bits whereas Doubles are stored using 64 bits.<span class="intersentencespace"></span> Doubles have precision of at least 15 decimal places, whereas Floats can have as little as 6, depending on the value.<span class="intersentencespace"></span> Which one you use depends on how much precision you need.<span class="intersentencespace"></span> Here is an example where we lose precision by assigning a Float with more decimal places than it can handle.</p>
+<div class="code"><div class="highlight"><pre>let piImprecise:Float = 3.14159265358979     // 3.141593
+let piMorePrecise:Double = 3.14159265358979  // 3.14159265358979
+</pre></div></div>
+</div>
+<div id="uid44" data-tralics-id="uid44" class="subsection" data-number="3.3.4"><h3><a href="basics#uid44" class="heading hyperref"><span class="number">3.3.4 </span>Strings and characters</a></h3>
+<p>Strings and characters are represented by the <code>String</code> and <code>Character</code> types respectively.</p>
+<p>By default Swift will infer that something in double quotes is a String.<span class="intersentencespace"></span> But if we want it to be a character we can explicitly declare it as <code>Character</code> type.<span class="intersentencespace"></span> We can use the <code>+</code> operator to concatenate two strings and we can use the Strings <code>append</code> method to concatenate a character to a string.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">swif</span> <span class="o">=</span> <span class="s">"s"</span> <span class="o">+</span> <span class="s">"wif"</span> <span class="c1">// "swif"</span>
+<span class="k">var</span> <span class="nl">t</span><span class="p">:</span><span class="n">Character</span> <span class="o">=</span> <span class="s">"t"</span>  <span class="c1">// "t"</span>
+<span class="n">swif</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>         <span class="c1">// "swift"</span>
+</pre></div></div>
+<p>Both String and Character support unicode.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="s">"\u{03c0}"</span>         <span class="c1">// π</span>
+<span class="k">let</span> <span class="nl">r</span><span class="p">:</span><span class="n">Character</span> <span class="o">=</span> <span class="s">"r"</span>       <span class="c1">// r</span>
+<span class="k">let</span> <span class="n">squared</span> <span class="o">=</span> <span class="s">"\u{00b2}"</span>    <span class="c1">// ²</span>
+<span class="k">var</span> <span class="n">area</span> <span class="o">=</span> <span class="n">pi</span>               <span class="c1">// π</span>
+<span class="n">area</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>              <span class="c1">// πr</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">area</span> <span class="o">+</span> <span class="n">squared</span>       <span class="c1">// πr²</span>
+</pre></div></div>
+<p><a href="basics#fig-unicode_strings_and_chars" class="hyperref">Figure <span class="ref">3.1</span></a> shows what the the above unicode strings look like in a playground.</p>
+<div class="center figure" id="fig-unicode_strings_and_chars" data-tralics-id="uid45" data-number="3.1">
+<div class="graphics image"><img src="/images/learn-swift/screenshots/unicode_characters_and_strings.png" alt="/images/learn-swift/screenshots/unicode_characters_and_strings" /></div><div class="caption"><span class="header">Figure 3.1: </span><span class="description">Characters and Strings using unicode.
+</span></div></div>
+<p>Like any other basic type, strings can be either mutable or immutable - depending on whether you declare them using let or var (more on this in <a href="constants_and_variables#cha-constants_and_variables" class="hyperref">chapter <span class="ref">4</span></a>).</p>
+</div></div><div id="cid18" data-tralics-id="cid18" class="section" data-number="3.4"><h2><a href="basics#cid18" class="heading hyperref"><span class="number">3.4 </span>Some basic operators</a></h2>
+<p>The operators for addition, subtraction, multiplication, division and modulo are similar to the ones in most c-like languages.</p>
+<div class="code"><div class="highlight"><pre><span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="c1">// 15</span>
+<span class="mi">10</span> <span class="o">-</span> <span class="mi">5</span> <span class="c1">// 5</span>
+<span class="mi">10</span> <span class="o">*</span> <span class="mi">5</span> <span class="c1">// 50</span>
+<span class="mi">10</span> <span class="o">/</span> <span class="mi">5</span> <span class="c1">// 2</span>
+<span class="mi">10</span> <span class="o">%</span> <span class="mi">5</span> <span class="c1">// 0</span>
+<span class="mi">12</span> <span class="o">%</span> <span class="mi">5</span> <span class="c1">// 2</span>
+</pre></div></div>
+<p>Assignment uses <code>=</code>.<span class="intersentencespace"></span> Swift also has a number of compound assignment operators.</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span> <span class="c1">// 15</span>
+<span class="n">x</span> <span class="o">-=</span> <span class="mi">5</span> <span class="c1">// 10</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="mi">5</span> <span class="c1">// 50</span>
+<span class="n">x</span> <span class="o">/=</span> <span class="mi">5</span> <span class="c1">// 10</span>
+<span class="n">x</span> <span class="c1">// 10</span>
+</pre></div></div>
+<p>We can also deconstruct assignment from tuples into vars (we cover tuples in more detail in <a href="tuples#cha-tuples" class="hyperref">chapter <span class="ref">8</span></a>).</p>
+<div class="code"><div class="highlight"><pre><span class="k">var</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div></div>
+<p>Comparison operators are similar in Swift to those in any other c-like language.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="c1">// true</span>
+<span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="c1">// false</span>
+<span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="c1">// true</span>
+<span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="c1">// true</span>
+<span class="n">x</span> <span class="o">==</span> <span class="mi">10</span> <span class="c1">// true</span>
+<span class="n">x</span> <span class="o">==</span> <span class="mi">9</span> <span class="c1">// false</span>
+</pre></div></div>
+<p>Logical operators are stricter than you may be used to.<span class="intersentencespace"></span> They return a boolean and each part of the expression must evaluate to a boolean.<span class="intersentencespace"></span> As outlined in <a href="basics#sec-basics_booleans" class="hyperref">Section <span class="ref">3.3.1</span></a> these operators must be used with boolean values, and they return a boolean value.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="c1">// true</span>
+<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="c1">// true</span>
+<span class="o">!</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// true</span>
+</pre></div></div>
+<p>Swift has 2 operators for creating ranges.<span class="intersentencespace"></span> This is the syntax for creating a range in Swift.</p>
+<div class="code"><div class="highlight"><pre><span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="c1">// Range of 1..&lt;11</span>
+<span class="mf">1.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">10</span> <span class="c1">// Range of 1..&lt;10</span>
+</pre></div></div>
+<p>The first version (called the closed range operator) includes 10 in the range.<span class="intersentencespace"></span> The second version (called the half-open range operator) doesn’t include 10 in the range.</p>
+<p>The ternary operator accepts a condition that evaluates to a boolean and then returns either the first or second branch depending on whether the initial expression was true or false.</p>
+<div class="code"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">==</span> <span class="mi">20</span> <span class="o">?</span> <span class="s">"Yay"</span> <span class="o">:</span> <span class="s">"Nay"</span> <span class="c1">// "Nay"</span>
+</pre></div></div>
+</div><div id="cid19" data-tralics-id="cid19" class="section" data-number="3.5"><h2><a href="basics#cid19" class="heading hyperref"><span class="number">3.5 </span>Naming things</a></h2>
+<p>Swift programs use camel-case for all naming.<span class="intersentencespace"></span> To summarize:</p>
+<ul>
+<li>CamelCase for everything
+</li>
+<li>class names and top-level constants should be capitalized (i.e.<span class="intersentencespace"></span> <code>ClassName</code>)
+</li>
+<li>method names, function names and variable names should start with a lower-case letter (i.e.<span class="intersentencespace"></span> <code>methodName</code>)
+</li></ul>
+<p>In going through these examples we’ve already encountered the syntax for declaring constants and variables in Swift, although we haven’t discussed it.<span class="intersentencespace"></span> In the next chapter we’ll cover that in a bit more detail.</p>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2016-02-08T08:08:52+00:00">Feb 8, 2016
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS CHAPTER</h4>
+            <a href="/learn-swift/running_code" rel="prev"><span class="meta-nav">←</span> Running Code</a>
+        </div>
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/constants_and_variables" rel="next">Constants and Variables <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

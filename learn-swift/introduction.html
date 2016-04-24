@@ -1,0 +1,418 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Introduction</title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+        
+        <link rel="stylesheet" type="text/css" href="/css/book.css">
+<meta property="og:image" content="http://www.aidanf.net/images/learn-swift/cover-web.png" />
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li class="current-menu-item"><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+        <!-- .entry-content -->
+        <div class="entry-content" id="book">
+            <header class="entry-header">
+                <h1 class="entry-title"><a href="/learn-swift">LEARN SWIFT</a></h1>
+            </header>
+
+            <div id="cid1" data-tralics-id="cid1" class="chapter" data-number="1" data-chapter="introduction"><h1><a href="introduction#cid1" class="heading hyperref"><span class="number">Chapter 1 </span>Introduction</a></h1>
+</div><div id="cid2" data-tralics-id="cid2" class="section" data-number="1.1"><h2><a href="introduction#cid2" class="heading hyperref"><span class="number">1.1 </span>A brief history of Swift</a></h2>
+<p>Ever since iOS was first released, the default way to develop apps for it was using Objective-C. There have been several other frameworks<sup id="cha-1_footnote-ref-1" class="footnote"><a href="#cha-1_footnote-1">1</a></sup><sup id="cha-1_footnote-ref-2" class="footnote"><a href="#cha-1_footnote-2">2</a></sup><sup id="cha-1_footnote-ref-3" class="footnote"><a href="#cha-1_footnote-3">3</a></sup> for creating apps that involve some variation of html/css/javascript embedded in an app container.<span class="intersentencespace"></span> But they all suffer from various problems including worse performance, limited functionality and general buginess.<span class="intersentencespace"></span> Building a native app is still the best way to go when it comes to Apple devices.</p>
+<p>Then at Apples World Wide Developer Conference in 2014, Apple announced a new programming language: Swift, a language</p>
+<blockquote class="quotation"><p>“drawing ideas from Objective-C, Rust, Haskell, Ruby, Python, C#, CLU …”<sup id="cha-1_footnote-ref-4" class="footnote"><a href="#cha-1_footnote-4">4</a></sup>.<span class="intersentencespace"></span></p>
+</blockquote><p>If you’ve been programming in one of those languages for that last few years, you’ve probably become accustomed to a lot of the conveniences that they provide.<span class="intersentencespace"></span> You’re used to doing high-level programming in a dynamic language.<span class="intersentencespace"></span> As such, objective-c was probably not a good fit for you.<span class="intersentencespace"></span> I’ve been programming professionally with Ruby and Python for over 10 years now.<span class="intersentencespace"></span> When the iPhone first came out I built a couple of apps for clients using Objective-C, but I didn’t enjoy the experience and I quickly went back to Ruby development.<span class="intersentencespace"></span> But that has changed with the release of Swift.</p>
+<p>Swift 1.0 was released on September 9th, 2014 with version 6 of Xcode.<span class="intersentencespace"></span> With that release, a new era of development for Mac and iOS began.<span class="intersentencespace"></span> For anyone who has been programming in a modern language such as Ruby, Python, Clojure, Haskell<sup id="cha-1_footnote-ref-5" class="footnote"><a href="#cha-1_footnote-5">5</a></sup>, etc, and who was put off developing iOS apps by Objective-C, Swift marks a new era.<span class="intersentencespace"></span> It’s now feasible to develop your apps almost entirely using Swift<sup id="cha-1_footnote-ref-6" class="footnote"><a href="#cha-1_footnote-6">6</a></sup>.</p>
+<p>At WWDC in 2015 Apple announced that Swift would be open sourced before the end of the year.<span class="intersentencespace"></span> Details were sketchy but in December 2015 they followed up as planned and released <a href="https://swift.org" target="_blank">Swift as open source</a>.<span class="intersentencespace"></span> The Swift open source release included the full source code for the language, binaries for Mac OS and Linux and an early version of a Swift package manager.<span class="intersentencespace"></span> Also it introduced a community process for discussion of future language evolution.<span class="intersentencespace"></span> It looks like Swift will be developed in the open from this point on.</p>
+<p>This is a <em>huge</em> milestone for Swift development.<span class="intersentencespace"></span> The fact that it’s open source and can run on linux opens it up to whole new areas of applications.<span class="intersentencespace"></span> I personally look forward to being able to build and deploy web applications in Swift that can be deployed on a Linux server environment.<span class="intersentencespace"></span> The next few years will be an exciting time for Swift developers.</p>
+<p>Swift is a wonderful language, that combines many of the benefits of modern dynamic languages with the benefits of a strong type system, in a language that produces fast code.<span class="intersentencespace"></span> It’s a joy to program in.<span class="intersentencespace"></span> And with it’s release, I think we’ll see a lot of programmers who previously avoided programming for Apple hardware become more interested in coding for that platform.<span class="intersentencespace"></span> In short, <strong>the jump from languages like Ruby and Python to Swift is much smaller than the jump from those languages to Objective-C</strong>.</p>
+</div><div id="cid3" data-tralics-id="cid3" class="section" data-number="1.2"><h2><a href="introduction#cid3" class="heading hyperref"><span class="number">1.2 </span>A high level view (language features)</a></h2>
+<p>Swift is in the main an Object-Oriented language with some interesting features inspired by functional-style languages.<span class="intersentencespace"></span> Here are some of the highlights:</p>
+<ul>
+<li>c-like syntax.<span class="intersentencespace"></span>
+</li>
+<li>Type safe.<span class="intersentencespace"></span> It’s strongly, staticly typed and checks types at compile time.<span class="intersentencespace"></span> It uses type inference so you don’t need to declare types for everything.<span class="intersentencespace"></span>
+</li>
+<li>Supports lots of data-types natively, including lists, dictionaries, tuples, enumerations, structs and classes.<span class="intersentencespace"></span>
+</li>
+<li>Uses automatic reference counting for memory management.<span class="intersentencespace"></span>
+</li>
+<li>Strong support for closures.<span class="intersentencespace"></span> Functions are first-class objects.<span class="intersentencespace"></span>
+</li>
+<li>Supports interactive programming and scripting using repl and playgrounds.<span class="intersentencespace"></span>
+</li>
+<li>Compiles to fast native code.<span class="intersentencespace"></span>
+</li>
+<li>Object-Oriented: classes, protocols (similar to java interfaces), extensions (similar to ruby mixins).<span class="intersentencespace"></span>
+</li>
+<li>Generics for generic programming.<span class="intersentencespace"></span>
+</li>
+<li>Some limited support for pattern matching.<span class="intersentencespace"></span>
+</li>
+<li>Functional.<span class="intersentencespace"></span> There’s enough functional goodness in Swift that you can eschew OO and program in a functional style if you want to.<span class="intersentencespace"></span>
+</li></ul>
+</div><div id="cid4" data-tralics-id="cid4" class="section" data-number="1.3"><h2><a href="introduction#cid4" class="heading hyperref"><span class="number">1.3 </span>What lies ahead</a></h2>
+<p>Each chapter focuses on a specific feature of the language.<span class="intersentencespace"></span> I’ll assume you already know how to program and so I won’t go into great detail of various programming concepts.<span class="intersentencespace"></span> Instead I’ll assume understand the basic language constructs from other programming languages and just show how various language constructs are implemented in Swift.</p>
+</div><div id="cid5" data-tralics-id="cid5" class="section" data-number="1.4"><h2><a href="introduction#cid5" class="heading hyperref"><span class="number">1.4 </span>Who this book is for</a></h2>
+<p>This book is for people who can already program in another language and are intrigued by Swift and want to learn it.<span class="intersentencespace"></span> It will outline all the various language features are implemented in Swift.</p>
+</div><div id="cid6" data-tralics-id="cid6" class="section" data-number="1.5"><h2><a href="introduction#cid6" class="heading hyperref"><span class="number">1.5 </span>Swift version</a></h2>
+<p>This book has been updated to Swift 2.1.<span class="intersentencespace"></span> All code in this book should work with Swift 2.1.</p>
+</div><div id="cid7" data-tralics-id="cid7" class="section" data-number="1.6"><h2><a href="introduction#cid7" class="heading hyperref"><span class="number">1.6 </span>Copyright and Licence</a></h2>
+<p>Learn Swift.<span class="intersentencespace"></span> Copyright (c) 2015 by Aidan Finn.<span class="intersentencespace"></span> All rights reserved.</p>
+<p>All source code in the book is available under the MIT License.</p>
+</div><div id="cha-1_footnotes">
+  <ol class="footnotes">
+    <li id="cha-1_footnote-1">http://www.appcelerator.com/ <a class="arrow" href="#cha-1_footnote-ref-1">↑</a></li>
+    <li id="cha-1_footnote-2">http://phonegap.com/ <a class="arrow" href="#cha-1_footnote-ref-2">↑</a></li>
+    <li id="cha-1_footnote-3">React Native was introduced at React.js Conf 2015.<span class="intersentencespace"></span> It looks interesting but it’s too early to tell how it compares to native development and what compromises are involved in using it. <a class="arrow" href="#cha-1_footnote-ref-3">↑</a></li>
+    <li id="cha-1_footnote-4">http://nondot.org/sabre/ <a class="arrow" href="#cha-1_footnote-ref-4">↑</a></li>
+    <li id="cha-1_footnote-5">I mention these languages specifically because I think practitioners in those languages will find a lot to like in Swift and will find the transition relatively easy.<span class="intersentencespace"></span> Specifically, if you tend towards using a functional-style when programming in those languages you’ll find that many of the idioms you are used to can be translated to Swift.<span class="intersentencespace"></span> The jump from these langyuages to Swift is much less painful than the jump from these languages to Objective-C. <a class="arrow" href="#cha-1_footnote-ref-5">↑</a></li>
+    <li id="cha-1_footnote-6">While it’s possible to entirely develop your app in Swift, you’ll still be making heavy use of the Apple Cocoa libraries.<span class="intersentencespace"></span> These have been heavily incluenced by years of Objective-C development so using them from Swift can often be somwhat ungainly. <a class="arrow" href="#cha-1_footnote-ref-6">↑</a></li>
+  </ol>
+</div>
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+            <!-- .entry-meta -->
+        <div class="entry-meta">
+            last updated
+            on
+            <time class="entry-date" datetime="2015-12-16T08:01:46+00:00">Dec 16, 2015
+            </time>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+    <!-- .nav-single -->
+
+    
+    
+    
+
+    <nav class="nav-single row-fluid">
+        
+
+        
+        <div class="nav-next span6">
+            <h4>NEXT CHAPTER</h4>
+            <a href="/learn-swift/running_code" rel="next">Running Code <span class="meta-nav">→</span></a>
+        </div>
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-539512-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+<!-- InstanceEnd --></html>
