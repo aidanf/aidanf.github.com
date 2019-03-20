@@ -6,12 +6,12 @@
 </description>
     <link>http://www.aidanf.net/</link>
     <atom:link href="http://www.aidanf.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Mar 2019 21:15:58 +0000</pubDate>
-    <lastBuildDate>Wed, 20 Mar 2019 21:15:58 +0000</lastBuildDate>
+    <pubDate>Wed, 20 Mar 2019 21:28:37 +0000</pubDate>
+    <lastBuildDate>Wed, 20 Mar 2019 21:28:37 +0000</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
-        <title>How does vowpal wabbit featurize text</title>
+        <title>How does vowpal wabbit featurize text?</title>
         <description>&lt;p&gt;The  details of vowpal wabbit’s (&lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;) feature representation are &lt;a href=&quot;https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format&quot;&gt;specified here&lt;/a&gt; but it can be tricky to grok immediately.&lt;/p&gt;
 
 &lt;p&gt;All features in &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; are numeric features. It doesn’t do anything special for text or categorical features - they are just numeric features like all other features.&lt;/p&gt;
