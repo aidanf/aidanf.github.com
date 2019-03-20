@@ -6,9 +6,96 @@
 </description>
     <link>http://www.aidanf.net/</link>
     <atom:link href="http://www.aidanf.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 May 2018 11:36:24 +0100</pubDate>
-    <lastBuildDate>Fri, 25 May 2018 11:36:24 +0100</lastBuildDate>
+    <pubDate>Wed, 20 Mar 2019 21:15:58 +0000</pubDate>
+    <lastBuildDate>Wed, 20 Mar 2019 21:15:58 +0000</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>How does vowpal wabbit featurize text</title>
+        <description>&lt;p&gt;The  details of vowpal wabbit’s (&lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;) feature representation are &lt;a href=&quot;https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format&quot;&gt;specified here&lt;/a&gt; but it can be tricky to grok immediately.&lt;/p&gt;
+
+&lt;p&gt;All features in &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; are numeric features. It doesn’t do anything special for text or categorical features - they are just numeric features like all other features.&lt;/p&gt;
+
+&lt;p&gt;Consider this vw formatted example:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;|doc this is some text |stats views:10 |type post&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; character indicates a namespace declaration and the characters after that are the name of the namespace&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. What follows the namespace declaration is a list of features and their values.&lt;/p&gt;
+
+&lt;p&gt;So in this example we have the &lt;code class=&quot;highlighter-rouge&quot;&gt;doc&lt;/code&gt; namespace, &lt;code class=&quot;highlighter-rouge&quot;&gt;stats&lt;/code&gt; namespace and &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt; namespace.&lt;/p&gt;
+
+&lt;p&gt;The core of &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;s feature representation is that every feature is numeric and consists of a name and a value. This is specified in an example as &lt;code class=&quot;highlighter-rouge&quot;&gt;name:value&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If name is specified and value is omitted, then it has a default value of 1 &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;So for our example of  &lt;code class=&quot;highlighter-rouge&quot;&gt;|doc this is some text&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; treats  &lt;code class=&quot;highlighter-rouge&quot;&gt;doc&lt;/code&gt; as a namespace and the other tokens as features. Since no value is specified for each feature, this is the same as &lt;code class=&quot;highlighter-rouge&quot;&gt;|doc this:1 is:1 some:1 text:1&lt;/code&gt;. Similarly, &lt;code class=&quot;highlighter-rouge&quot;&gt;|type post&lt;/code&gt; is equivalent to &lt;code class=&quot;highlighter-rouge&quot;&gt;|type post:1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; doesn’t do anything special for text features (or categorical features) - these features are treated as numeric features with default value 1, since value was omitted.  It’s just the way &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; encodes features with defaults for unspecified values that makes it appear as if it supports text features.&lt;/p&gt;
+
+&lt;p&gt;It also worth understanding how &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; encodes features internally. This is useful if you start using ngram  features, cross-features, or if you generate a readable model and want to interpret which features are important..&lt;/p&gt;
+
+&lt;p&gt;Internally &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;  stores namespace names as single characters  so the above example is equivalent to&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;|d this:1 is:1 some:1 text:1 |s views:10 |t post&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; hashes features by namespace.  So features in different namespaces end up being hashed as different tokens.&lt;/p&gt;
+
+&lt;p&gt;Internally &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; combines the namespace and feature name before hashing them. The features that get hashed in the above example would be&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d^this
+d^is 
+d^some 
+d^text
+s^views
+t^post
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that a text token most likely has different hashes depending on which namespace it is in.  So the same text token in two different namespaces is treated as as two different features.&lt;/p&gt;
+
+&lt;p&gt;So that’s the default featurization for text. The ability to generate ngrams and skipgrams is optional. If you provide the option &lt;code class=&quot;highlighter-rouge&quot;&gt;--ngram d2&lt;/code&gt; it will also generate 2-gram features for the doc namespace.&lt;/p&gt;
+
+&lt;p&gt;So in addition to the above features it would also generate these additional features and then hash them.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d^this*d^is 
+d^is*d^some
+d^some*d^text
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;n-gram features are generated within a namespace. If you generate quatratic features, e.g. with &lt;code class=&quot;highlighter-rouge&quot;&gt;-q dt&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;-interactions dt&lt;/code&gt; you would also end up features accross those 2 namespaces. E.g.:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d^this*t^post
+d^is*t^post
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For more on working with text in vw see &lt;a href=&quot;https://github.com/hal3/vwnlp&quot;&gt;this repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And this is a &lt;a href=&quot;https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Awesome-Vowpal-Wabbit&quot;&gt;good starting point&lt;/a&gt; for getting familiar with &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Namespaces  allow you to group features together. The main reason for grouping features in namespaces, is so that you can easily generate cross-features.) &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Also, the absence of a feature indicates that the feature has value 0. So for text classfification tasks 0 is assumed for all tokens not listed in an example. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 19 Mar 2019 11:00:00 +0000</pubDate>
+        <link>http://www.aidanf.net/posts/how-vowpal-wabbit-featurizes-text</link>
+        <guid isPermaLink="true">http://www.aidanf.net/posts/how-vowpal-wabbit-featurizes-text</guid>
+        
+        <category>machine-learning,</category>
+        
+        <category>vowpal-wabbit</category>
+        
+        
+      </item>
     
       <item>
         <title>An introduction to Swift for Ruby Developers</title>
@@ -947,57 +1034,6 @@ Hello, World at  &lt;span class=&quot;c&quot;&gt;#&amp;lt;DateTime 2014-02-06T09
         <category>clojure</category>
         
         <category>30-days-of-clojure</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Clearing out some old books</title>
-        <description>&lt;p&gt;I’m clearing some space on my bookshelves and I’m getting rid of a few
-books. Rather than throw them out I’m hoping that someone else can get
-some use from them. If you are interested in any of them &lt;a href=&quot;http://www.aidanf.net/contact&quot;&gt;send me an
-email&lt;/a&gt;. Books can be collected in Sligo
-or I can mail them to you (within Ireland). One condition - don’t take a book unless
-you are genuinely going to read it - unread, hoarded books make me sad
-and you might have blocked someone else who could have made use of it.&lt;/p&gt;
-
-&lt;p&gt;So here’s the list, shout if you want one.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Agile Web Development with Rails - Dave Thomas (1st Edition)&lt;/li&gt;
-  &lt;li&gt;Agile Web Development with Rails - Dave Thomas (2nd Edition)&lt;/li&gt;
-  &lt;li&gt;The Rails Way - Obie Fernandez&lt;/li&gt;
-  &lt;li&gt;Rails Recipes - Chad Fowler&lt;/li&gt;
-  &lt;li&gt;Advanced Rails Recipes - Mike Clarke&lt;/li&gt;
-  &lt;li&gt;Beginning Ruby on Rails E-commerce - Christian Hellsten and Jarkko
-Laine&lt;/li&gt;
-  &lt;li&gt;Rails Cookbook - Rob Orsini&lt;/li&gt;
-  &lt;li&gt;Ajax on Rails - Scott Raymond&lt;/li&gt;
-  &lt;li&gt;Pro Drupal Development (1st edition) - John K. VanDyk and Matt Westgate&lt;/li&gt;
-  &lt;li&gt;Pro Dripal Development (2nd edition) - John K. VanDyk&lt;/li&gt;
-  &lt;li&gt;Learning Drupal 6 module development - Matt Bucher&lt;/li&gt;
-  &lt;li&gt;Foundations of Ajax - Ryan Asleson and Nathaniel T. Schutta&lt;/li&gt;
-  &lt;li&gt;Dhtml Utopia: Modern Web Design using Javascript and Dom - Stuart
-Langridge&lt;/li&gt;
-  &lt;li&gt;Spinning the Semantic Web - Fensel et al.&lt;/li&gt;
-  &lt;li&gt;Python programming on Win 32 - Mark Hammond and Andy Robinson&lt;/li&gt;
-  &lt;li&gt;Building Scalable Web Sites - Cal Henderson&lt;/li&gt;
-  &lt;li&gt;Restful Web Services - Leonard Richardson and Sam Ruby&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Rails books cover a mix of Rails 1 and Rails 2. So they are
-probably not much use to anyone at this stage. They might be useful
-for skim reading to get an overview of how to do stuff in rails before
-moving onto learning Rails 3 in detail.&lt;/p&gt;
-
-&lt;p&gt;The Drupal books cover
-Drupal 6. Although the current version of Drupal is 7, v.6 is still a
-valid deployment option, and you’ll learn enough about the internals
-of drupal from these books to ease your way into v.7 if you choose to.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 26 Jul 2011 00:00:00 +0100</pubDate>
-        <link>http://www.aidanf.net/posts/book-clearance</link>
-        <guid isPermaLink="true">http://www.aidanf.net/posts/book-clearance</guid>
         
         
       </item>

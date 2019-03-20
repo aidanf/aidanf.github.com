@@ -1,0 +1,440 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/page-full-width.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+    <meta name="description" content="Aidan Finn's Website">
+    <meta name="keywords" content="swift, clojure, ios, screencasts, book, python, ruby, machine learning, sligo">
+    <meta name="author" content="Aidan Finn">
+
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>
+        How does vowpal wabbit featurize text - /aidanf/
+    </title>
+    <!-- InstanceEndEditable -->
+
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <script src="/js/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/css/uniform.default.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/flexslider.css">
+
+    <!-- SCRIPTS -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>
+
+
+    <!-- InstanceBeginEditable name="head" -->
+	<!-- InstanceEndEditable -->
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-539512-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+        
+</head>
+
+<body>
+
+    <!-- #PAGE -->
+    <div id="page" class="hfeed site">
+
+      
+
+<!-- .site-header -->
+<header class="site-header wrapper" role="banner">
+
+    <!-- .row -->
+    <div class="row">
+
+        <!-- .site-title -->
+        <hgroup>
+            <h1 class="site-title"><a href="/" title="/aidanf/" rel="home">/aidanf/</a></h1>
+            <h2 class="site-description">musings of a curious coder</h2>
+        </hgroup>
+        <!-- .site-title -->
+
+        <!-- #site-navigation -->
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <ul>
+                <li ><a href="/">Blog</a></li>
+                <li ><a href="/learn-swift">Learn Swift</a></li>
+                <li ><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <!-- #site-navigation -->
+
+    </div>
+    <!-- .row -->
+</header>
+<!-- .site-header -->
+
+      <!-- #main -->
+      <section id="main" class="middle wrapper">
+        <div class="row row-fluid">
+
+
+
+
+
+                <!-- #primary -->
+                <div id="primary" class="site-content">
+
+                    <!-- #content -->
+                    <div id="content" role="main">
+                      <!-- InstanceBeginEditable name="Middle-Content" -->
+
+<!-- .blog-single -->
+<div class="blog-single readable-content">
+
+
+    <!-- .hentry -->
+    <article class="post type-post format-standard hentry">
+
+
+        <!-- .entry-header -->
+        <header class="entry-header">
+            <h1 class="entry-title">How does vowpal wabbit featurize text</h1>
+        </header>
+        <!-- .entry-header -->
+
+        <!-- .entry-meta -->
+        <div class="entry-meta">
+            posted
+            on <a href="#" title="11:15 pm" rel="bookmark">
+            <time class="entry-date" datetime="2019-03-19T11:00:00+00:00">Mar 19, 2019
+            </time>
+        </a>
+
+            <!-- .share-links -->
+            <div class="share-links">
+                <a>SHARE</a>
+
+                <!-- .share-wrap -->
+                <div class="share-wrap">
+
+                    <!-- .facebook-wrap -->
+                    <div class="facebook-wrap">
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="400"
+                             data-show-faces="false" data-colorscheme="light" data-action="like"></div>
+
+                    </div>
+                    <!-- .facebook-wrap -->
+
+                    <!-- .twitter-wrap -->
+                    <div class="twitter-wrap">
+                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                    </div>
+                    <!-- .twitter-wrap -->
+
+                    <!-- .google-wrap -->
+                    <div class="google-wrap">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="medium"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                    <!-- .google-wrap -->
+
+                    <!-- .pinterest-wrap -->
+                    <div class="pinterest-wrap">
+                        <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fblog-single.html&media=http%3A%2F%2Fthemes.pixelwars.org%2Fread%2Fimages%2Fblog%2Fblog-01.jpg&description=Adaptive%20Vs.%20Responsive%20Layouts%20And%20Optimal%20Form%20Field%20Labels"
+                           class="pin-it-button" count-layout="horizontal"><img
+                                src="//assets.pinterest.com/images/PinExt.png" alt="Pin It" title="Pin It"/></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <!-- .pinterest-wrap -->
+
+                </div>
+                <!-- .share-wrap -->
+
+
+            </div>
+            <!-- .share-links -->
+
+
+        </div>
+        <!-- .entry-meta -->
+
+
+        <!-- .featured-image -->
+        
+        <!-- .featured-image -->
+
+
+        <!-- .entry-content -->
+        <div class="entry-content">
+            <p>The  details of vowpal wabbit’s (<code class="highlighter-rouge">vw</code>) feature representation are <a href="https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format">specified here</a> but it can be tricky to grok immediately.</p>
+
+<p>All features in <code class="highlighter-rouge">vw</code> are numeric features. It doesn’t do anything special for text or categorical features - they are just numeric features like all other features.</p>
+
+<p>Consider this vw formatted example:
+<code class="highlighter-rouge">|doc this is some text |stats views:10 |type post</code></p>
+
+<p>The <code class="highlighter-rouge">|</code> character indicates a namespace declaration and the characters after that are the name of the namespace<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. What follows the namespace declaration is a list of features and their values.</p>
+
+<p>So in this example we have the <code class="highlighter-rouge">doc</code> namespace, <code class="highlighter-rouge">stats</code> namespace and <code class="highlighter-rouge">type</code> namespace.</p>
+
+<p>The core of <code class="highlighter-rouge">vw</code>s feature representation is that every feature is numeric and consists of a name and a value. This is specified in an example as <code class="highlighter-rouge">name:value</code></p>
+
+<p>If name is specified and value is omitted, then it has a default value of 1 <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<p>So for our example of  <code class="highlighter-rouge">|doc this is some text</code> , <code class="highlighter-rouge">vw</code> treats  <code class="highlighter-rouge">doc</code> as a namespace and the other tokens as features. Since no value is specified for each feature, this is the same as <code class="highlighter-rouge">|doc this:1 is:1 some:1 text:1</code>. Similarly, <code class="highlighter-rouge">|type post</code> is equivalent to <code class="highlighter-rouge">|type post:1</code>.</p>
+
+<p>So <code class="highlighter-rouge">vw</code> doesn’t do anything special for text features (or categorical features) - these features are treated as numeric features with default value 1, since value was omitted.  It’s just the way <code class="highlighter-rouge">vw</code> encodes features with defaults for unspecified values that makes it appear as if it supports text features.</p>
+
+<p>It also worth understanding how <code class="highlighter-rouge">vw</code> encodes features internally. This is useful if you start using ngram  features, cross-features, or if you generate a readable model and want to interpret which features are important..</p>
+
+<p>Internally <code class="highlighter-rouge">vw</code>  stores namespace names as single characters  so the above example is equivalent to</p>
+
+<p><code class="highlighter-rouge">|d this:1 is:1 some:1 text:1 |s views:10 |t post</code></p>
+
+<p><code class="highlighter-rouge">vw</code> hashes features by namespace.  So features in different namespaces end up being hashed as different tokens.</p>
+
+<p>Internally <code class="highlighter-rouge">vw</code> combines the namespace and feature name before hashing them. The features that get hashed in the above example would be</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>d^this
+d^is 
+d^some 
+d^text
+s^views
+t^post
+</code></pre>
+</div>
+
+<p>Note that a text token most likely has different hashes depending on which namespace it is in.  So the same text token in two different namespaces is treated as as two different features.</p>
+
+<p>So that’s the default featurization for text. The ability to generate ngrams and skipgrams is optional. If you provide the option <code class="highlighter-rouge">--ngram d2</code> it will also generate 2-gram features for the doc namespace.</p>
+
+<p>So in addition to the above features it would also generate these additional features and then hash them.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>d^this*d^is 
+d^is*d^some
+d^some*d^text
+...
+</code></pre>
+</div>
+
+<p>n-gram features are generated within a namespace. If you generate quatratic features, e.g. with <code class="highlighter-rouge">-q dt</code> or <code class="highlighter-rouge">-interactions dt</code> you would also end up features accross those 2 namespaces. E.g.:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>d^this*t^post
+d^is*t^post
+...
+</code></pre>
+</div>
+
+<p>For more on working with text in vw see <a href="https://github.com/hal3/vwnlp">this repository</a></p>
+
+<p>And this is a <a href="https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Awesome-Vowpal-Wabbit">good starting point</a> for getting familiar with <code class="highlighter-rouge">vw</code>.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Namespaces  allow you to group features together. The main reason for grouping features in namespaces, is so that you can easily generate cross-features.) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Also, the absence of a feature indicates that the feature has value 0. So for text classfification tasks 0 is assumed for all tokens not listed in an example. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </div>
+        <!-- .entry-content -->
+
+
+    </article>
+    <!-- .hentry -->
+
+    <!-- .nav-single -->
+    <nav class="nav-single row-fluid">
+        
+        <div class="nav-previous span6">
+            <h4>PREVIOUS POST</h4>
+            <a href="/posts/an-introduction-to-swift-for-ruby-developers" rel="prev"><span class="meta-nav">←</span> An introduction to Swift for Ruby Developers</a>
+        </div>
+        
+
+        
+
+    </nav>
+    <!-- .nav-single -->
+
+</div>
+<!-- .blog-single -->
+
+
+<!-- InstanceEndEditable -->
+                    </div>
+                    <!-- #content -->
+
+                </div>
+                <!-- #primary -->
+
+
+
+
+
+         </div>
+      </section>
+      <!-- #main -->
+
+
+
+
+
+          <!-- .site-footer -->
+      <footer class="site-footer wrapper" role="contentinfo">
+        <!-- .row -->
+        <div class="row">
+
+
+          <!-- #supplementary -->
+          <div id="supplementary" class="row-fluid">
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_text">
+                <h3 class="widget-title">About Read</h3>
+                <div class="textwidget">Read is a minimalistic wordpress theme focused on readability. This is a just text widget with some dummy content. This is a just text widget with some dummy content. This is a just text widget with some dummy content.</div>
+              </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_recent_entries">
+                  <h3 class="widget-title">Recent Posts</h3>
+                  <ul>
+                    <li><a href="#" title="Thinking About Responsive Design">Thinking About Responsive Design</a></li>
+                    <li><a href="#" title="Adaptive Vs. Responsive Layouts And Optimal Form Field Labels">Adaptive Vs. Responsive Layouts And Optimal Form Field Labels</a></li>
+                    <li><a href="#" title="Hello world!">Hello world!</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget-instagram">
+                  <h3 class="widget-title">Photos on Instagram</h3>
+                  <div class="instagram"></div>
+                  <script src="../js/instagram.js"></script>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+            <!-- .widget-area -->
+            <!--<div class="widget-area span3" role="complementary">
+
+              <aside class="widget widget_categories">
+                  <h3 class="widget-title">Categories</h3>
+                  <ul>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Web Design</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Javascript</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Typography</a></li>
+                    <li><a href="#" title="View all posts filed under Uncategorized">Freebies</a></li>
+                  </ul>
+                </aside>
+
+            </div>-->
+            <!-- .widget-area -->
+
+
+          </div>
+          <!-- #supplementary -->
+
+
+          <!-- .site-info -->
+          <div class="site-info">(c) Aidan Finn</div>
+          <!-- .site-info -->
+
+        </div>
+        <!-- .row -->
+      </footer>
+      <!-- .site-footer -->
+
+    </div>
+    <!-- #PAGE -->
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="/js/detectmobilebrowser.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery.imagesloaded.min.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.uniform.min.js"></script>
+
+    <!-- InstanceBeginEditable name="body-end" -->
+    <script src="/js/jquery.validate.min.js"></script>
+	<!-- InstanceEndEditable -->
+
+    <script src="/js/main.js"></script>
+
+</body>
+<!-- InstanceEnd --></html>
