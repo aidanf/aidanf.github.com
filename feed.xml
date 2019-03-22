@@ -6,9 +6,22 @@
 </description>
     <link>http://www.aidanf.net/</link>
     <atom:link href="http://www.aidanf.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Mar 2019 21:38:42 +0000</pubDate>
-    <lastBuildDate>Wed, 20 Mar 2019 21:38:42 +0000</lastBuildDate>
+    <pubDate>Fri, 22 Mar 2019 18:06:31 +0000</pubDate>
+    <lastBuildDate>Fri, 22 Mar 2019 18:06:31 +0000</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Reading and writing pandas dataframes to parquet</title>
+        <pubDate>Fri, 22 Mar 2019 11:00:00 +0000</pubDate>
+        <link>http://www.aidanf.net/posts/read-write-dataframe-to-parquet</link>
+        <guid isPermaLink="true">http://www.aidanf.net/posts/read-write-dataframe-to-parquet</guid>
+        
+        <category>python,</category>
+        
+        <category>pandas</category>
+        
+        
+      </item>
     
       <item>
         <title>How does vowpal wabbit featurize text?</title>
@@ -103,19 +116,6 @@
         <category>clojure</category>
         
         <category>review</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Getting setup with clojure</title>
-        <pubDate>Thu, 06 Feb 2014 14:00:00 +0000</pubDate>
-        <link>http://www.aidanf.net/posts/getting-setup-with-clojure</link>
-        <guid isPermaLink="true">http://www.aidanf.net/posts/getting-setup-with-clojure</guid>
-        
-        <category>clojure</category>
-        
-        <category>30-days-of-clojure</category>
         
         
       </item>

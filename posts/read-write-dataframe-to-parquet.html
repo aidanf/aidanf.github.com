@@ -12,7 +12,7 @@
 
     <!-- InstanceBeginEditable name="doctitle" -->
     <title>
-        How does vowpal wabbit featurize text? - /aidanf/
+        Reading and writing pandas dataframes to parquet - /aidanf/
     </title>
     <!-- InstanceEndEditable -->
 
@@ -121,7 +121,7 @@
 
         <!-- .entry-header -->
         <header class="entry-header">
-            <h1 class="entry-title">How does vowpal wabbit featurize text?</h1>
+            <h1 class="entry-title">Reading and writing pandas dataframes to parquet</h1>
         </header>
         <!-- .entry-header -->
 
@@ -129,7 +129,7 @@
         <div class="entry-meta">
             posted
             on <a href="#" title="11:15 pm" rel="bookmark">
-            <time class="entry-date" datetime="2019-03-19T11:00:00+00:00">Mar 19, 2019
+            <time class="entry-date" datetime="2019-03-22T11:00:00+00:00">Mar 22, 2019
             </time>
         </a>
 
@@ -220,78 +220,29 @@
 
         <!-- .entry-content -->
         <div class="entry-content">
-            <p>The  details of vowpal wabbit’s (<code class="highlighter-rouge">vw</code>) feature representation are <a href="https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format">specified here</a> but it can be tricky to grok immediately.</p>
+            <p><a href="https://parquet.apache.org/">Parquet</a> is a columnar data storage format  that is part of the hadoop ecosystem.</p>
 
-<p>All features in <code class="highlighter-rouge">vw</code> are numeric features. It doesn’t do anything special for text or categorical features - they are just numeric features like all other features.</p>
+<p>If you are in the habit of saving large csv files to disk as part of your data processing workflow, it can be worth switching to parquet for these type of tasks. It will result in smaller files that are quicker to load.</p>
 
-<p>Consider this vw formatted example:
-<code class="highlighter-rouge">|doc this is some text |stats views:10 |type post</code></p>
+<p>With large datasets or expensive computations it’s convenient to dump the resulting dataframes to parquet so that you can easily and quickly load them later. For example, if after you initially load your data, you pass it through a series of (sometimes time-consuming steps) to clean and transform it, it can be useful to then dump that dataframe to parquet so that you can load it easily next time you want to use it, or share it with someone else.</p>
 
-<p>The <code class="highlighter-rouge">|</code> character indicates a namespace declaration and the characters after that are the name of the namespace<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. What follows the namespace declaration is a list of features and their values.</p>
+<h3 id="to-save-a-dataframe-to-parquet">To save a dataframe to parquet</h3>
 
-<p>So in this example we have the <code class="highlighter-rouge">doc</code> namespace, <code class="highlighter-rouge">stats</code> namespace and <code class="highlighter-rouge">type</code> namespace.</p>
+<p><code class="highlighter-rouge">df.to_parquet('df.parquet.gzip',  compression='gzip')</code></p>
 
-<p>The core of <code class="highlighter-rouge">vw</code>s feature representation is that every feature is numeric and consists of a name and a value. This is specified in an example as <code class="highlighter-rouge">name:value</code></p>
+<h3 id="to-load-a-data-frame-from-parquet">To load a data frame from parquet</h3>
+<p>If you have a dataframe saved in parquet format you can do</p>
 
-<p>If name is specified and value is omitted, then it has a default value of 1 <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+<p><code class="highlighter-rouge">pd.read_parquet('df.parquet.gzip')</code></p>
 
-<p>So for our example of  <code class="highlighter-rouge">|doc this is some text</code> , <code class="highlighter-rouge">vw</code> treats  <code class="highlighter-rouge">doc</code> as a namespace and the other tokens as features. Since no value is specified for each feature, this is the same as <code class="highlighter-rouge">|doc this:1 is:1 some:1 text:1</code>. Similarly, <code class="highlighter-rouge">|type post</code> is equivalent to <code class="highlighter-rouge">|type post:1</code>.</p>
+<h3 id="parquet-engines">parquet engines</h3>
 
-<p>So <code class="highlighter-rouge">vw</code> doesn’t do anything special for text features (or categorical features) - these features are treated as numeric features with default value 1, since value was omitted.  It’s just the way <code class="highlighter-rouge">vw</code> encodes features with defaults for unspecified values that makes it appear as if it supports text features.</p>
+<p>There are a couple of parquet libraries you can use under the hood. The default is <code class="highlighter-rouge">pyarrow</code>. However if any of your dataframe columns contain complex objects such as <code class="highlighter-rouge">dict</code>s you may want to switch to <code class="highlighter-rouge">fastparquet</code>.</p>
 
-<p>It also worth understanding how <code class="highlighter-rouge">vw</code> encodes features internally. This is useful if you start using ngram  features, cross-features, or if you generate a readable model and want to interpret which features are important..</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>pip install fastparquet
 
-<p>Internally <code class="highlighter-rouge">vw</code>  stores namespace names as single characters  so the above example is equivalent to</p>
-
-<p><code class="highlighter-rouge">|d this:1 is:1 some:1 text:1 |s views:10 |t post</code></p>
-
-<p><code class="highlighter-rouge">vw</code> hashes features by namespace.  So features in different namespaces end up being hashed as different tokens.</p>
-
-<p>Internally <code class="highlighter-rouge">vw</code> combines the namespace and feature name before hashing them. The features that get hashed in the above example would be</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>d^this
-d^is 
-d^some 
-d^text
-s^views
-t^post
+df.to_parquet('df.parquet.gzip',  compression='gzip', engine='fastparquet')
 </code></pre>
-</div>
-
-<p>Note that a text token most likely has different hashes depending on which namespace it is in.  So the same text token in two different namespaces is treated as as two different features.</p>
-
-<p>So that’s the default featurization for text. The ability to generate ngrams and skipgrams is optional. If you provide the option <code class="highlighter-rouge">--ngram d2</code> it will also generate 2-gram features for the doc namespace.</p>
-
-<p>So in addition to the above features it would also generate these additional features and then hash them.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>d^this*d^is 
-d^is*d^some
-d^some*d^text
-...
-</code></pre>
-</div>
-
-<p>n-gram features are generated within a namespace. If you generate quatratic features, e.g. with <code class="highlighter-rouge">-q dt</code> or <code class="highlighter-rouge">-interactions dt</code> you would also end up features accross those 2 namespaces. E.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>d^this*t^post
-d^is*t^post
-...
-</code></pre>
-</div>
-
-<p>For more on working with text in vw see <a href="https://github.com/hal3/vwnlp">this repository</a></p>
-
-<p>And this is a <a href="https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Awesome-Vowpal-Wabbit">good starting point</a> for getting familiar with <code class="highlighter-rouge">vw</code>.</p>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Namespaces  allow you to group features together. The main reason for grouping features in namespaces, is so that you can easily generate cross-features.) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Also, the absence of a feature indicates that the feature has value 0. So for text classfification tasks 0 is assumed for all tokens not listed in an example. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
 </div>
 
         </div>
@@ -306,15 +257,10 @@ d^is*t^post
         
         <div class="nav-previous span6">
             <h4>PREVIOUS POST</h4>
-            <a href="/posts/an-introduction-to-swift-for-ruby-developers" rel="prev"><span class="meta-nav">←</span> An introduction to Swift for Ruby Developers</a>
+            <a href="/posts/how-vowpal-wabbit-featurizes-text" rel="prev"><span class="meta-nav">←</span> How does vowpal wabbit featurize text?</a>
         </div>
         
 
-        
-        <div class="nav-next span6">
-            <h4>NEXT POST</h4>
-            <a href="/posts/read-write-dataframe-to-parquet" rel="next">Reading and writing pandas dataframes to parquet <span class="meta-nav">→</span></a>
-        </div>
         
 
     </nav>
