@@ -245,24 +245,8 @@ df.to_parquet('df.parquet.gzip',  compression='gzip', engine='fastparquet')
 </code></pre>
 </div>
 
-<h3 id="feather">Feather</h3>
-
-<p>You can also write and read a dataframe in <a href="https://github.com/wesm/feather">feather</a> format using</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>df.to_feather('filename)
-df.read_feature('filename')
-</code></pre>
-</div>
-
-<p>Feather is lightweight data format for data frames. It’s useful for quickly writing out a data frame to disk after you’ve done some preprocessing so you can skip those steps later and just reload the data frame from the feather file. If you are sharing data between python and R or working with smallish datasets then feather can be a good option.</p>
-
-<p>I generally prefer parquet for larger datasets. Parquet compresses your data before writing, so generally feather is quicker to write but parquet will result in much smaller file sizes. 
-Also since parquet is a standard file format within the Hadoop ecosystem, you can share data between multiple different systems and languages using parquet.</p>
-
         </div>
         <!-- .entry-content -->
-
-
     </article>
     <!-- .hentry -->
 
@@ -285,6 +269,9 @@ Also since parquet is a standard file format within the Hadoop ecosystem, you ca
 
 
 <!-- InstanceEndEditable -->
+
+<script async data-uid="c12bb389a3" src="https://f.convertkit.com/c12bb389a3/4d4374b6a6.js"></script>
+
                     </div>
                     <!-- #content -->
 
